@@ -1,0 +1,225 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>kyl的博客 - kyl的博客</title><meta name="author" content="kyl"><meta name="copyright" content="kyl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用于记录平时学习的博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kyl的博客">
+<meta property="og:url" content="https://alsl521.github.io/page/2/index.html">
+<meta property="og:site_name" content="kyl的博客">
+<meta property="og:description" content="用于记录平时学习的博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4">
+<meta property="article:author" content="kyl">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://alsl521.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'kyl的博客',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kyl的博客</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">kyl的博客</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/alsl521" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:852970167@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/17/Little-knowledge-of-Java-7/" title="Java学习（七）">Java学习（七）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-17T08:06:07.000Z" title="发表于 2024-02-17 16:06:07">2024-02-17</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/14/Little-knowledge-of-Java-6/" title="Java学习（六）">Java学习（六）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-14T13:43:30.000Z" title="发表于 2024-02-14 21:43:30">2024-02-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">Java 集合框架  集合接口与实现分离与现代的数据结构类库的常见情况一样，Java集合类库也将接口（interface)与实现(implementation)分离。 例如：队列 队列接口指出可以在队列的尾部添加元素，在队列的头部删除元素，并且可以査找队列中元素的个数。当需要收集对象，并按照“先进先出”的规则检索对象时就应该使用队列。  123456789101112131415161718192021222324252627282930313233package java.util;/**设计用于在加工前保存元素的集合。除了基本Collection操作外，队列还提供其他插入、提取和检查操作。这些方法中的每一个都以两种形式存在：一种在操作失败时引发异常，另一种返回特殊值（nullfalse或 ，具体取决于操作）。后一种形式的插入操作是专门为用于容量受限Queue的实现而设计的;在大多数实现中，插入操作不会失败。队列方法摘要 	 抛出异常   返回特殊值插入 add(e)    offer(e)删除 remove()  poll()检查 element()...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/14/Little-knowledge-of-Java-5/" title="Java学习（五）">Java学习（五）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-14T03:27:52.000Z" title="发表于 2024-02-14 11:27:52">2024-02-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">处理错误为了尽量避免错误的发生，至少应该做到以下几点：  向用户通知错误； 保存所有的工作； 允许用户妥善地退出程序。  假设在一个Java...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/02/SSM-8/" title="Java学习-SSM-8">Java学习-SSM-8</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T06:44:59.000Z" title="发表于 2024-02-02 14:44:59">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">今日目标  基于MyBatisPlus完成标准Dao的增删改查功能 掌握MyBatisPlus中的分页及条件查询构建 掌握主键ID的生成策略 了解MyBatisPlus的代码生成器  1，MyBatisPlus入门案例与简介这一节我们来学习下MyBatisPlus的入门案例与简介，这个和其他课程都不太一样，其他的课程都是先介绍概念，然后再写入门案例。而对于MyBatisPlus的学习，我们将顺序做了调整，主要的原因MyBatisPlus主要是对MyBatis的简化，所有我们先体会下它简化在哪，然后再学习它是什么，以及它帮我们都做哪些事。 1.1...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/02/SSM-7/" title="Java学习-SSM-7">Java学习-SSM-7</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T06:44:56.000Z" title="发表于 2024-02-02 14:44:56">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">今日目标：   掌握基于SpringBoot框架的程序开发步骤 熟练使用SpringBoot配置信息修改服务器配置 基于SpringBoot的完成SSM整合项目开发   SpringBoot简介SpringBoot 是由 Pivotal 团队提供的全新框架，其设计目的是用来简化 Spring 应用的初始搭建以及开发过程。 使用了 Spring 框架后已经简化了我们的开发。而 SpringBoot 又是对 Spring 开发进行简化的，可想而知 SpringBoot 使用的简单及广泛性。既然 SpringBoot 是用来简化 Spring 开发的，那我们就先回顾一下，以 SpringMVC 开发为例：  创建工程，并在 pom.xml 配置文件中配置所依赖的坐标     编写 web3.0 的配置类 作为 web 程序，web3.0 的配置类不能缺少，而这个配置类还是比较麻烦的，代码如下      编写 SpringMVC 的配置类    ​	做到这只是将工程的架子搭起来。要想被外界访问，最起码还需要提供一个 Controller 类，在该类中提供一个方法。  编写...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/02/SSM-6/" title="Java学习-SSM-6">Java学习-SSM-6</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T06:44:53.000Z" title="发表于 2024-02-02 14:44:53">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/02/SSM-5/" title="Java学习-SSM-5">Java学习-SSM-5</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T06:44:47.000Z" title="发表于 2024-02-02 14:44:47">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">今日内容   完成SSM的整合开发 能够理解并实现统一结果封装与统一异常处理 能够完成前后台功能整合开发 掌握拦截器的编写   SSM整合前面我们已经把Mybatis、Spring和SpringMVC三个框架进行了学习，今天主要的内容就是把这三个框架整合在一起完成我们的业务功能开发，具体如何来整合，我们一步步来学习。 流程分析(1) 创建工程  创建一个Maven的web工程 pom.xml添加SSM需要的依赖jar包 编写Web项目的入口配置类，实现AbstractAnnotationConfigDispatcherServletInitializer重写以下方法 getRootConfigClasses()    ：返回Spring的配置类-&gt;需要SpringConfig配置类 getServletConfigClasses() ：返回SpringMVC的配置类-&gt;需要SpringMvcConfig配置类 getServletMappings()      : 设置SpringMVC请求拦截路径规则 getServletFilters()      ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/02/SSM-4/" title="Java学习-SSM-4">Java学习-SSM-4</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T02:47:41.000Z" title="发表于 2024-02-02 10:47:41">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/02/SSM-3/" title="Java学习-SSM-3">Java学习-SSM-3</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-02T02:21:16.000Z" title="发表于 2024-02-02 10:21:16">2024-02-02</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">AOP简介前面我们在介绍Spring的时候说过，Spring有两个核心的概念，一个是IOC/DI，一个是AOP。 前面已经对IOC/DI进行了系统的学习，接下来要学习它的另一个核心内容，就是AOP。 对于AOP,我们前面提过一句话是:AOP是在不改原有代码的前提下对其进行增强。 对于下面的内容，我们主要就是围绕着这一句话进行展开学习，主要学习两方面内容AOP核心概念,AOP作用: 什么是AOP? AOP(Aspect Oriented Programming)面向切面编程，一种编程范式，指导开发者如何组织程序结构。 OOP(Object Oriented...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2024/02/01/SSM-2/" title="Java学习-SSM-2">Java学习-SSM-2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-01T01:57:10.000Z" title="发表于 2024-02-01 09:57:10">2024-02-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Java/">Java</a></span></div><div class="content">核心容器前面已经完成bean与依赖注入的相关知识学习，接下来我们主要学习的是IOC容器中的核心容器。 这里所说的核心容器，大家可以把它简单的理解为ApplicationContext，前面虽然已经用到过，但是并没有系统的学习，接下来咱们从以下几个问题入手来学习下容器的相关知识:  如何创建容器? 创建好容器后，如何从容器中获取bean对象? 容器类的层次结构是什么? BeanFactory是什么?  环境准备在学习和解决上述问题之前，先来准备下案例环境:  创建一个Maven项目  pom.xml添加Spring的依赖 1234567&lt;dependencies&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework&lt;/groupId&gt;        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;        &lt;version&gt;5.2.10.RELEASE&lt;/version&gt;   ...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kyl</div><div class="author-info-description">用于记录平时学习的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/alsl521" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:852970167@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/08/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-08T07:18:30.297Z" title="发表于 2025-04-08 15:18:30">2025-04-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/23/Java-Algorithm-02/" title="链表">链表</a><time datetime="2024-06-23T07:04:47.000Z" title="发表于 2024-06-23 15:04:47">2024-06-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/20/Java-Algorithm-01/" title="算法-排序">算法-排序</a><time datetime="2024-06-20T06:00:59.000Z" title="发表于 2024-06-20 14:00:59">2024-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-4/" title="尚硅谷Java-day04">尚硅谷Java-day04</a><time datetime="2024-04-02T05:18:51.000Z" title="发表于 2024-04-02 13:18:51">2024-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-3/" title="尚硅谷Java-day03">尚硅谷Java-day03</a><time datetime="2024-04-02T05:18:48.000Z" title="发表于 2024-04-02 13:18:48">2024-04-02</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/C/"><span class="card-category-list-name">C++</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Java/"><span class="card-category-list-name">Java</span><span class="card-category-list-count">23</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/git/"><span class="card-category-list-name">git</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">16</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/CSS/"><span class="card-category-list-name">CSS</span><span class="card-category-list-count">3</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/CSS/CSS2/"><span class="card-category-list-name">CSS2</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/CSS/CSS3/"><span class="card-category-list-name">CSS3</span><span class="card-category-list-count">1</span></a></li></ul></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.45em; color: #99a7ba">前端</a> <a href="/tags/%E5%AE%9E%E6%88%98/" style="font-size: 1.2em; color: #999da3">实战</a> <a href="/tags/HTML5/" style="font-size: 1.1em; color: #999">HTML5</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 1.1em; color: #999">机器学习</a> <a href="/tags/CSS3/" style="font-size: 1.1em; color: #999">CSS3</a> <a href="/tags/git/" style="font-size: 1.1em; color: #999">git</a> <a href="/tags/C-%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/" style="font-size: 1.25em; color: #999fa7">C++基础入门</a> <a href="/tags/Django%E5%AE%9E%E6%88%98/" style="font-size: 1.15em; color: #999b9e">Django实战</a> <a href="/tags/HTML4/" style="font-size: 1.1em; color: #999">HTML4</a> <a href="/tags/Linux/" style="font-size: 1.1em; color: #999">Linux</a> <a href="/tags/%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8/" style="font-size: 1.2em; color: #999da3">用户使用</a> <a href="/tags/Django/" style="font-size: 1.2em; color: #999da3">Django</a> <a href="/tags/vue/" style="font-size: 1.4em; color: #99a5b6">vue</a> <a href="/tags/Python/" style="font-size: 1.25em; color: #999fa7">Python</a> <a href="/tags/%E5%90%8E%E7%AB%AF/" style="font-size: 1.3em; color: #99a1ac">后端</a> <a href="/tags/SSM/" style="font-size: 1.35em; color: #99a3b1">SSM</a> <a href="/tags/CSS2/" style="font-size: 1.1em; color: #999">CSS2</a> <a href="/tags/CSS/" style="font-size: 1.2em; color: #999da3">CSS</a> <a href="/tags/HTML/" style="font-size: 1.15em; color: #999b9e">HTML</a> <a href="/tags/Java%E5%AE%9E%E6%88%98/" style="font-size: 1.1em; color: #999">Java实战</a> <a href="/tags/Java/" style="font-size: 1.5em; color: #99a9bf">Java</a> <a href="/tags/vue%E5%AE%9E%E6%88%98/" style="font-size: 1.25em; color: #999fa7">vue实战</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">学习</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/06/">
+            <span class="card-archive-list-date">
+              六月 2024
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/04/">
+            <span class="card-archive-list-date">
+              四月 2024
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/03/">
+            <span class="card-archive-list-date">
+              三月 2024
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/02/">
+            <span class="card-archive-list-date">
+              二月 2024
+            </span>
+            <span class="card-archive-list-count">10</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/01/">
+            <span class="card-archive-list-date">
+              一月 2024
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2023/12/">
+            <span class="card-archive-list-date">
+              十二月 2023
+            </span>
+            <span class="card-archive-list-count">28</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">53</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-04-08T08:37:04.004Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By kyl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

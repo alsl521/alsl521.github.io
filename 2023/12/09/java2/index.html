@@ -1,0 +1,932 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java 基础加强 | kyl的博客</title><meta name="author" content="kyl"><meta name="copyright" content="kyl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java 基础加强 简单学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基础加强">
+<meta property="og:url" content="https://alsl521.github.io/2023/12/09/java2/index.html">
+<meta property="og:site_name" content="kyl的博客">
+<meta property="og:description" content="Java 基础加强 简单学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4">
+<meta property="article:published_time" content="2023-12-09T03:25:28.000Z">
+<meta property="article:modified_time" content="2025-04-08T08:04:35.056Z">
+<meta property="article:author" content="kyl">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Java 基础加强",
+  "url": "https://alsl521.github.io/2023/12/09/java2/",
+  "image": "https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4",
+  "datePublished": "2023-12-09T03:25:28.000Z",
+  "dateModified": "2025-04-08T08:04:35.056Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kyl",
+      "url": "https://alsl521.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://alsl521.github.io/2023/12/09/java2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 基础加强',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kyl的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Java 基础加强</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Java 基础加强</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-09T03:25:28.000Z" title="发表于 2023-12-09 11:25:28">2023-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-08T08:04:35.056Z" title="更新于 2025-04-08 16:04:35">2025-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="01-面向对象进阶：static、继承、单例"><a href="#01-面向对象进阶：static、继承、单例" class="headerlink" title="01-面向对象进阶：static、继承、单例"></a>01-面向对象进阶：static、继承、单例</h1><h2 id="static"><a href="#static" class="headerlink" title="static"></a><strong>static</strong></h2><p><img src="/java2/image-20230918193213202.png" alt="image-20230918193213202"></p>
+<h3 id="static修饰成员变量"><a href="#static修饰成员变量" class="headerlink" title="static修饰成员变量"></a>static修饰成员变量</h3><p><img src="/java2/image-20230918193500850.png" alt="image-20230918193500850"></p>
+<p><img src="/java2/image-20230918193830341.png" alt="image-20230918193830341"></p>
+<h3 id="static修饰成员变量的应用场景"><a href="#static修饰成员变量的应用场景" class="headerlink" title="static修饰成员变量的应用场景"></a>static修饰成员变量的应用场景</h3><p>在开发中，如果某个数据只需要一份，且希望能够被共享(访问、修改），则该数据可以定义成类变量来记住。</p>
+<p>1、成员变量有几种？各自在什么情况下定义？</p>
+<p><strong>类变量：数据只需要一份，且需要被共享时（访问，修改）</strong></p>
+<p>实例变量：每个对象都要有一份，数据各不同（如：name、score、age）</p>
+<p>2、访问自己类中的类变量，是否可以省略类名不写？</p>
+<p><strong>可以的</strong></p>
+<p><strong>注意：在某个类中访问其他类里的类变量，必须带类名访问</strong></p>
+<h3 id="static修饰成员方法"><a href="#static修饰成员方法" class="headerlink" title="static修饰成员方法"></a>static修饰成员方法</h3><p>有static修饰的成员方法，属于类</p>
+<p>无static修饰的成员方法，属于对象。</p>
+<p><img src="/java2/image-20230918194759591.png" alt="image-20230918194759591"></p>
+<h3 id="static修饰成员方法的应用场景"><a href="#static修饰成员方法的应用场景" class="headerlink" title="static修饰成员方法的应用场景"></a>static修饰成员方法的应用场景</h3><p><strong>类方法的常见应用场景</strong></p>
+<p>类方法最常见的应用场景是做工具类。</p>
+<p><strong>工具类是什么？</strong></p>
+<p>工具类中的方法都是一些类方法，每个方法都是用来完成一个功能的，工具类是给开发人员共同使用的。</p>
+<p><strong>为什么工具类中的方法要用类方法，而不用实例方法？</strong></p>
+<p>实例方法需要创建对象来调用，此时对象只是为了调用方法，对象占内存，这样会浪费内存。</p>
+<p>类方法，直接用类名调用即可，调用方便，也能节省内存。</p>
+<p>1.类方法有啥应用场景？</p>
+<p><strong>可以用来设计工具类。</strong></p>
+<p>2.工具类是什么，有什么好处？</p>
+<p><strong>工具类中的方法都是类方法，每个类方法都是用来完成一个功能的。</strong></p>
+<p><strong>提高了代码的复用性；调用方便，提高了开发效率。</strong></p>
+<p>3.为什么工具类要用类方法，而不是用实例方法？</p>
+<p><strong>实例方法需要创建对象来调用，会浪费内存。</strong></p>
+<p>4.工具类定义时有什么要求？</p>
+<p>工具类不需要创建对象， 建议将工具类的构造器私有化。</p>
+<h3 id="static的注意事项"><a href="#static的注意事项" class="headerlink" title="static的注意事项"></a>static的注意事项</h3><p>类方法中可以直接访问类的成员，不可以直接访问实例成员。</p>
+<p>实例方法中既可以直接访问类成员，也可以直接访问实例成员。</p>
+<p>实例方法中可以出现this关键字，类方法中不可以出现this关键字的</p>
+<h3 id="static的应用知识：代码块"><a href="#static的应用知识：代码块" class="headerlink" title="static的应用知识：代码块"></a>static的应用知识：代码块</h3><p>代码块是类的5大成分之一（成员变量、构造器、方法、代码块、内部类）。</p>
+<p><strong>代码块分为两种：</strong></p>
+<p><strong>静态代码块</strong>:</p>
+<p><strong>格式</strong>：static { }</p>
+<p><strong>特点</strong>：类加载时自动执行，由于类只会加载一次，所以静态代码块也只会执行一次。</p>
+<p><strong>作用</strong>：完成类的初始化，例如：对类变量的初始化赋值。</p>
+<p><strong>实例代码块:</strong></p>
+<p><strong>格式</strong>：{ }</p>
+<p><strong>特点</strong>：每次创建对象时，执行实例代码块，并在构造器前执行。</p>
+<p>**作用：**和构造器一样，都是用来完成对象的初始化的，例如：对实例变量进行初始化赋值。</p>
+<h3 id="static的应用知识：单例设计模式"><a href="#static的应用知识：单例设计模式" class="headerlink" title="static的应用知识：单例设计模式"></a>static的应用知识：单例设计模式</h3><p><strong>什么是设计模式（Design pattern）?</strong></p>
+<p>一个问题通常有n种解法，其中肯定有一种解法是最优的，这个最优的解法被人总结出来了，称之为<strong>设计模式</strong>。</p>
+<p>设计模式有20多种，对应20多种软件开发中会遇到的问题。</p>
+<p>单例设计模式：确保一个类只有一个对象。</p>
+<p><strong>写法</strong></p>
+<p>把类的构造器私有。</p>
+<p>定义一个类变量记住类的一个对象。</p>
+<p>定义一个类方法，返回对象。</p>
+<p>1.什么是设计模式，设计模式主要学什么 ? 单例模式解决了什么问题 ？</p>
+<p><strong>设计模式就是具体问题的最优解决方案。</strong></p>
+<p><strong>解决了什么问题？ 怎么写？</strong></p>
+<p><strong>确保一个类只有一个对象。</strong></p>
+<p>2.单例怎么写? 饿汉式单例的特点是什么？</p>
+<p><strong>把类的构造器私有；定义一个类变量存储类的一个对象；提供一个类方法返回对象。</strong></p>
+<p><strong>在获取类的对象时，对象已经创建好了。</strong></p>
+<p>3.单例有啥应用场景，有啥好处？</p>
+<p><strong>任务管理器对象、获取运行时对象。</strong></p>
+<p><strong>在这些业务场景下，使用单例模式，可以避免浪费内存。</strong></p>
+<p><strong>懒汉式单例设计模式</strong></p>
+<p>拿对象时，才开始创建对象。</p>
+<p><strong>写法</strong></p>
+<p>把类的构造器私有。</p>
+<p>定义一个类变量用于存储对象。</p>
+<p>提供一个类方法，保证返回的是同一个对象。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a><strong>继承</strong></h2><h3 id="继承的快速入门"><a href="#继承的快速入门" class="headerlink" title="继承的快速入门"></a>继承的快速入门</h3><p><img src="/java2/image-20230918202517380.png" alt="image-20230918202517380"></p>
+<p><img src="/java2/image-20230918202537293.png" alt="image-20230918202537293"></p>
+<p>1、什么是继承 ? 继承后有啥特点 ？</p>
+<p>继承就是用extends关键字，让一个类和另一个类建立起一种父子关系。</p>
+<p>子类可以继承父类非私有的成员。</p>
+<p>2、带继承关系的类，Java会怎么创建它的对象？对象创建出来后，可以直接访问哪些成员？</p>
+<p>带继承关系的类，java会用类和其父类，这多张设计图来一起创建类的对象。</p>
+<p>对象能直接访问什么成员，是由子父类这多张设计图共同决定的，这多张设计图对外暴露了什么成员，对象就可以访问什么成员。</p>
+<h3 id="继承相关的注意事项"><a href="#继承相关的注意事项" class="headerlink" title="继承相关的注意事项"></a>继承相关的注意事项</h3><h4 id="①权限修饰符"><a href="#①权限修饰符" class="headerlink" title="①权限修饰符"></a>①权限修饰符</h4><p><img src="/java2/image-20230918205500026.png" alt="image-20230918205500026"></p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>本类里</th>
+<th>同一个包中的类</th>
+<th>子孙类</th>
+<th>任意类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>private</strong></td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>缺省</strong></td>
+<td>√</td>
+<td>√</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>protected</strong></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>public</strong></td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+</tr>
+</tbody></table>
+<h5 id="②单继承、Object类"><a href="#②单继承、Object类" class="headerlink" title="②单继承、Object类"></a>②单继承、Object类</h5><p><strong>Java是单继承的，Java中的类不支持多继承，但是支持多层继承。</strong></p>
+<p>object类是java所有类的祖宗类。我们写的任何一个类，其实都是object的子类或子孙类。</p>
+<h5 id="③方法重写"><a href="#③方法重写" class="headerlink" title="③方法重写"></a>③方法重写</h5><p><strong>什么是方法重写？</strong></p>
+<p>当子类觉得父类中的某个方法不好用，或者无法满足自己的需求时，子类可以重写一个方法名称、参数列表一样的方法，去覆盖父类的这个方法，这就是方法重写。</p>
+<p>注意：重写后，方法的访问，Java会遵循就近原则 。</p>
+<p><strong>方法重写的其它注意事项</strong></p>
+<p>重写小技巧：使用Override注解，他可以指定java编译器，检查我们方法重写的格式是否正确，代码可读性也会更好。</p>
+<p>子类重写父类方法时，访问权限必须大于或者等于父类该方法的权限（public&gt;protected&gt;缺省 ）。</p>
+<p>重写的方法返回值类型，必须与被重写方法的返回值类型一样，或者范围更小。</p>
+<p>私有方法、静态方法不能被重写，如果重写会报错的。</p>
+<h5 id="④子类中访问其他成员的特点"><a href="#④子类中访问其他成员的特点" class="headerlink" title="④子类中访问其他成员的特点"></a>④子类中访问其他成员的特点</h5><p><strong>1</strong>、在子类方法中访问其他成员（成员变量、成员方法），是依照**<strong>就近原则的。</strong></p>
+<p>先子类局部范围找。</p>
+<p>然后子类成员范围找。</p>
+<p>然后父类成员范围找，如果父类范围还没有找到则报错。</p>
+<p><strong>2</strong>、如果子父类中，出现了重名的成员，会优先使用子类的，如果此时一定要在子类中使用父类的怎么办？</p>
+<p>可以通过super关键字，指定访问父类的成员：super.父类成员变量&#x2F;父类成员方法</p>
+<h5 id="⑤子类构造器的特点"><a href="#⑤子类构造器的特点" class="headerlink" title="⑤子类构造器的特点"></a>⑤子类构造器的特点</h5><p><strong>子类构造器的特点：</strong></p>
+<p>子类的全部构造器，都会先调用父类的构造器，再执行自己。</p>
+<p><strong>子类构造器是如何实现调用父类构造器的：</strong></p>
+<p>默认情况下，子类全部构造器的第一行代码都是 super() （写不写都有） ，它会调用父类的无参数构造器。</p>
+<p>如果父类没有无参数构造器，则我们必须在子类构造器的第一行手写super(….)，指定去调用父类的有参数构造器。</p>
+<p><img src="/java2/image-20230918213813652.png" alt="image-20230918213813652"></p>
+<p><img src="/java2/image-20230918213822082.png" alt="image-20230918213822082"></p>
+<p>1.子类构造器有啥特点？</p>
+<p><strong>子类中的全部构造器，都必须先调用父类的构造器，再执行自己。</strong></p>
+<p>2、super(…)调用父类有参数构造器的常见应用场景是什么？</p>
+<p><strong>为对象中包含父类这部分的成员变量进行赋值。</strong></p>
+<p>3、this(…)的作用是什么？</p>
+<p><strong>在构造器中调用本类的其他构造器。</strong></p>
+<p>4、this(…)和super(…)的使用需要注意什么？</p>
+<p><strong>都必须放在构造器的第一行。</strong></p>
+<h5 id="⑥注意事项的小结"><a href="#⑥注意事项的小结" class="headerlink" title="⑥注意事项的小结"></a>⑥注意事项的小结</h5><p><strong>this</strong>和<strong>super</strong>详情</p>
+<p>l<strong>this</strong>：代表本类对象的引用；<strong>super</strong>：代表父类存储空间的标识。</p>
+<p><img src="/java2/image-20230918215152135.png" alt="image-20230918215152135"></p>
+<p><strong>为什么子类构造器一定要先调用父类的构造器：</strong></p>
+<p>引入继承后，子类对象是由子类和父类这多张设计图共同创建出来的，当创建子类对象，调用子类构造器为子类的成员变量初始化时，子类构造器肯定需要先调用父类构造器，把父类中的成员变量先进行初始化。</p>
+<p>注意：super(…)必须放在构造器的第一行，否则报错</p>
+<p><strong>子类构造器调用父类构造器有啥应用场景？</strong></p>
+<p>为父类这部分成员变量进行初始化赋值。</p>
+<h1 id="02-面向对象进阶：多态、抽象类、接口"><a href="#02-面向对象进阶：多态、抽象类、接口" class="headerlink" title="02-面向对象进阶：多态、抽象类、接口"></a>02-面向对象进阶：多态、抽象类、接口</h1><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a><strong>多态</strong></h2><p><img src="/java2/image-20230918215442942.png" alt="image-20230918215442942"></p>
+<p>对象多态：现实中的身份有可能有很多</p>
+<p>行为多态：不同的人都会跑，但效果不一样（编译看左边，运行看右边）</p>
+<p><img src="/java2/image-20230918215500032.png" alt="image-20230918215500032"></p>
+<p><img src="/java2/image-20230918215515588.png" alt="image-20230918215515588"></p>
+<p>1、使用多态有什么好处？存在什么问题？</p>
+<p>可以解耦合，扩展性更强；使用父类类型的变量作为方法的形参时，可以接收一切子类对象。</p>
+<p>多态下不能直接调用子类的独有方法。</p>
+<p>2、类型转换有几种形式？能解决什么问题？</p>
+<p>自动类型转换、强制类型转换。</p>
+<p>可以把对象转换成其真正的类型，从而解决了多态下不能调用子类独有方法的问题。</p>
+<p>3、强制类型转换需要注意什么？</p>
+<p>存在继承&#x2F;实现时，就可以进行强制类型转换，编译阶段不会报错。</p>
+<p>但是，运行时，如果发现对象的真实类型与强转后的类型不同会报错（ClassCastException）。</p>
+<p>4、强制类型转换前？Java建议我们做什么事情？</p>
+<p>l使用instanceof判断当前对象的真实类型：对象 instanceof 类型 。</p>
+<h2 id="final"><a href="#final" class="headerlink" title="final"></a><strong>final</strong></h2><h3 id="认识final"><a href="#认识final" class="headerlink" title="认识final"></a>认识final</h3><p><img src="/java2/image-20230919191553448.png" alt="image-20230919191553448"></p>
+<h4 id="抽象u补充知识：常量详解类"><a href="#抽象u补充知识：常量详解类" class="headerlink" title="抽象u补充知识：常量详解类"></a><strong>抽象u补充知识：常量详解类</strong></h4><p><img src="/java2/image-20230919191604821.png" alt="image-20230919191604821"></p>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a><strong>抽象类</strong></h2><h3 id="认识抽象类"><a href="#认识抽象类" class="headerlink" title="认识抽象类"></a>认识抽象类</h3><p><img src="/java2/image-20230919192804313.png" alt="image-20230919192804313"></p>
+<p><strong>抽象类的注意事项、特点</strong></p>
+<p>抽象类中不一定有抽象方法，有抽象方法的类一定是抽象类。</p>
+<p>类该有的成员（成员变量、方法、构造器）抽象类都可以有。</p>
+<p>**抽象类最主要的特点：**抽象类不能创建对象，仅作为一种特殊的父类，让子类继承并实现。</p>
+<p>一个类继承抽象类，必须重写完抽象类的全部抽象方法，否则这个类也必须定义成抽象类。</p>
+<p><img src="/java2/image-20230919193147486.png" alt="image-20230919193147486"></p>
+<p>1、抽象类的应用场景和好处是什么？</p>
+<p>两种主要的应用场景，一种是：用抽象类，我们可以把子类中相同的代码，包括方法签名都抽上来，这样能更好的支持多态，以提高代码的灵活性。</p>
+<p>一种是：反过来用，我们不知道系统未来具体的业务实现时，我们可以先定义抽象类，将来让子类去继承实现，以方便系统的扩展。</p>
+<h3 id="抽象类的常见应用场景：模板方法设计模式"><a href="#抽象类的常见应用场景：模板方法设计模式" class="headerlink" title="抽象类的常见应用场景：模板方法设计模式"></a>抽象类的常见应用场景：模板方法设计模式</h3><p><img src="/java2/image-20230919194011618.png" alt="image-20230919194011618"></p>
+<p><strong>模板方法设计模式的写法</strong></p>
+<p>1、定义一个抽象类。</p>
+<p>2、在里面定义2个方法</p>
+<p>一个是模板方法：把相同代码放里面去。</p>
+<p>一个是抽象方法：具体实现交给子类完成。</p>
+<p><strong>多学一招：建议使用fina关键字修饰模板方法，为什么？</strong></p>
+<p>模板方法是给对象直接使用的，不能被子类重写。</p>
+<p>一旦子类重写了模板方法，模板方法就失效了。</p>
+<p>1、模板方法设计模式解决了什么问题？</p>
+<p>解决方法中存在重复代码的问题。</p>
+<p>2、模板方法设计模式应该怎么写？</p>
+<p>定义一个抽象类。</p>
+<p>在里面定义2个方法，一个是模板方法：放相同的代码里，一个是抽象方法：具体实现交给子类完成。</p>
+<p>3、模板方法建议使用什么关键字修饰？为什么</p>
+<p>建议使用final关键字修饰模板方法。</p>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a><strong>接口</strong></h2><h3 id="接口概述"><a href="#接口概述" class="headerlink" title="接口概述"></a>接口概述</h3><p><img src="/java2/image-20230919195250496.png" alt="image-20230919195250496"></p>
+<p>1、接口是什么？</p>
+<p>使用interface关键字定义的一种结构， JDK 8之前，接口中只能定义成员变量和成员方法。</p>
+<p>2、接口怎么使用？需要注意什么？</p>
+<p>接口 是被类 实现的。</p>
+<p><img src="/java2/image-20230919195311419.png" alt="image-20230919195311419"></p>
+<p>实现类实现多个接口，必须重写完全部接口的全部抽象方法，否则实现类需要定义成抽象类。</p>
+<p>3、接口的好处是啥？</p>
+<p>弥补了类单继承的不足，类可以同时实现多个接口。</p>
+<p>让程序可以面向接口编程，这样既不用关心实现的细节，也可以灵活方便的切换各种实现。</p>
+<p><strong>接口的好处（重点）</strong></p>
+<p>弥补了类单继承的不足，一个类同时可以实现多个接口。</p>
+<p>让程序可以面向接口编程，这样程序员就可以灵活方便的切换各种业务实现。</p>
+<p>1、使用接口有啥好处，第一个好处是什么？</p>
+<p>可以解决类单继承的问题，通过接口，我们可以让一个类有一个亲爹的同时，还可以找多个干爹去扩展自己的功能。</p>
+<p>2、为什么我们要通过接口，也就是去找干爹，来扩展自己的功能呢？</p>
+<p>因为通过接口去找干爹，别人通过你implements的接口，就可以显性的知道你是谁，从而也就可以放心的把你当作谁来用了。</p>
+<p>3、使用接口的第二个好处是什么？</p>
+<p>一个类我们说可以实现多个接口，同样，一个接口也可以被多个类实现的。这样做的好处是我们的程序就可以面向接口编程了，这样我们程序员就可以很方便的灵活切换各种业务实现了。</p>
+<h3 id="接口的其他细节：JDK8开始，接口中新增的三种方法"><a href="#接口的其他细节：JDK8开始，接口中新增的三种方法" class="headerlink" title="接口的其他细节：JDK8开始，接口中新增的三种方法"></a>接口的其他细节：JDK8开始，接口中新增的三种方法</h3><p><img src="/java2/image-20230919203105085.png" alt="image-20230919203105085"></p>
+<p>1、JDK8开始，接口中新增了哪些方法?</p>
+<p>默认方法：使用default修饰，使用实现类的对象调用。</p>
+<p>静态方法：static修饰，必须用当前接口名调用</p>
+<p>私有方法：private修饰，jdk9开始才有的，只能在接口内部被调用。</p>
+<p>他们都会默认被public修饰。</p>
+<p>2、JDK8开始，接口中为啥要新增这些方法?</p>
+<p>增强了接口的能力，更便于项目的扩展和维护。</p>
+<h3 id="接口的其他细节：接口的多继承、使用接口的注意事项-了解"><a href="#接口的其他细节：接口的多继承、使用接口的注意事项-了解" class="headerlink" title="接口的其他细节：接口的多继承、使用接口的注意事项[了解]"></a>接口的其他细节：接口的多继承、使用接口的注意事项[了解]</h3><p><strong>接口其他注意事项（了解）</strong></p>
+<p>1、一个接口继承多个接口，如果多个接口中存在方法签名冲突，则此时不支持多继承。</p>
+<p>2、一个类实现多个接口，如果多个接口中存在方法签名冲突，则此时不支持多实现。</p>
+<p>3、一个类继承了父类，又同时实现了接口，父类中和接口中有同名的默认方法，实现类会优先用父类的。</p>
+<p>4、一个类实现了多个接口，多个接口中存在同名的默认方法，可以不冲突，这个类重写该方法即可。</p>
+<h1 id="03-面向对象进阶：泛型、匿名内部类、泛型、枚举"><a href="#03-面向对象进阶：泛型、匿名内部类、泛型、枚举" class="headerlink" title="03-面向对象进阶：泛型、匿名内部类、泛型、枚举"></a>03-面向对象进阶：泛型、匿名内部类、泛型、枚举</h1><h2 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a><strong>内部类</strong></h2><p>是类中的五大成分之一（成员变量、方法、构造器、内部类、代码块），如果一个类定义在另一个类的内部，这个类就是内部类。</p>
+<p>场景：当一个类的内部，包含了一个完整的事物，且这个事物没有必要单独设计时，就可以把这个事物设计成内部类。</p>
+<h3 id="内部类概述、成员内部类-了解"><a href="#内部类概述、成员内部类-了解" class="headerlink" title="内部类概述、成员内部类[了解]"></a>内部类概述、成员内部类[了解]</h3><p><img src="/java2/image-20230919204804532.png" alt="image-20230919204804532"></p>
+<p>1、和前面学过的实例方法一样，成员内部类的实例方法中，同样可以直接访问外部类的实例成员、静态成员。<br>2、可以在成员内部类的实例方法中，拿到当前外部类对象，格式是：外部类名.this 。</p>
+<h3 id="静态内部类-了解"><a href="#静态内部类-了解" class="headerlink" title="静态内部类[了解]"></a>静态内部类[了解]</h3><p><img src="/java2/image-20230919205424296.png" alt="image-20230919205424296"></p>
+<p>1.什么是静态内部类？如何创建对象？ 有啥特点？</p>
+<p><strong>有static修饰的内部类。</strong></p>
+<p><strong>外部类名.内部类名 对象名 &#x3D; new 外部类.内部类(…);</strong></p>
+<p><strong>可以直接访问外部类的静态成员，不能直接访问外部类的实例成员。</strong></p>
+<h3 id="局部内部类-了解"><a href="#局部内部类-了解" class="headerlink" title="局部内部类[了解]"></a>局部内部类[了解]</h3><p><img src="/java2/image-20230919205706513.png" alt="image-20230919205706513"></p>
+<h3 id="匿名内部类-重点"><a href="#匿名内部类-重点" class="headerlink" title="匿名内部类[重点]"></a>匿名内部类[重点]</h3><p><img src="/java2/image-20230919210638089.png" alt="image-20230919210638089"></p>
+<p>1、匿名内部类的书写格式是什么样的 ？</p>
+<p><img src="/java2/image-20230919211532915.png" alt="image-20230919211532915"><br><img src="/java2/image-20230919211541499.png" alt="image-20230919211541499"></p>
+<p>2、匿名内部类有啥特点 ？</p>
+<p><strong>匿名内部类本质就是一个子类，并会立即创建出一个子类对象</strong></p>
+<p>3、匿名内部类有啥作用、应用场景？</p>
+<p><strong>可以更方便的创建出一个子类对象。</strong></p>
+<p><strong>匿名内部类通常作为一个参数传输给方法。</strong></p>
+<h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a><strong>枚举</strong></h2><p><img src="/java2/image-20230919212731655.png" alt="image-20230919212731655"></p>
+<p><img src="/java2/image-20230919212736063.png" alt="image-20230919212736063"></p>
+<p><img src="/java2/image-20230919212752325.png" alt="image-20230919212752325"></p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a><strong>泛型</strong></h2><h3 id="认识泛型"><a href="#认识泛型" class="headerlink" title="认识泛型"></a>认识泛型</h3><p><img src="/java2/image-20230920191807334.png" alt="image-20230920191807334"></p>
+<h3 id="泛型类"><a href="#泛型类" class="headerlink" title="泛型类"></a>泛型类</h3><p><img src="/java2/image-20230920191817360.png" alt="image-20230920191817360"></p>
+<h3 id="泛型接口"><a href="#泛型接口" class="headerlink" title="泛型接口"></a>泛型接口</h3><p><img src="/java2/image-20230920191823043.png" alt="image-20230920191823043"></p>
+<p>通过具体的类进行实现，在类中限制泛型。</p>
+<h3 id="泛型方法、泛型通配符、上下限"><a href="#泛型方法、泛型通配符、上下限" class="headerlink" title="泛型方法、泛型通配符、上下限"></a>泛型方法、泛型通配符、上下限</h3><p><img src="/java2/image-20230920191829315.png" alt="image-20230920191829315"></p>
+<h3 id="泛型的注意事项：擦除问题、基本数据类型问题"><a href="#泛型的注意事项：擦除问题、基本数据类型问题" class="headerlink" title="泛型的注意事项：擦除问题、基本数据类型问题"></a>泛型的注意事项：擦除问题、基本数据类型问题</h3><p><img src="/java2/image-20230920191836123.png" alt="image-20230920191836123"></p>
+<h2 id="java-lang包下的常用API"><a href="#java-lang包下的常用API" class="headerlink" title="java.lang包下的常用API"></a><strong>java.lang包下的常用API</strong></h2><table>
+<thead>
+<tr>
+<th><strong>Object</strong></th>
+<th><strong>LocalTime</strong></th>
+<th><strong>Set</strong></th>
+<th><strong>FileOutputStream</strong></th>
+<th><strong>Properties</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>objects</strong></td>
+<td><strong>LocalDateTime</strong></td>
+<td><strong>HashSet</strong></td>
+<td><strong>Reader</strong></td>
+<td><strong>Thread</strong></td>
+</tr>
+<tr>
+<td><strong>Integer</strong></td>
+<td><strong>Duration</strong></td>
+<td><strong>LinkedHashSet</strong></td>
+<td><strong>FileReader</strong></td>
+<td><strong>Runnable</strong></td>
+</tr>
+<tr>
+<td><strong>StringBuilder</strong></td>
+<td><strong>Period</strong></td>
+<td><strong>TreeSet</strong></td>
+<td><strong>Writer</strong></td>
+<td><strong>Callable</strong></td>
+</tr>
+<tr>
+<td><strong>StringBuffer</strong></td>
+<td><strong>ZoneId</strong></td>
+<td>Map</td>
+<td><strong>FileWriter</strong></td>
+<td><strong>ExecutorService</strong></td>
+</tr>
+<tr>
+<td><strong>Math</strong></td>
+<td><strong>ZonedDateTime</strong></td>
+<td><strong>HashMap</strong></td>
+<td><strong>BufferdInputStream</strong></td>
+<td><strong>ThreadPoo****lExecutor</strong></td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td><strong>Arrays</strong></td>
+<td><strong>LinkedHashMap</strong></td>
+<td><strong>BufferdOutputStream</strong></td>
+<td><strong>Socket</strong></td>
+</tr>
+<tr>
+<td><strong>Runtime</strong></td>
+<td><strong>Comparable</strong></td>
+<td><strong>TreeMap</strong></td>
+<td><strong>BufferedReader</strong></td>
+<td><strong>ServerSocket</strong></td>
+</tr>
+<tr>
+<td><strong>BigDecimal</strong></td>
+<td><strong>Comparator</strong></td>
+<td>Iterator</td>
+<td><strong>BufferedWriter</strong></td>
+<td><strong>Class</strong></td>
+</tr>
+<tr>
+<td><strong>Date</strong></td>
+<td><strong>Collection</strong></td>
+<td><strong>Stream</strong></td>
+<td><strong>PrintStream</strong></td>
+<td><strong>Method</strong></td>
+</tr>
+<tr>
+<td><strong>SimpleDateFormat</strong></td>
+<td><strong>List</strong></td>
+<td><strong>InputStream</strong></td>
+<td><strong>PrintWriter</strong></td>
+<td><strong>Constructor</strong></td>
+</tr>
+<tr>
+<td><strong>Calendar</strong></td>
+<td><strong>ArrayList</strong></td>
+<td><strong>FileInputStream</strong></td>
+<td><strong>ObjectInputStream</strong></td>
+<td><strong>Field</strong></td>
+</tr>
+<tr>
+<td><strong>LocalDate</strong></td>
+<td><strong>LinkedList</strong></td>
+<td><strong>OutputStream</strong></td>
+<td><strong>ObjectOutputStream</strong></td>
+<td><strong>Proxy …</strong></td>
+</tr>
+</tbody></table>
+<p><img src="/java2/image-20230920204750297.png" alt="image-20230920204750297"></p>
+<p><img src="/java2/image-20230920205704390.png" alt="image-20230920205704390"></p>
+<p>指的是从1970年1月1日00:00:00走到此刻的总的毫秒数，应该是很大的。 1s &#x3D; 1000ms。</p>
+<p><strong>为啥选择“1970年1月1日00:00:00”</strong> <strong>作为时间的起点？</strong></p>
+<p>1969年8月，贝尔实验室的程序员肯汤普逊利用妻儿离开一个月的机会，开始着手创造一个全新的革命性的操作系统，他使用B编译语言在老旧的PDP-7机器上开发出了Unix的一个版本。随后，汤普逊和同事丹尼斯里奇改进了B语言，开发出了C语言，重写了UNIX。</p>
+<p><img src="/java2/image-20230920205904352.png" alt="image-20230920205904352"></p>
+<p><img src="/java2/image-20230920211033840.png" alt="image-20230920211033840"></p>
+<p><img src="/java2/image-20230920211052688.png" alt="image-20230920211052688"></p>
+<p><img src="/java2/image-20230920211058952.png" alt="image-20230920211058952"></p>
+<p>BigDecimal只是解决问题的手段，而不是最后的结果。</p>
+<p><img src="/java2/image-20230920212216484.png" alt="image-20230920212216484"></p>
+<p><img src="/java2/image-20230920212231588.png" alt="image-20230920212231588"></p>
+<p><img src="/java2/image-20230920212241473.png" alt="image-20230920212241473"></p>
+<p><img src="/java2/image-20230920212247574.png" alt="image-20230920212247574"></p>
+<p><img src="/java2/image-20230920212253311.png" alt="image-20230920212253311"></p>
+<p><img src="/java2/image-20230920212258036.png" alt="image-20230920212258036"></p>
+<p><img src="/java2/image-20230920212304048.png" alt="image-20230920212304048"></p>
+<p><img src="/java2/image-20230920212309264.png" alt="image-20230920212309264"></p>
+<p><img src="/java2/image-20230920212325092.png" alt="image-20230920212325092"></p>
+<p><img src="/java2/image-20230920212333777.png" alt="image-20230920212333777"></p>
+<p>​                <img src="/java2/image-20230920214641264.png" alt="image-20230920214641264"></p>
+<p><img src="/java2/image-20230920214651809.png" alt="image-20230920214651809"></p>
+<p><img src="/java2/image-20230920214700027.png" alt="image-20230920214700027"></p>
+<p><img src="/java2/image-20230920214710788.png" alt="image-20230920214710788"></p>
+<p><img src="/java2/image-20230920214716561.png" alt="image-20230920214716561"></p>
+<p><img src="/java2/image-20230920214721192.png" alt="image-20230920214721192"></p>
+<p><img src="/java2/image-20230920214731339.png" alt="image-20230920214731339"></p>
+<p><img src="/java2/image-20230920214735965.png" alt="image-20230920214735965"></p>
+<p><img src="/java2/image-20230920214749015.png" alt="image-20230920214749015"></p>
+<p><img src="/java2/image-20230920214830606.png" alt="image-20230920214830606"></p>
+<p><img src="/java2/image-20230920214835370.png" alt="image-20230920214835370"></p>
+<p><img src="/java2/image-20230920215803747.png" alt="image-20230920215803747"></p>
+<p>对对象数组排序</p>
+<p><img src="/java2/image-20230922093559534.png" alt="image-20230922093559534"></p>
+<p><img src="/java2/image-20230922093907971.png" alt="image-20230922093907971"><img src="/java2/image-20230922093627309.png" alt="image-20230922093627309"></p>
+<p><img src="/java2/image-20230922100050372.png" alt="image-20230922100050372"></p>
+<p><img src="/java2/image-20230922100100141.png" alt="image-20230922100100141"></p>
+<p><img src="/java2/image-20230922100110148.png" alt="image-20230922100110148"></p>
+<p><img src="/java2/image-20230922101356010.png" alt="image-20230922101356010"></p>
+<p><img src="/java2/image-20230922101746656.png" alt="image-20230922101746656"></p>
+<p><img src="/java2/image-20230922101753973.png" alt="image-20230922101753973"></p>
+<p><img src="/java2/image-20230922101849757.png" alt="image-20230922101849757"></p>
+<p><img src="/java2/image-20230922101854281.png" alt=" "></p>
+<h3 id="常见算法"><a href="#常见算法" class="headerlink" title="常见算法"></a><strong>常见算法</strong></h3><p>排序算法</p>
+<p><img src="/java2/image-20230922111340137.png" alt="image-20230922111340137"></p>
+<p><img src="/java2/image-20230922111354936.png" alt="image-20230922111354936"></p>
+<p><img src="/java2/image-20230922113445157.png" alt="image-20230922113445157"></p>
+<p><img src="/java2/image-20230922113454936.png" alt="image-20230922113454936"></p>
+<p><img src="/java2/image-20230922113505898.png" alt="image-20230922113505898"></p>
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><strong>正则表达式</strong></h3><p><img src="/java2/image-20230922114800398.png"></p>
+<p><img src="/java2/image-20230922114811727.png" alt="image-20230922114811727"></p>
+<p><img src="/java2/image-20230922114817504.png" alt="image-20230922114817504"></p>
+<p><img src="/java2/image-20230922144411438.png" alt="image-20230922144411438"></p>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a><strong>异常</strong></h3><p><img src="/java2/image-20230922151608726.png" alt="image-20230922151608726"></p>
+<p><img src="/java2/image-20230922151612990.png" alt="image-20230922151612990"></p>
+<p><img src="/java2/image-20230922151619077.png" alt="image-20230922151619077"></p>
+<h3 id="自定义异常"><a href="#自定义异常" class="headerlink" title="自定义异常"></a>自定义异常</h3><p><img src="/java2/image-20230922151640527.png" alt="image-20230922151640527"></p>
+<p><img src="/java2/image-20230922151650966.png" alt="image-20230922151650966"></p>
+<h4 id="异常的处理"><a href="#异常的处理" class="headerlink" title="异常的处理"></a>异常的处理</h4><p><img src="/java2/image-20230922151843064.png" alt="image-20230922151843064"></p>
+<p><img src="/java2/image-20230922151847882.png" alt="image-20230922151847882"></p>
+<h1 id="06-集合（一）"><a href="#06-集合（一）" class="headerlink" title="06-集合（一）"></a>06-集合（一）</h1><p><img src="/java2/image-20230922165319159.png" alt="image-20230922165319159"></p>
+<p><img src="/java2/image-20230922165306410.png" alt="image-20230922165306410"></p>
+<p><img src="/java2/image-20230922165341126.png" alt="image-20230922165341126"></p>
+<p>1、单列集合的代表是谁？双列集合的代表是谁？各自元素的特点是啥？</p>
+<p><strong>Collection、Map</strong></p>
+<p>2、Collection集合有哪两大常用的集合体系，各自有啥特点？</p>
+<p><strong>List系列集合：添加的元素是有序、可重复、有索引。</strong></p>
+<p><strong>Set系列集合：添加的元素是无序、不重复、无索引。</strong></p>
+<h2 id="Collection的常用方法"><a href="#Collection的常用方法" class="headerlink" title="Collection的常用方法"></a><strong>Collection的常用方法</strong></h2><p><img src="/java2/image-20230922192144908.png" alt="image-20230922192144908"></p>
+<p><img src="/java2/image-20230922192153752.png" alt="image-20230922192153752"></p>
+<p>.addAll 讲一个集合的数据，完全复制到另一个集合中。</p>
+<h2 id="Collection的遍历方式"><a href="#Collection的遍历方式" class="headerlink" title="Collection的遍历方式"></a><strong>Collection的遍历方式</strong></h2><p><img src="/java2/image-20230922192218291.png" alt="image-20230922192218291"></p>
+<p>1、如何获取集合的迭代器? 迭代器遍历集合的代码具体怎么写？</p>
+<p><strong>Iterator<E> iterator()：得到迭代器对象，默认指向当前集合的索引0</strong></p>
+<p>2、通过迭代器获取集合的元素，如果取元素越界会出现什么异常?</p>
+<p><strong>会出现NoSuchElementException异常。</strong></p>
+<p><img src="/java2/image-20230922192358100.png" alt="image-20230922192358100"></p>
+<p><img src="/java2/image-20230922192409119.png" alt="image-20230922192409119"></p>
+<p><img src="/java2/image-20230922192430789.png" alt="image-20230922192430789"></p>
+<p><img src="/java2/image-20230922192514414.png" alt="image-20230922192514414"></p>
+<p><strong>1、集合中存储的是元素的什么信息?</strong></p>
+<p><strong>集合中存储的是元素对象的地址。</strong></p>
+<h2 id="List集合"><a href="#List集合" class="headerlink" title="List集合"></a><strong>List集合</strong></h2><h3 id="特点、特有方法"><a href="#特点、特有方法" class="headerlink" title="特点、特有方法"></a>特点、特有方法</h3><p><img src="/java2/image-20230922200632282.png" alt="image-20230922200632282"></p>
+<p><img src="/java2/image-20230922200637000.png" alt="image-20230922200637000"></p>
+<h3 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h3><h4 id="①for循环（因为List集合有索引）"><a href="#①for循环（因为List集合有索引）" class="headerlink" title="①for循环（因为List集合有索引）"></a>①for循环（因为List集合有索引）</h4><p>②迭代器</p>
+<h4 id="③增强for循环"><a href="#③增强for循环" class="headerlink" title="③增强for循环"></a>③增强for循环</h4><h4 id="④Lambda表达式"><a href="#④Lambda表达式" class="headerlink" title="④Lambda表达式"></a>④Lambda表达式</h4><h3 id="ArrayList集合的底层原理"><a href="#ArrayList集合的底层原理" class="headerlink" title="ArrayList集合的底层原理"></a>ArrayList集合的底层原理</h3><p><img src="/java2/image-20230922205020468.png" alt="image-20230922205020468"></p>
+<p><img src="/java2/image-20230922205032888.png" alt="image-20230922205032888"></p>
+<p><img src="/java2/image-20230922205100842.png" alt="image-20230922205100842"></p>
+<p><img src="/java2/image-20230922205106680.png" alt="image-20230922205106680"></p>
+<p><img src="/java2/image-20230922205115067.png" alt="image-20230922205115067"></p>
+<h3 id="LinkedList集合的底层原理"><a href="#LinkedList集合的底层原理" class="headerlink" title="LinkedList集合的底层原理"></a>LinkedList集合的底层原理</h3><p><img src="/java2/image-20230922205123145.png" alt="image-20230922205123145"></p>
+<p><img src="/java2/image-20230922205130522.png" alt="image-20230922205130522"></p>
+<p><img src="/java2/image-20230922205143731.png" alt="image-20230922205143731"></p>
+<p><img src="/java2/image-20230922205157458.png" alt="image-20230922205157458"></p>
+<p><img src="/java2/image-20230922205202550.png" alt="image-20230922205202550"></p>
+<p><img src="/java2/image-20230922205206980.png" alt="image-20230922205206980"></p>
+<p><img src="/java2/image-20230922205211290.png" alt="image-20230922205211290"></p>
+<p>LinkedList的应用场景之一：可以用来设计队列、栈</p>
+<h2 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a><strong>Set集合</strong></h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p><img src="/java2/image-20230922212800167.png" alt="image-20230922212800167"></p>
+<h3 id="HashSet集合的底层原理"><a href="#HashSet集合的底层原理" class="headerlink" title="HashSet集合的底层原理"></a>HashSet集合的底层原理</h3><p><img src="/java2/image-20230922212813175.png" alt="image-20230922212813175"></p>
+<p><img src="/java2/image-20230922212825557.png" alt="image-20230922212825557"></p>
+<p><img src="/java2/image-20230922212830376.png" alt="image-20230922212830376"></p>
+<p><img src="/java2/image-20230922212844610.png" alt="image-20230922212844610"></p>
+<p><img src="/java2/image-20230922212853919.png" alt="image-20230922212853919"></p>
+<p><img src="/java2/image-20230922212905519.png" alt="image-20230922212905519"></p>
+<p><img src="/java2/image-20230922212919765.png" alt="image-20230922212919765"></p>
+<p><img src="/java2/image-20230922212924207.png" alt="image-20230922212924207"></p>
+<p><img src="/java2/image-20230922212933274.png" alt="image-20230922212933274"></p>
+<p><img src="/java2/image-20230922212938153.png" alt="image-20230922212938153"></p>
+<h3 id="1-3-HashSet去重原理"><a href="#1-3-HashSet去重原理" class="headerlink" title="1.3 HashSet去重原理"></a>1.3 HashSet去重原理</h3><p>前面我们学习了HashSet存储元素的原理，依赖于两个方法：一个是hashCode方法用来确定在底层数组中存储的位置，另一个是用equals方法判断新添加的元素是否和集合中已有的元素相同。</p>
+<p>要想保证在HashSet集合中没有重复元素，我们需要重写元素类的hashCode和equals方法。比如以下面的Student类为例，假设把Student类的对象作为HashSet集合的元素，想要让学生的姓名和年龄相同，就认为元素重复。</p>
+<h3 id="LinkedHashSet集合的底层原理"><a href="#LinkedHashSet集合的底层原理" class="headerlink" title="LinkedHashSet集合的底层原理"></a>LinkedHashSet集合的底层原理</h3><p><img src="/java2/image-20230924101828384.png" alt="image-20230924101828384"></p>
+<p><img src="/java2/image-20230924101929661.png" alt="image-20230924101929661"></p>
+<p>1.LinkedHashSet集合的特点和原理是怎么样的？</p>
+<p><strong>有序、不重复、无索引</strong></p>
+<p><strong>底层基于哈希表，使用链表记录添加顺序。</strong></p>
+<h3 id="TreeSet集合"><a href="#TreeSet集合" class="headerlink" title="TreeSet集合"></a>TreeSet集合</h3><p><img src="/java2/image-20230924102004371.png" alt="image-20230924102004371"></p>
+<p><img src="/java2/image-20230924102013116.png" alt="image-20230924102013116"></p>
+<p><img src="/java2/image-20230924102018026.png" alt="image-20230924102018026"></p>
+<p><img src="/java2/image-20230924102022451.png" alt="image-20230924102022451"></p>
+<p><img src="/java2/image-20230924102031543.png" alt="image-20230924102031543"></p>
+<p><img src="/java2/image-20230924102039596.png" alt="image-20230924102039596"></p>
+<p><strong>注意事项：集合的并发修改异常问题</strong></p>
+<p><img src="/java2/image-20230924102051571.png" alt="image-20230924102051571"></p>
+<h1 id="07-集合（二）、Stream"><a href="#07-集合（二）、Stream" class="headerlink" title="07-集合（二）、Stream"></a>07-集合（二）、Stream</h1><h2 id="Collection的其他相关知识"><a href="#Collection的其他相关知识" class="headerlink" title="Collection的其他相关知识"></a><strong>Collection的其他相关知识</strong></h2><h3 id="前置知识：可变参数"><a href="#前置知识：可变参数" class="headerlink" title="前置知识：可变参数"></a>前置知识：可变参数</h3><p><img src="/java2/image-20230924111953325.png" alt="image-20230924111953325"></p>
+<p><img src="/java2/image-20230924112012596.png" alt="image-20230924112012596"></p>
+<h3 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h3><p><img src="/java2/image-20230924112018466.png" alt="image-20230924112018466"></p>
+<p><img src="/java2/image-20230924112826756.png" alt="image-20230924112826756"></p>
+<h2 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a><strong>Map集合</strong></h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p><img src="/java2/image-20230924135510199.png" alt="image-20230924135510199"></p>
+<p><img src="/java2/image-20230924135518514.png" alt="image-20230924135518514"></p>
+<p><img src="/java2/image-20230924135524606.png" alt="image-20230924135524606"></p>
+<p>1.Map集合是什么？什么时候可以考虑使用Map集合？</p>
+<p><strong>Map集合是键值对集合</strong>l<strong>需要存储一一对应的数据时，就可以考虑使用Map集合来做</strong></p>
+<p>2.Map集合的实现类有哪些？各自的特点是？</p>
+<p><strong>HashMap:</strong> <strong>元素按照键是无序，不重复，无索引，值不做要求。</strong></p>
+<p><strong>LinkedHashMap:</strong> <strong>元素按照键是有序，不重复，无索引，值不做要求。</strong></p>
+<p><strong>TreeMap</strong>：元素按照建是排序，不重复，无索引的，值不做要求。</p>
+<h3 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h3><p><img src="/java2/image-20230924135630164.png" alt="image-20230924135630164"></p>
+<p><img src="/java2/image-20230924135658609.png" alt="image-20230924135658609"></p>
+<h3 id="遍历方式-1"><a href="#遍历方式-1" class="headerlink" title="遍历方式"></a>遍历方式</h3><p><img src="/java2/image-20230924135709874.png" alt="image-20230924135709874"></p>
+<p><img src="/java2/image-20230924135734461.png" alt="image-20230924135734461"></p>
+<p><img src="/java2/image-20230924135811777.png" alt="image-20230924135811777"></p>
+<p><img src="/java2/image-20230924135818488.png" alt="image-20230924135818488"></p>
+<p><img src="/java2/image-20230924135822769.png" alt="image-20230924135822769"></p>
+<p><img src="/java2/image-20230924135856987.png" alt="image-20230924135856987"></p>
+<h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p><img src="/java2/image-20230924135935101.png" alt="image-20230924135935101"></p>
+<p><img src="/java2/image-20230924135955865.png" alt="image-20230924135955865"></p>
+<p><img src="/java2/image-20230924140013074.png" alt="image-20230924140013074"></p>
+<p>1、HashMap的特点和底层原理？</p>
+<p><strong>由键决定：无序、不重复、无索引。HashMap底层是哈希表结构的。</strong></p>
+<p><strong>基于哈希表。增删改查的性能都较好。</strong></p>
+<p>2、HashMap如何实现键的唯一性的？</p>
+<p><strong>依赖hashCode方法和equals方法保证键的唯一。</strong></p>
+<p><strong>如果键要存储的是自定义对象，需要重写hashCode和equals方法。</strong></p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p><img src="/java2/image-20230924140240877.png" alt="image-20230924140240877"></p>
+<p><img src="/java2/image-20230924140249354.png" alt="image-20230924140249354"></p>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p><img src="/java2/image-20230924140301929.png" alt="image-20230924140301929"></p>
+<p><img src="/java2/image-20230924140311478.png" alt="image-20230924140311478"></p>
+<p>1.TreeMap集合的特点、原理是怎么样的？</p>
+<p><strong>根据键可排序、不重复、无索引</strong></p>
+<p><strong>底层基于红黑树实现排序，增删改查性能较好</strong></p>
+<p>2.TreeMap集合对自定义类型的对象排序，有几种方式指定排序规则？</p>
+<p><strong>2种。</strong></p>
+<p><strong>类实现Comparable接口，重写比较规则。</strong></p>
+<p><strong>集合自定义Comparator比较器对象，重写比较规则。</strong></p>
+<h3 id="补充知识：集合的嵌套"><a href="#补充知识：集合的嵌套" class="headerlink" title="补充知识：集合的嵌套"></a>补充知识：集合的嵌套</h3><p><img src="/java2/image-20230924140442890.png" alt="image-20230924140442890"></p>
+<h2 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a><strong>Stream流</strong></h2><p><img src="/java2/image-20230924140504382.png" alt="image-20230924140504382"></p>
+<p><img src="/java2/image-20230924140518627.png" alt="image-20230924140518627"></p>
+<p><img src="/java2/image-20230924140523698.png" alt="image-20230924140523698"></p>
+<p><img src="/java2/image-20230924140611057.png" alt="image-20230924140611057"></p>
+<p><img src="/java2/image-20230924140616846.png" alt="image-20230924140616846"></p>
+<p><img src="/java2/image-20230924140620959.png" alt="image-20230924140620959"></p>
+<p><img src="/java2/image-20230924140625390.png" alt="image-20230924140625390"></p>
+<h1 id="08-File、递归、字符集，IO流（一）"><a href="#08-File、递归、字符集，IO流（一）" class="headerlink" title="08-File、递归、字符集，IO流（一）"></a>08-File、递归、字符集，IO流（一）</h1><p><img src="/java2/image-20230924193636331.png" alt="image-20230924193636331"></p>
+<p>File是java.io.包下的类， File类的对象，用于代表当前操作系统的文件（可以是文件、或文件夹）。</p>
+<p>用于读写数据的（可以读写文件，或网络中的数据…）</p>
+<p><strong>File</strong></p>
+<h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p><img src="/java2/image-20230924194032946.png" alt="image-20230924194032946"></p>
+<p><img src="/java2/image-20230924194037136.png" alt="image-20230924194037136"></p>
+<p><img src="/java2/image-20230924194042118.png" alt="image-20230924194042118"></p>
+<h3 id="常用方法1：判断文件类型、获取文件信息"><a href="#常用方法1：判断文件类型、获取文件信息" class="headerlink" title="常用方法1：判断文件类型、获取文件信息"></a>常用方法1：判断文件类型、获取文件信息</h3><p><img src="/java2/image-20230924194108959.png" alt="image-20230924194108959"></p>
+<h3 id="常用方法2：创建文件、删除文件"><a href="#常用方法2：创建文件、删除文件" class="headerlink" title="常用方法2：创建文件、删除文件"></a>常用方法2：创建文件、删除文件</h3><p><img src="/java2/image-20230924194301199.png" alt="image-20230924194301199"></p>
+<p>1.创建多级目录使用哪个方法？</p>
+<p><strong>public</strong> <strong>boolean</strong> <strong>mkdirs()</strong></p>
+<p>2.删除文件需要注意什么？</p>
+<p><strong>可以删除文件、空文件夹。</strong></p>
+<p><strong>默认不能删除非空文件夹。</strong></p>
+<h3 id="常用方法3：遍历文件夹"><a href="#常用方法3：遍历文件夹" class="headerlink" title="常用方法3：遍历文件夹"></a>常用方法3：遍历文件夹</h3><p><img src="/java2/image-20230924194324530.png" alt="image-20230924194324530"></p>
+<p>1.如何遍历文件夹下的文件对象，使用哪个API，有什么特点？</p>
+<p><strong>public File[]</strong> <strong>listFiles()(常用)。</strong></p>
+<p><strong>只能遍历当前文件夹对象下的一级文件对象。</strong></p>
+<h2 id="前置知识：方法递归"><a href="#前置知识：方法递归" class="headerlink" title="前置知识：方法递归"></a><strong>前置知识：方法递归</strong></h2><h3 id="认识递归的形式"><a href="#认识递归的形式" class="headerlink" title="认识递归的形式"></a>认识递归的形式</h3><p><img src="/java2/image-20230924194715227.png" alt="image-20230924194715227"></p>
+<h3 id="应用、执行流程、算法思想"><a href="#应用、执行流程、算法思想" class="headerlink" title="应用、执行流程、算法思想"></a>应用、执行流程、算法思想</h3><p><img src="/java2/image-20230924194754589.png" alt="image-20230924194754589"></p>
+<h2 id="前置知识：字符集"><a href="#前置知识：字符集" class="headerlink" title="前置知识：字符集"></a><strong>前置知识：字符集</strong></h2><p><img src="/java2/image-20230924194845240.png" alt="image-20230924194845240"></p>
+<p><img src="/java2/image-20230924194852806.png" alt="image-20230924194852806"></p>
+<p><img src="/java2/image-20230924194859051.png" alt="image-20230924194859051"></p>
+<p><img src="/java2/image-20230924194904142.png" alt="image-20230924194904142"></p>
+<p><img src="/java2/image-20230924194912284.png" alt="image-20230924194912284"></p>
+<p><img src="/java2/image-20230924194920443.png" alt="image-20230924194920443"></p>
+<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a><strong>IO流</strong></h2><p><img src="/java2/image-20230925192844683.png" alt="image-20230925192844683"></p>
+<p><img src="/java2/image-20230925192851306.png" alt="image-20230925192851306"></p>
+<p><img src="/java2/image-20230925192856675.png" alt="image-20230925192856675"></p>
+<p><img src="/java2/image-20230925192904201.png" alt="image-20230925192904201"></p>
+<h2 id="IO流-字节流"><a href="#IO流-字节流" class="headerlink" title="IO流-字节流"></a><strong>IO流-字节流</strong></h2><p><img src="/java2/image-20230925192917509.png" alt="image-20230925192917509"></p>
+<p><img src="/java2/image-20230925192924268.png" alt="image-20230925192924268"></p>
+<p><img src="/java2/image-20230925192929033.png" alt="image-20230925192929033"></p>
+<p><img src="/java2/image-20230925192944412.png" alt="image-20230925192944412"></p>
+<p><img src="/java2/image-20230925192954754.png" alt="image-20230925192954754"></p>
+<p><img src="/java2/image-20230925193000272.png" alt="image-20230925193000272"></p>
+<p><img src="/java2/image-20230925193008823.png" alt="image-20230925193008823"></p>
+<p><img src="/java2/image-20230925193015335.png" alt="image-20230925193015335"></p>
+<p><img src="/java2/image-20230925193020881.png" alt="image-20230925193020881"></p>
+<h2 id="释放资源的方式"><a href="#释放资源的方式" class="headerlink" title="释放资源的方式"></a><strong>释放资源的方式</strong></h2><p><img src="/java2/image-20230925193038817.png" alt="image-20230925193038817"></p>
+<p><img src="/java2/image-20230925193047160.png" alt="image-20230925193047160"></p>
+<h1 id="09-java-io包下的常用API-io流2"><a href="#09-java-io包下的常用API-io流2" class="headerlink" title="09-java.io包下的常用API-io流2"></a>09-java.io包下的常用API-io流2</h1><h2 id="IO流-字符流"><a href="#IO流-字符流" class="headerlink" title="IO流-字符流"></a><strong>IO流-字符流</strong></h2><p><img src="/java2/image-20230925205123658.png" alt="image-20230925205123658"></p>
+<h3 id="文件字符输入流-读字符数据进来"><a href="#文件字符输入流-读字符数据进来" class="headerlink" title="文件字符输入流-读字符数据进来"></a>文件字符输入流-读字符数据进来<img src="/java2/image-20230925205133858.png" alt="image-20230925205133858"></h3><p><img src="/java2/image-20230925205205250.png" alt="image-20230925205205250"></p>
+<h3 id="文件字符输出流-写字符数据出去"><a href="#文件字符输出流-写字符数据出去" class="headerlink" title="文件字符输出流-写字符数据出去"></a>文件字符输出流-写字符数据出去</h3><p><img src="/java2/image-20230925205214028.png" alt="image-20230925205214028"></p>
+<p><img src="/java2/image-20230925205219171.png" alt="image-20230925205219171"></p>
+<p><img src="/java2/image-20230925205233052.png" alt="image-20230925205233052"></p>
+<h2 id="IO流-缓冲流"><a href="#IO流-缓冲流" class="headerlink" title="IO流-缓冲流"></a><strong>IO流-缓冲流</strong></h2><p><img src="/java2/image-20230925205302939.png" alt="image-20230925205302939"></p>
+<h3 id="字节缓冲流"><a href="#字节缓冲流" class="headerlink" title="字节缓冲流"></a>字节缓冲流</h3><p><img src="/java2/image-20230925205311319.png" alt="image-20230925205311319"></p>
+<p><img src="/java2/image-20230925205317188.png" alt="image-20230925205317188"></p>
+<h3 id="字符缓冲流"><a href="#字符缓冲流" class="headerlink" title="字符缓冲流"></a>字符缓冲流</h3><p><img src="/java2/image-20230925205325051.png" alt="image-20230925205325051"></p>
+<p><img src="/java2/image-20230925205340630.png" alt="image-20230925205340630"></p>
+<p><img src="/java2/image-20230925205413965.png" alt="image-20230925205413965"></p>
+<p><img src="/java2/image-20230925205418993.png" alt="image-20230925205418993"></p>
+<h3 id="原始流、缓冲流的性能分析-重点"><a href="#原始流、缓冲流的性能分析-重点" class="headerlink" title="原始流、缓冲流的性能分析[重点]"></a>原始流、缓冲流的性能分析[重点]</h3><p><strong>建议使用字节缓冲输入流、字节缓冲输出流，结合字节数组的方式，目前来看是性能最优的组合。</strong></p>
+<h2 id="IO流-转换流"><a href="#IO流-转换流" class="headerlink" title="IO流-转换流"></a><strong>IO流-转换流</strong></h2><h3 id="引出问题：不同编码读取时会乱码"><a href="#引出问题：不同编码读取时会乱码" class="headerlink" title="引出问题：不同编码读取时会乱码"></a>引出问题：不同编码读取时会乱码</h3><p><img src="/java2/image-20230925210112604.png" alt="image-20230925210112604"></p>
+<h3 id="字符输入转换流"><a href="#字符输入转换流" class="headerlink" title="字符输入转换流"></a>字符输入转换流</h3><p><img src="/java2/image-20230925210118113.png" alt="image-20230925210118113"></p>
+<p><img src="/java2/image-20230925210136935-1695646898558-1.png" alt="image-20230925210136935"></p>
+<h3 id="字符输出转换流"><a href="#字符输出转换流" class="headerlink" title="字符输出转换流"></a>字符输出转换流</h3><p><img src="/java2/image-20230925210148684.png" alt="image-20230925210148684"></p>
+<p><img src="/java2/image-20230925210156256.png" alt="image-20230925210156256"></p>
+<p><img src="/java2/image-20230925210209007.png" alt="image-20230925210209007"></p>
+<h2 id="IO流-打印流"><a href="#IO流-打印流" class="headerlink" title="IO流-打印流"></a><strong>IO流-打印流</strong></h2><p><img src="/java2/image-20230925210215849.png" alt="image-20230925210215849"></p>
+<p><img src="/java2/image-20230925210222464.png" alt="image-20230925210222464"></p>
+<p><img src="/java2/image-20230925210226155.png" alt="image-20230925210226155"></p>
+<p><img src="/java2/image-20230925210229853.png" alt="image-20230925210229853"></p>
+<p><img src="/java2/image-20230925210248378.png" alt="image-20230925210248378"></p>
+<h2 id="IO流-数据流"><a href="#IO流-数据流" class="headerlink" title="IO流-数据流"></a><strong>IO流-数据流</strong></h2><p><img src="/java2/image-20230925210256338.png" alt="image-20230925210256338"></p>
+<p><img src="/java2/image-20230925210301909.png" alt="image-20230925210301909"></p>
+<p><img src="/java2/image-20230925210309442.png" alt="image-20230925210309442"></p>
+<h2 id="IO流-序列化流"><a href="#IO流-序列化流" class="headerlink" title="IO流-序列化流"></a><strong>IO流-序列化流</strong></h2><p><img src="/java2/image-20230925210315793.png" alt="image-20230925210315793"></p>
+<p><img src="/java2/image-20230925210326068.png" alt="image-20230925210326068"></p>
+<p><img src="/java2/image-20230925210331035.png" alt="image-20230925210331035"></p>
+<p><img src="/java2/image-20230925210337236.png" alt="image-20230925210337236"></p>
+<h2 id="补充知识：IO框架"><a href="#补充知识：IO框架" class="headerlink" title="补充知识：IO框架"></a><strong>补充知识：IO框架</strong></h2><p><img src="/java2/image-20230925210342791.png" alt="image-20230925210342791"></p>
+<p><img src="/java2/image-20230925210348125.png" alt="image-20230925210348125"></p>
+<p><img src="/java2/image-20230925210353951.png" alt="image-20230925210353951"></p>
+<h1 id="10-特殊文件（XML、Properties）、日志框架"><a href="#10-特殊文件（XML、Properties）、日志框架" class="headerlink" title="10-特殊文件（XML、Properties）、日志框架"></a>10-特殊文件（XML、Properties）、日志框架</h1><h2 id="特殊文件：Properties属性文件"><a href="#特殊文件：Properties属性文件" class="headerlink" title="特殊文件：Properties属性文件"></a><strong>特殊文件：Properties属性文件</strong></h2><p><img src="/java2/image-20230926204548602.png" alt="image-20230926204548602"></p>
+<p><img src="/java2/image-20230926204553022.png" alt="image-20230926204553022"></p>
+<p><img src="/java2/image-20230926204557540.png" alt="image-20230926204557540"></p>
+<p><img src="/java2/image-20230926204602197.png" alt="image-20230926204602197"></p>
+<h2 id="特殊文件：XML文件"><a href="#特殊文件：XML文件" class="headerlink" title="特殊文件：XML文件"></a><strong>特殊文件：XML文件</strong></h2><p><img src="/java2/image-20230926204615177.png" alt="image-20230926204615177"></p>
+<p><img src="/java2/image-20230926204621068.png" alt="image-20230926204621068"></p>
+<p><img src="/java2/image-20230926204626707.png" alt="image-20230926204626707"></p>
+<p><img src="/java2/image-20230926204631030.png" alt="image-20230926204631030"></p>
+<p><img src="/java2/image-20230926204635490.png" alt="image-20230926204635490"></p>
+<p><img src="/java2/image-20230926204642870.png" alt="image-20230926204642870"></p>
+<p><img src="/java2/image-20230926204647864.png" alt="image-20230926204647864"></p>
+<p><img src="/java2/image-20230926204653924.png" alt="image-20230926204653924"></p>
+<p><img src="/java2/image-20230926204704311.png" alt="image-20230926204704311"></p>
+<p><img src="/java2/image-20230926204710918.png" alt="image-20230926204710918"></p>
+<p><img src="/java2/image-20230926204722478.png" alt="image-20230926204722478"></p>
+<h2 id="日志技术"><a href="#日志技术" class="headerlink" title="日志技术"></a><strong>日志技术</strong></h2><p><img src="/java2/image-20230926204732334.png" alt="image-20230926204732334"></p>
+<p><img src="/java2/image-20230926204736158.png" alt="image-20230926204736158"></p>
+<p><img src="/java2/image-20230926204744098.png" alt="image-20230926204744098"></p>
+<p><img src="/java2/image-20230926204747725.png" alt="image-20230926204747725"></p>
+<p><img src="/java2/image-20230926204756971.png" alt="image-20230926204756971"></p>
+<p><img src="/java2/image-20230926204801414.png" alt="image-20230926204801414"></p>
+<p><img src="/java2/image-20230926204807424.png" alt="image-20230926204807424"></p>
+<p><img src="/java2/image-20230926204811946.png" alt="image-20230926204811946"></p>
+<p><img src="/java2/image-20230926204824562.png" alt="image-20230926204824562"></p>
+<p><img src="/java2/image-20230926204830836.png" alt="image-20230926204830836"></p>
+<p><img src="/java2/image-20230926204836185.png" alt="image-20230926204836185"></p>
+<p><img src="/java2/image-20230926204839857.png" alt="image-20230926204839857"></p>
+<h1 id="11-多线程"><a href="#11-多线程" class="headerlink" title="11-多线程"></a>11-多线程</h1><p><img src="/java2/image-20231002111333474.png" alt="image-20231002111333474"></p>
+<p><img src="/java2/image-20231002111338527.png" alt="image-20231002111338527"></p>
+<h2 id="多线程的创建"><a href="#多线程的创建" class="headerlink" title="多线程的创建"></a><strong>多线程的创建</strong></h2><h3 id="方式一：继承Thread类"><a href="#方式一：继承Thread类" class="headerlink" title="方式一：继承Thread类"></a>方式一：继承Thread类</h3><p><img src="/java2/image-20231002111359149.png" alt="image-20231002111359149"></p>
+<p><img src="/java2/image-20231002111424226.png" alt="image-20231002111424226"></p>
+<p><img src="/java2/image-20231002111442465.png" alt="image-20231002111442465"></p>
+<h3 id="方式二：实现Runnable接口"><a href="#方式二：实现Runnable接口" class="headerlink" title="方式二：实现Runnable接口"></a>方式二：实现Runnable接口</h3><p><img src="/java2/image-20231002111557530.png" alt="image-20231002111557530"></p>
+<p><img src="/java2/image-20231002111610138.png" alt="image-20231002111610138"></p>
+<h3 id="方式三：实现Callable接口"><a href="#方式三：实现Callable接口" class="headerlink" title="方式三：实现Callable接口"></a>方式三：实现Callable接口</h3><p><img src="/java2/image-20231002111724930.png" alt="image-20231002111724930"></p>
+<p><img src="/java2/image-20231002111728814.png" alt="image-20231002111728814"></p>
+<p><img src="/java2/image-20231002111736208.png" alt="image-20231002111736208"></p>
+<p><img src="/java2/image-20231002111740254.png" alt="image-20231002111740254"></p>
+<h2 id="Thread的常用方法"><a href="#Thread的常用方法" class="headerlink" title="Thread的常用方法"></a><strong>Thread的常用方法</strong></h2><p><img src="/java2/image-20231002111748382.png" alt="image-20231002111748382"></p>
+<p><img src="/java2/image-20231002111758229.png" alt="image-20231002111758229"></p>
+<h2 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a><strong>线程安全</strong></h2><h3 id="什么是线程安全问题"><a href="#什么是线程安全问题" class="headerlink" title="什么是线程安全问题"></a>什么是线程安全问题</h3><p><img src="/java2/image-20231002111824983.png" alt="image-20231002111824983"></p>
+<p><img src="/java2/image-20231002111834327.png" alt="image-20231002111834327"></p>
+<p><img src="/java2/image-20231002111842756.png" alt="image-20231002111842756"></p>
+<h3 id="用程序模拟线程安全问题"><a href="#用程序模拟线程安全问题" class="headerlink" title="用程序模拟线程安全问题"></a>用程序模拟线程安全问题</h3><p><img src="/java2/image-20231002111859115.png" alt="image-20231002111859115"></p>
+<h2 id="线程同步"><a href="#线程同步" class="headerlink" title="线程同步"></a><strong>线程同步</strong></h2><h3 id="认识线程同步"><a href="#认识线程同步" class="headerlink" title="认识线程同步"></a>认识线程同步</h3><p><img src="/java2/image-20231002111928354.png" alt="image-20231002111928354"></p>
+<p><img src="/java2/image-20231002111934055.png" alt="image-20231002111934055"></p>
+<p><img src="/java2/image-20231002111947076.png" alt="image-20231002111947076"></p>
+<h3 id="方式一：同步代码块"><a href="#方式一：同步代码块" class="headerlink" title="方式一：同步代码块"></a>方式一：同步代码块</h3><p><img src="/java2/image-20231002111952904.png" alt="image-20231002111952904"></p>
+<p><img src="/java2/image-20231002112015638.png" alt="image-20231002112015638"></p>
+<p><img src="/java2/image-20231002112022078.png" alt="image-20231002112022078"></p>
+<h3 id="方式二：同步方法"><a href="#方式二：同步方法" class="headerlink" title="方式二：同步方法"></a>方式二：同步方法</h3><p><img src="/java2/image-20231002112033146.png" alt="image-20231002112033146"></p>
+<p><img src="/java2/image-20231002112039182.png" alt="image-20231002112039182"></p>
+<p><img src="/java2/image-20231002112115856.png" alt="image-20231002112115856"></p>
+<h3 id="方式三：Lock锁"><a href="#方式三：Lock锁" class="headerlink" title="方式三：Lock锁"></a>方式三：Lock锁</h3><p><img src="/java2/image-20231002112122767.png" alt="image-20231002112122767"></p>
+<h2 id="线程通信"><a href="#线程通信" class="headerlink" title="线程通信"></a><strong>线程通信</strong></h2><p><img src="/java2/image-20231002112131336.png" alt="image-20231002112131336"></p>
+<p><img src="/java2/image-20231002112139362.png" alt="image-20231002112139362"></p>
+<p><img src="/java2/image-20231002112144539.png" alt="image-20231002112144539"></p>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a><strong>线程池</strong></h2><h3 id="认识线程池"><a href="#认识线程池" class="headerlink" title="认识线程池"></a>认识线程池</h3><p><img src="/java2/image-20231002112209956.png" alt="image-20231002112209956"></p>
+<p><img src="/java2/image-20231002112216801.png" alt="image-20231002112216801"></p>
+<h3 id="如何创建线程池？"><a href="#如何创建线程池？" class="headerlink" title="如何创建线程池？"></a>如何创建线程池？</h3><p><img src="/java2/image-20231002112221914.png" alt="image-20231002112221914"></p>
+<p><img src="/java2/image-20231002112235354.png" alt="image-20231002112235354"></p>
+<p><img src="/java2/image-20231002112239902.png" alt="image-20231002112239902"></p>
+<p><img src="/java2/image-20231002112243893.png"></p>
+<h3 id="线程池处理Runnable任务"><a href="#线程池处理Runnable任务" class="headerlink" title="线程池处理Runnable任务"></a>线程池处理Runnable任务</h3><p><img src="/java2/image-20231002112303970.png" alt="image-20231002112303970"></p>
+<p><img src="/java2/image-20231002112409531.png" alt="image-20231002112409531"></p>
+<p><img src="/java2/image-20231002112417137.png" alt="image-20231002112417137"></p>
+<h3 id="线程池处理Callable任务"><a href="#线程池处理Callable任务" class="headerlink" title="线程池处理Callable任务"></a>线程池处理Callable任务</h3><p><img src="/java2/image-20231002112422482.png" alt="image-20231002112422482"></p>
+<p><img src="/java2/image-20231002112428882.png" alt="image-20231002112428882"></p>
+<h3 id="Executors工具类实现线程池"><a href="#Executors工具类实现线程池" class="headerlink" title="Executors工具类实现线程池"></a>Executors工具类实现线程池</h3><p><img src="/java2/image-20231002112433649.png" alt="image-20231002112433649"></p>
+<p><img src="/java2/image-20231002112437436.png" alt="image-20231002112437436"></p>
+<p><img src="/java2/image-20231002112443060.png" alt="image-20231002112443060"></p>
+<h2 id="其它细节知识：并发、并行"><a href="#其它细节知识：并发、并行" class="headerlink" title="其它细节知识：并发、并行"></a><strong>其它细节知识：并发、并行</strong></h2><p><img src="/java2/image-20231002112450145.png" alt="image-20231002112450145"></p>
+<p><img src="/java2/image-20231002112453707.png" alt="image-20231002112453707"></p>
+<p><img src="/java2/image-20231002112457377.png" alt="image-20231002112457377"></p>
+<p><img src="/java2/image-20231002112504104.png" alt="image-20231002112504104"></p>
+<p><img src="/java2/image-20231002112508825.png" alt="image-20231002112508825"></p>
+<h2 id="其它细节知识：线程的生命周期"><a href="#其它细节知识：线程的生命周期" class="headerlink" title="其它细节知识：线程的生命周期"></a><strong>其它细节知识：线程的生命周期</strong></h2><p><img src="/java2/image-20231002112516446.png" alt="image-20231002112516446"></p>
+<p><img src="/java2/image-20231002112520788.png" alt="image-20231002112520788"></p>
+<p><img src="/java2/image-20231002112525922.png" alt="image-20231002112525922"></p>
+<h2 id="如何同时运行并线程安全？"><a href="#如何同时运行并线程安全？" class="headerlink" title="如何同时运行并线程安全？"></a>如何同时运行并线程安全？</h2><p>悲观锁：一上来就加锁，没有安全感。每次只能一个线程进入访问完毕后，再解锁。线程安全，性能较差！</p>
+<p>乐观锁：一开始不上锁，认为是没有问题的，大家一起跑，等要出现线程安全问题的时候才开始控制。线程安全，性能较好。</p>
+<h1 id="12-网络编程"><a href="#12-网络编程" class="headerlink" title="12-网络编程"></a>12-网络编程</h1><p><img src="/java2/image-20231002202417490.png" alt="image-20231002202417490"></p>
+<p><img src="/java2/image-20231002202422513.png" alt="image-20231002202422513"></p>
+<h2 id="网络通信三要素"><a href="#网络通信三要素" class="headerlink" title="网络通信三要素"></a><strong>网络通信三要素</strong></h2><h3 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h3><p><img src="/java2/image-20231002202551138.png" alt="image-20231002202551138"></p>
+<p><img src="/java2/image-20231002202557369.png" alt="image-20231002202557369"></p>
+<p><img src="/java2/image-20231002202600844.png" alt="image-20231002202600844"></p>
+<p><img src="/java2/image-20231002202604730.png" alt="image-20231002202604730"></p>
+<p><img src="/java2/image-20231002202608381.png" alt="image-20231002202608381"></p>
+<p><img src="/java2/image-20231002202624362.png" alt="image-20231002202624362"></p>
+<p><img src="/java2/image-20231002202654520.png" alt="image-20231002202654520"></p>
+<p><img src="/java2/image-20231002202658608.png" alt="image-20231002202658608"></p>
+<h3 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h3><p><img src="/java2/image-20231002202706116.png" alt="image-20231002202706116"></p>
+<p><img src="/java2/image-20231002202714024.png" alt="image-20231002202714024"></p>
+<h3 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h3><p><img src="/java2/image-20231002202720341.png" alt="image-20231002202720341"></p>
+<p><img src="/java2/image-20231002202724141.png" alt="image-20231002202724141"></p>
+<p><img src="/java2/image-20231002202728132.png" alt="image-20231002202728132"></p>
+<p>特点：面向连接、可靠通信。</p>
+<p>TCP的最终目的：要保证在不可靠的信道上实现可靠的传输。</p>
+<p>TCP主要有三个步骤实现可靠传输：三次握手建立连接，传输数据进行确认，四次挥手断开连接。</p>
+<p><img src="/java2/image-20231002202746185.png" alt="image-20231002202746185"></p>
+<p><img src="/java2/image-20231002202816422.png" alt="image-20231002202816422"></p>
+<p><img src="/java2/image-20231002202822067.png" alt="image-20231002202822067"></p>
+<p><img src="/java2/image-20231002202827779.png" alt="image-20231002202827779"></p>
+<p><img src="/java2/image-20231002202832438.png" alt="image-20231002202832438"></p>
+<p><img src="/java2/image-20231002202839141.png" alt="image-20231002202839141"></p>
+<h2 id="UDP通信-快速入门"><a href="#UDP通信-快速入门" class="headerlink" title="UDP通信-快速入门"></a><strong>UDP通信-快速入门</strong></h2><p><img src="/java2/image-20231002202844981.png" alt="image-20231002202844981"></p>
+<p><img src="/java2/image-20231002202849006.png" alt="image-20231002202849006"></p>
+<p><img src="/java2/image-20231002202857974.png" alt="image-20231002202857974"></p>
+<h2 id="TCP通信-快速入门"><a href="#TCP通信-快速入门" class="headerlink" title="TCP通信-快速入门"></a><strong>TCP通信-快速入门</strong></h2><p><img src="/java2/image-20231002202920624.png" alt="image-20231002202920624"></p>
+<p><img src="/java2/image-20231002202938084.png" alt="image-20231002202938084"></p>
+<p><img src="/java2/image-20231002202947769.png" alt="image-20231002202947769"></p>
+<p><img src="/java2/image-20231002202951895.png" alt="image-20231002202951895"></p>
+<p><img src="/java2/image-20231002203000934.png" alt="image-20231002203000934"></p>
+<h2 id="通信-多发多收"><a href="#通信-多发多收" class="headerlink" title="通信-多发多收"></a><strong>通信-多发多收</strong></h2><p><img src="/java2/image-20231002202908329.png" alt="image-20231002202908329"></p>
+<p><img src="/java2/image-20231002203019139.png" alt="image-20231002203019139"></p>
+<h2 id="TCP通信-同时接收多个客户端"><a href="#TCP通信-同时接收多个客户端" class="headerlink" title="TCP通信-同时接收多个客户端"></a><strong>TCP通信-同时接收多个客户端</strong></h2><p><img src="/java2/image-20231002203026674.png" alt="image-20231002203026674"></p>
+<p><img src="/java2/image-20231002203033205.png" alt="image-20231002203033205"></p>
+<h2 id="TCP通信-综合案例"><a href="#TCP通信-综合案例" class="headerlink" title="TCP通信-综合案例"></a><strong>TCP通信-综合案例</strong></h2><p><img src="/java2/image-20231002203040165.png" alt="image-20231002203040165"></p>
+<p><img src="/java2/image-20231002203046743.png" alt="image-20231002203046743"></p>
+<p><img src="/java2/image-20231002203103821.png" alt="image-20231002203103821"></p>
+<h1 id="13-junit、反射、注解、动态代理"><a href="#13-junit、反射、注解、动态代理" class="headerlink" title="13-junit、反射、注解、动态代理"></a>13-junit、反射、注解、动态代理</h1><h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a><strong>单元测试</strong></h2><h3 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h3><p><img src="/java2/image-20231003141143087.png" alt="image-20231003141143087"></p>
+<p><img src="/java2/image-20231003141159353.png" alt="image-20231003141159353"></p>
+<p><img src="/java2/image-20231003141207982.png" alt="image-20231003141207982"></p>
+<p><img src="/java2/image-20231003141223688.png" alt="image-20231003141223688"></p>
+<p><img src="/java2/image-20231003141240144.png" alt="image-20231003141240144"></p>
+<h3 id="Junit框架的常见注解"><a href="#Junit框架的常见注解" class="headerlink" title="Junit框架的常见注解"></a>Junit框架的常见注解</h3><p><img src="/java2/image-20231003141253928.png" alt="image-20231003141253928"></p>
+<p><img src="/java2/image-20231003141308624.png" alt="image-20231003141308624"></p>
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a><strong>反射</strong></h2><h3 id="认识反射"><a href="#认识反射" class="headerlink" title="认识反射"></a>认识反射</h3><p><img src="/java2/image-20231003141343639.png" alt="image-20231003141343639"></p>
+<p><img src="/java2/image-20231003141353790.png" alt="image-20231003141353790"></p>
+<p><img src="/java2/image-20231003141358779.png" alt="image-20231003141358779"></p>
+<h3 id="获取类"><a href="#获取类" class="headerlink" title="获取类"></a>获取类</h3><p><img src="/java2/image-20231003141404087.png" alt="image-20231003141404087"></p>
+<p><img src="/java2/image-20231003141408242.png" alt="image-20231003141408242"></p>
+<p><img src="/java2/image-20231003141839073.png" alt="image-20231003141839073"></p>
+<p><img src="/java2/image-20231003141843197.png" alt="image-20231003141843197"></p>
+<h3 id="获取类的构造器"><a href="#获取类的构造器" class="headerlink" title="获取类的构造器"></a>获取类的构造器</h3><p><img src="/java2/image-20231003141847844.png" alt="image-20231003141847844"></p>
+<p><img src="/java2/image-20231003141851578.png" alt="image-20231003141851578"></p>
+<p><img src="/java2/image-20231003141854978.png" alt="image-20231003141854978"></p>
+<p><img src="/java2/image-20231003141858333.png" alt="image-20231003141858333"></p>
+<h3 id="获取类的成员变量"><a href="#获取类的成员变量" class="headerlink" title="获取类的成员变量"></a>获取类的成员变量</h3><p><img src="/java2/image-20231003141903814.png" alt="image-20231003141903814"></p>
+<p><img src="/java2/image-20231003141907317.png" alt="image-20231003141907317"></p>
+<p><img src="/java2/image-20231003141910708.png" alt="image-20231003141910708"></p>
+<p><img src="/java2/image-20231003141915311.png" alt="image-20231003141915311"></p>
+<h3 id="获取类的成员方法"><a href="#获取类的成员方法" class="headerlink" title="获取类的成员方法"></a>获取类的成员方法</h3><p><img src="/java2/image-20231003141922954.png" alt="image-20231003141922954"></p>
+<p><img src="/java2/image-20231003141931595.png" alt="image-20231003141931595"></p>
+<p><img src="/java2/image-20231003141934935.png" alt="image-20231003141934935"></p>
+<p><img src="/java2/image-20231003141938807.png" alt="image-20231003141938807"></p>
+<h3 id="作用、应用场景"><a href="#作用、应用场景" class="headerlink" title="作用、应用场景"></a>作用、应用场景</h3><p><img src="/java2/image-20231003141947316.png" alt="image-20231003141947316"></p>
+<p><img src="/java2/image-20231003141955276.png" alt="image-20231003141955276"></p>
+<p><img src="/java2/image-20231003142003324.png" alt="image-20231003142003324"></p>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a><strong>注解</strong></h2><h3 id="概述、自定义注解"><a href="#概述、自定义注解" class="headerlink" title="概述、自定义注解"></a>概述、自定义注解</h3><p><img src="/java2/image-20231003142028195.png" alt="image-20231003142028195"></p>
+<p><img src="/java2/image-20231003142032515.png" alt="image-20231003142032515"></p>
+<p><img src="/java2/image-20231003142036876.png" alt="image-20231003142036876"></p>
+<p><img src="/java2/image-20231003142040734.png" alt="image-20231003142040734"></p>
+<p><img src="/java2/image-20231003142130912.png" alt="image-20231003142130912"></p>
+<p><img src="/java2/image-20231003142135919.png" alt="image-20231003142135919"></p>
+<h3 id="元注解"><a href="#元注解" class="headerlink" title="元注解"></a>元注解</h3><p><img src="/java2/image-20231003142140914.png" alt="image-20231003142140914"></p>
+<p><img src="/java2/image-20231003142145448.png" alt="image-20231003142145448"></p>
+<p><img src="/java2/image-20231003142152724.png" alt="image-20231003142152724"></p>
+<h3 id="注解的解析"><a href="#注解的解析" class="headerlink" title="注解的解析"></a>注解的解析</h3><p><img src="/java2/image-20231003142205504.png" alt="image-20231003142205504"></p>
+<p><img src="/java2/image-20231003142217238.png" alt="image-20231003142217238"></p>
+<p><img src="/java2/image-20231003142242198.png" alt="image-20231003142242198"></p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a><strong>动态代理</strong></h2><p><img src="/java2/image-20231003142251000.png" alt="image-20231003142251000"></p>
+<p><img src="/java2/image-20231003142302730.png" alt="image-20231003142302730"></p>
+<p><img src="/java2/image-20231003142306180.png" alt="image-20231003142306180"></p>
+<p><img src="/java2/image-20231003142314909.png" alt="image-20231003142314909"></p>
+<p><img src="/java2/image-20231003142324457.png" alt="image-20231003142324457"></p>
+<p><img src="/java2/image-20231003142332761.png" alt="image-20231003142332761"></p>
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>一、局部变量</p>
+<p>二、成员变量</p>
+<p> 1、静态变量</p>
+<p> 2、实例变量 </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://alsl521.github.io">kyl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alsl521.github.io/2023/12/09/java2/">https://alsl521.github.io/2023/12/09/java2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://alsl521.github.io" target="_blank">kyl的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post-share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/12/09/java1/" title="Java 基础入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Java 基础入门</div></div><div class="info-2"><div class="info-item-1">01、Java基础入门    常用命令 作用    盘符： 切换到某个盘下：D：， C:   dir 查看当前路径下的文件信息   cd 进入单级目录: cd itheima  进入多级目录: cd   D:\itheima\JavaSE\第一天  回退到上一级目录：cd ..   回退到盘符根目录：*cd *   cls 清屏   Java 程序开发的三个步骤 开发 Java...</div></div></div></a><a class="pagination-related" href="/2023/12/09/MachineLearning/" title="机器学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">机器学习</div></div><div class="info-2"><div class="info-item-1">2 预备知识2.1. 数据操作我们介绍n维数组，也称为张量（tensor）  创建数组  访问元素 可以按照自己的需求任意访问   张量表示一个由数值组成的数组，这个数组可能有多个维度。 具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）；具有两个轴以上的张量没有特殊的数学名称。 可以通过张量的shape属性来访问张量（沿每个轴的长度）的形状。要想改变一个张量的形状而不改变元素数量和元素值，可以调用reshape函数。虽然张量的形状发生了改变，但其元素值并没有变。注意，通过改变张量的形状，张量的大小不会改变。 对于任意具有相同形状的张量，常⻅的标准算术运算符（+、-、*、&#x2F;和**（**运算符是求幂运算））都可以被升级为按元素运算。我们可以在同⼀形状的任意两个张量上调⽤按元素操作。 在某些情况下，即使形状不同，我们仍然可以通过调⽤⼴播机制（broadcasting...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/12/09/java1/" title="Java 基础入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">Java 基础入门</div></div><div class="info-2"><div class="info-item-1">01、Java基础入门    常用命令 作用    盘符： 切换到某个盘下：D：， C:   dir 查看当前路径下的文件信息   cd 进入单级目录: cd itheima  进入多级目录: cd   D:\itheima\JavaSE\第一天  回退到上一级目录：cd ..   回退到盘符根目录：*cd *   cls 清屏   Java 程序开发的三个步骤 开发 Java...</div></div></div></a><a class="pagination-related" href="/2023/12/08/SpringBoot/" title="SpringBoot小知识"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-08</div><div class="info-item-2">SpringBoot小知识</div></div><div class="info-2"><div class="info-item-1">使用Lombok导致传值失败spring中，为什么前端明明传了值，后端却接收不到_springboot接口无法获取参数-CSDN博客 结论到这里，我们就可以得出结论了  因为 Lombok 生成 get、set 方法的语义规范与和Jackson 处理 get、set 方法之间的不一致，导致属性名无法匹配上，最终也就导致了前端明明传了参数，后端却接收不到的问题。   看到这里，我就来总结一下能解决这个问题的三种方案吧 1.加@JsonProperty注解强行指定属性名 123456789101112@Datapublic class UserVO &#123;    /**     * 用户名称     */    @JsonProperty(value = &quot;uName&quot;)    private String uName;    /**     * 登录类型     */    private String...</div></div></div></a><a class="pagination-related" href="/2024/01/06/Little-knowledge-of-Java-2/" title="Java学习（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-06</div><div class="info-item-2">Java学习（二）</div></div><div class="info-2"><div class="info-item-1">对象与类面向对象程序设计概述面向对象程序设计(Object Oriented Programming)作为一种新方法，其本质是以建立模型体现出来的抽象思维过程和面向对象的方法。模型是用来反映现实世界中事物特征的。任何一个模型都不可能反映客观事物的一切具体特征，只能对事物特征和变化规律的一种抽象，且在它所涉及的范围内更普遍、更集中、更深刻地描述客体的特征。通过建立模型而达到的抽象是人们对客体认识的深化。 类类(class)是构造对象的模板或蓝图。我们可以将类想象成制作小甜饼的模具，将对象想象为小甜饼。由类构造(construct)对象的过程称为创建类的实例(instance)。 封装(encapsulation),有时称为数据隐藏)是处理对象的一个重要概念。从形式上看，封装就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为实例字段(instance...</div></div></div></a><a class="pagination-related" href="/2024/02/01/SSM-2/" title="Java学习-SSM-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-01</div><div class="info-item-2">Java学习-SSM-2</div></div><div class="info-2"><div class="info-item-1">核心容器前面已经完成bean与依赖注入的相关知识学习，接下来我们主要学习的是IOC容器中的核心容器。 这里所说的核心容器，大家可以把它简单的理解为ApplicationContext，前面虽然已经用到过，但是并没有系统的学习，接下来咱们从以下几个问题入手来学习下容器的相关知识:  如何创建容器? 创建好容器后，如何从容器中获取bean对象? 容器类的层次结构是什么? BeanFactory是什么?  环境准备在学习和解决上述问题之前，先来准备下案例环境:  创建一个Maven项目  pom.xml添加Spring的依赖 1234567&lt;dependencies&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework&lt;/groupId&gt;        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;        &lt;version&gt;5.2.10.RELEASE&lt;/version&gt;   ...</div></div></div></a><a class="pagination-related" href="/2024/01/03/Little-knowledge-of-Java-1/" title="Java学习（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-03</div><div class="info-item-2">Java学习（一）</div></div><div class="info-2"><div class="info-item-1">Java三大平台JavaSE、JavaME、JavaE...</div></div></div></a><a class="pagination-related" href="/2024/02/02/SSM-3/" title="Java学习-SSM-3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-02</div><div class="info-item-2">Java学习-SSM-3</div></div><div class="info-2"><div class="info-item-1">AOP简介前面我们在介绍Spring的时候说过，Spring有两个核心的概念，一个是IOC/DI，一个是AOP。 前面已经对IOC/DI进行了系统的学习，接下来要学习它的另一个核心内容，就是AOP。 对于AOP,我们前面提过一句话是:AOP是在不改原有代码的前提下对其进行增强。 对于下面的内容，我们主要就是围绕着这一句话进行展开学习，主要学习两方面内容AOP核心概念,AOP作用: 什么是AOP? AOP(Aspect Oriented Programming)面向切面编程，一种编程范式，指导开发者如何组织程序结构。 OOP(Object Oriented...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kyl</div><div class="author-info-description">用于记录平时学习的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/alsl521" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:852970167@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6%EF%BC%9Astatic%E3%80%81%E7%BB%A7%E6%89%BF%E3%80%81%E5%8D%95%E4%BE%8B"><span class="toc-number">1.</span> <span class="toc-text">01-面向对象进阶：static、继承、单例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#static"><span class="toc-number">1.1.</span> <span class="toc-text">static</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">static修饰成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">static修饰成员变量的应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">static修饰成员方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.1.4.</span> <span class="toc-text">static修饰成员方法的应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.1.5.</span> <span class="toc-text">static的注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E7%9A%84%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%EF%BC%9A%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.1.6.</span> <span class="toc-text">static的应用知识：代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static%E7%9A%84%E5%BA%94%E7%94%A8%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%8D%95%E4%BE%8B%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.1.7.</span> <span class="toc-text">static的应用知识：单例设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.2.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E7%9A%84%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">继承的快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E7%9B%B8%E5%85%B3%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">继承相关的注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">①权限修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A1%E5%8D%95%E7%BB%A7%E6%89%BF%E3%80%81Object%E7%B1%BB"><span class="toc-number">1.2.2.1.1.</span> <span class="toc-text">②单继承、Object类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A2%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="toc-number">1.2.2.1.2.</span> <span class="toc-text">③方法重写</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A3%E5%AD%90%E7%B1%BB%E4%B8%AD%E8%AE%BF%E9%97%AE%E5%85%B6%E4%BB%96%E6%88%90%E5%91%98%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.2.1.3.</span> <span class="toc-text">④子类中访问其他成员的特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A4%E5%AD%90%E7%B1%BB%E6%9E%84%E9%80%A0%E5%99%A8%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-number">1.2.2.1.4.</span> <span class="toc-text">⑤子类构造器的特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E2%91%A5%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E7%9A%84%E5%B0%8F%E7%BB%93"><span class="toc-number">1.2.2.1.5.</span> <span class="toc-text">⑥注意事项的小结</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6%EF%BC%9A%E5%A4%9A%E6%80%81%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E3%80%81%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">02-面向对象进阶：多态、抽象类、接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">2.1.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#final"><span class="toc-number">2.2.</span> <span class="toc-text">final</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86final"><span class="toc-number">2.2.1.</span> <span class="toc-text">认识final</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1u%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%B8%B8%E9%87%8F%E8%AF%A6%E8%A7%A3%E7%B1%BB"><span class="toc-number">2.2.1.1.</span> <span class="toc-text">抽象u补充知识：常量详解类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">抽象类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">2.3.1.</span> <span class="toc-text">认识抽象类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF%EF%BC%9A%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.3.2.</span> <span class="toc-text">抽象类的常见应用场景：模板方法设计模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.4.</span> <span class="toc-text">接口</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E6%A6%82%E8%BF%B0"><span class="toc-number">2.4.1.</span> <span class="toc-text">接口概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82%EF%BC%9AJDK8%E5%BC%80%E5%A7%8B%EF%BC%8C%E6%8E%A5%E5%8F%A3%E4%B8%AD%E6%96%B0%E5%A2%9E%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E6%B3%95"><span class="toc-number">2.4.2.</span> <span class="toc-text">接口的其他细节：JDK8开始，接口中新增的三种方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%85%B6%E4%BB%96%E7%BB%86%E8%8A%82%EF%BC%9A%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%A4%9A%E7%BB%A7%E6%89%BF%E3%80%81%E4%BD%BF%E7%94%A8%E6%8E%A5%E5%8F%A3%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-%E4%BA%86%E8%A7%A3"><span class="toc-number">2.4.3.</span> <span class="toc-text">接口的其他细节：接口的多继承、使用接口的注意事项[了解]</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6%EF%BC%9A%E6%B3%9B%E5%9E%8B%E3%80%81%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB%E3%80%81%E6%B3%9B%E5%9E%8B%E3%80%81%E6%9E%9A%E4%B8%BE"><span class="toc-number">3.</span> <span class="toc-text">03-面向对象进阶：泛型、匿名内部类、泛型、枚举</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">内部类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%B1%BB%E6%A6%82%E8%BF%B0%E3%80%81%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB-%E4%BA%86%E8%A7%A3"><span class="toc-number">3.1.1.</span> <span class="toc-text">内部类概述、成员内部类[了解]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%86%85%E9%83%A8%E7%B1%BB-%E4%BA%86%E8%A7%A3"><span class="toc-number">3.1.2.</span> <span class="toc-text">静态内部类[了解]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB-%E4%BA%86%E8%A7%A3"><span class="toc-number">3.1.3.</span> <span class="toc-text">局部内部类[了解]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB-%E9%87%8D%E7%82%B9"><span class="toc-number">3.1.4.</span> <span class="toc-text">匿名内部类[重点]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%9A%E4%B8%BE"><span class="toc-number">3.2.</span> <span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-number">3.3.</span> <span class="toc-text">泛型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E6%B3%9B%E5%9E%8B"><span class="toc-number">3.3.1.</span> <span class="toc-text">认识泛型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="toc-number">3.3.2.</span> <span class="toc-text">泛型类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.3.3.</span> <span class="toc-text">泛型接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95%E3%80%81%E6%B3%9B%E5%9E%8B%E9%80%9A%E9%85%8D%E7%AC%A6%E3%80%81%E4%B8%8A%E4%B8%8B%E9%99%90"><span class="toc-number">3.3.4.</span> <span class="toc-text">泛型方法、泛型通配符、上下限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%EF%BC%9A%E6%93%A6%E9%99%A4%E9%97%AE%E9%A2%98%E3%80%81%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="toc-number">3.3.5.</span> <span class="toc-text">泛型的注意事项：擦除问题、基本数据类型问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java-lang%E5%8C%85%E4%B8%8B%E7%9A%84%E5%B8%B8%E7%94%A8API"><span class="toc-number">3.4.</span> <span class="toc-text">java.lang包下的常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95"><span class="toc-number">3.4.1.</span> <span class="toc-text">常见算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">3.4.2.</span> <span class="toc-text">正则表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8"><span class="toc-number">3.4.3.</span> <span class="toc-text">异常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%BC%82%E5%B8%B8"><span class="toc-number">3.4.4.</span> <span class="toc-text">自定义异常</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">3.4.4.1.</span> <span class="toc-text">异常的处理</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#06-%E9%9B%86%E5%90%88%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">06-集合（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">4.1.</span> <span class="toc-text">Collection的常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection%E7%9A%84%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">Collection的遍历方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#List%E9%9B%86%E5%90%88"><span class="toc-number">4.3.</span> <span class="toc-text">List集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9%E3%80%81%E7%89%B9%E6%9C%89%E6%96%B9%E6%B3%95"><span class="toc-number">4.3.1.</span> <span class="toc-text">特点、特有方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="toc-number">4.3.2.</span> <span class="toc-text">遍历方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A0for%E5%BE%AA%E7%8E%AF%EF%BC%88%E5%9B%A0%E4%B8%BAList%E9%9B%86%E5%90%88%E6%9C%89%E7%B4%A2%E5%BC%95%EF%BC%89"><span class="toc-number">4.3.2.1.</span> <span class="toc-text">①for循环（因为List集合有索引）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A2%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF"><span class="toc-number">4.3.2.2.</span> <span class="toc-text">③增强for循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%91%A3Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">4.3.2.3.</span> <span class="toc-text">④Lambda表达式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList%E9%9B%86%E5%90%88%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">4.3.3.</span> <span class="toc-text">ArrayList集合的底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedList%E9%9B%86%E5%90%88%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">4.3.4.</span> <span class="toc-text">LinkedList集合的底层原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set%E9%9B%86%E5%90%88"><span class="toc-number">4.4.</span> <span class="toc-text">Set集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">4.4.1.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashSet%E9%9B%86%E5%90%88%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">4.4.2.</span> <span class="toc-text">HashSet集合的底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-HashSet%E5%8E%BB%E9%87%8D%E5%8E%9F%E7%90%86"><span class="toc-number">4.4.3.</span> <span class="toc-text">1.3 HashSet去重原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashSet%E9%9B%86%E5%90%88%E7%9A%84%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86"><span class="toc-number">4.4.4.</span> <span class="toc-text">LinkedHashSet集合的底层原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeSet%E9%9B%86%E5%90%88"><span class="toc-number">4.4.5.</span> <span class="toc-text">TreeSet集合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#07-%E9%9B%86%E5%90%88%EF%BC%88%E4%BA%8C%EF%BC%89%E3%80%81Stream"><span class="toc-number">5.</span> <span class="toc-text">07-集合（二）、Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Collection%E7%9A%84%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="toc-number">5.1.</span> <span class="toc-text">Collection的其他相关知识</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0"><span class="toc-number">5.1.1.</span> <span class="toc-text">前置知识：可变参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Collections"><span class="toc-number">5.1.2.</span> <span class="toc-text">Collections</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map%E9%9B%86%E5%90%88"><span class="toc-number">5.2.</span> <span class="toc-text">Map集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">5.2.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">5.2.2.</span> <span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F-1"><span class="toc-number">5.2.3.</span> <span class="toc-text">遍历方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HashMap"><span class="toc-number">5.2.4.</span> <span class="toc-text">HashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LinkedHashMap"><span class="toc-number">5.2.5.</span> <span class="toc-text">LinkedHashMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TreeMap"><span class="toc-number">5.2.6.</span> <span class="toc-text">TreeMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%EF%BC%9A%E9%9B%86%E5%90%88%E7%9A%84%E5%B5%8C%E5%A5%97"><span class="toc-number">5.2.7.</span> <span class="toc-text">补充知识：集合的嵌套</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream%E6%B5%81"><span class="toc-number">5.3.</span> <span class="toc-text">Stream流</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#08-File%E3%80%81%E9%80%92%E5%BD%92%E3%80%81%E5%AD%97%E7%AC%A6%E9%9B%86%EF%BC%8CIO%E6%B5%81%EF%BC%88%E4%B8%80%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">08-File、递归、字符集，IO流（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-number">6.0.1.</span> <span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%951%EF%BC%9A%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E3%80%81%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-number">6.0.2.</span> <span class="toc-text">常用方法1：判断文件类型、获取文件信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%952%EF%BC%9A%E5%88%9B%E5%BB%BA%E6%96%87%E4%BB%B6%E3%80%81%E5%88%A0%E9%99%A4%E6%96%87%E4%BB%B6"><span class="toc-number">6.0.3.</span> <span class="toc-text">常用方法2：创建文件、删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%953%EF%BC%9A%E9%81%8D%E5%8E%86%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">6.0.4.</span> <span class="toc-text">常用方法3：遍历文件夹</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%96%B9%E6%B3%95%E9%80%92%E5%BD%92"><span class="toc-number">6.1.</span> <span class="toc-text">前置知识：方法递归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E9%80%92%E5%BD%92%E7%9A%84%E5%BD%A2%E5%BC%8F"><span class="toc-number">6.1.1.</span> <span class="toc-text">认识递归的形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E3%80%81%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E3%80%81%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3"><span class="toc-number">6.1.2.</span> <span class="toc-text">应用、执行流程、算法思想</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%AD%97%E7%AC%A6%E9%9B%86"><span class="toc-number">6.2.</span> <span class="toc-text">前置知识：字符集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81"><span class="toc-number">6.3.</span> <span class="toc-text">IO流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E5%AD%97%E8%8A%82%E6%B5%81"><span class="toc-number">6.4.</span> <span class="toc-text">IO流-字节流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8A%E6%94%BE%E8%B5%84%E6%BA%90%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">6.5.</span> <span class="toc-text">释放资源的方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#09-java-io%E5%8C%85%E4%B8%8B%E7%9A%84%E5%B8%B8%E7%94%A8API-io%E6%B5%812"><span class="toc-number">7.</span> <span class="toc-text">09-java.io包下的常用API-io流2</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E5%AD%97%E7%AC%A6%E6%B5%81"><span class="toc-number">7.1.</span> <span class="toc-text">IO流-字符流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E6%B5%81-%E8%AF%BB%E5%AD%97%E7%AC%A6%E6%95%B0%E6%8D%AE%E8%BF%9B%E6%9D%A5"><span class="toc-number">7.1.1.</span> <span class="toc-text">文件字符输入流-读字符数据进来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%AD%97%E7%AC%A6%E8%BE%93%E5%87%BA%E6%B5%81-%E5%86%99%E5%AD%97%E7%AC%A6%E6%95%B0%E6%8D%AE%E5%87%BA%E5%8E%BB"><span class="toc-number">7.1.2.</span> <span class="toc-text">文件字符输出流-写字符数据出去</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">7.2.</span> <span class="toc-text">IO流-缓冲流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E8%8A%82%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">7.2.1.</span> <span class="toc-text">字节缓冲流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E7%BC%93%E5%86%B2%E6%B5%81"><span class="toc-number">7.2.2.</span> <span class="toc-text">字符缓冲流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E6%B5%81%E3%80%81%E7%BC%93%E5%86%B2%E6%B5%81%E7%9A%84%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90-%E9%87%8D%E7%82%B9"><span class="toc-number">7.2.3.</span> <span class="toc-text">原始流、缓冲流的性能分析[重点]</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-number">7.3.</span> <span class="toc-text">IO流-转换流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%87%BA%E9%97%AE%E9%A2%98%EF%BC%9A%E4%B8%8D%E5%90%8C%E7%BC%96%E7%A0%81%E8%AF%BB%E5%8F%96%E6%97%B6%E4%BC%9A%E4%B9%B1%E7%A0%81"><span class="toc-number">7.3.1.</span> <span class="toc-text">引出问题：不同编码读取时会乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BE%93%E5%85%A5%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-number">7.3.2.</span> <span class="toc-text">字符输入转换流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BE%93%E5%87%BA%E8%BD%AC%E6%8D%A2%E6%B5%81"><span class="toc-number">7.3.3.</span> <span class="toc-text">字符输出转换流</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E6%89%93%E5%8D%B0%E6%B5%81"><span class="toc-number">7.4.</span> <span class="toc-text">IO流-打印流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E6%95%B0%E6%8D%AE%E6%B5%81"><span class="toc-number">7.5.</span> <span class="toc-text">IO流-数据流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E6%B5%81-%E5%BA%8F%E5%88%97%E5%8C%96%E6%B5%81"><span class="toc-number">7.6.</span> <span class="toc-text">IO流-序列化流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%EF%BC%9AIO%E6%A1%86%E6%9E%B6"><span class="toc-number">7.7.</span> <span class="toc-text">补充知识：IO框架</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%EF%BC%88XML%E3%80%81Properties%EF%BC%89%E3%80%81%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6"><span class="toc-number">8.</span> <span class="toc-text">10-特殊文件（XML、Properties）、日志框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%EF%BC%9AProperties%E5%B1%9E%E6%80%A7%E6%96%87%E4%BB%B6"><span class="toc-number">8.1.</span> <span class="toc-text">特殊文件：Properties属性文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%EF%BC%9AXML%E6%96%87%E4%BB%B6"><span class="toc-number">8.2.</span> <span class="toc-text">特殊文件：XML文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E6%8A%80%E6%9C%AF"><span class="toc-number">8.3.</span> <span class="toc-text">日志技术</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">9.</span> <span class="toc-text">11-多线程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">9.1.</span> <span class="toc-text">多线程的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A%E7%BB%A7%E6%89%BFThread%E7%B1%BB"><span class="toc-number">9.1.1.</span> <span class="toc-text">方式一：继承Thread类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A%E5%AE%9E%E7%8E%B0Runnable%E6%8E%A5%E5%8F%A3"><span class="toc-number">9.1.2.</span> <span class="toc-text">方式二：实现Runnable接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%89%EF%BC%9A%E5%AE%9E%E7%8E%B0Callable%E6%8E%A5%E5%8F%A3"><span class="toc-number">9.1.3.</span> <span class="toc-text">方式三：实现Callable接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">9.2.</span> <span class="toc-text">Thread的常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8"><span class="toc-number">9.3.</span> <span class="toc-text">线程安全</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">9.3.1.</span> <span class="toc-text">什么是线程安全问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E7%A8%8B%E5%BA%8F%E6%A8%A1%E6%8B%9F%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-number">9.3.2.</span> <span class="toc-text">用程序模拟线程安全问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">9.4.</span> <span class="toc-text">线程同步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="toc-number">9.4.1.</span> <span class="toc-text">认识线程同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">9.4.2.</span> <span class="toc-text">方式一：同步代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A%E5%90%8C%E6%AD%A5%E6%96%B9%E6%B3%95"><span class="toc-number">9.4.3.</span> <span class="toc-text">方式二：同步方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%89%EF%BC%9ALock%E9%94%81"><span class="toc-number">9.4.4.</span> <span class="toc-text">方式三：Lock锁</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="toc-number">9.5.</span> <span class="toc-text">线程通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">9.6.</span> <span class="toc-text">线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">9.6.1.</span> <span class="toc-text">认识线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E6%B1%A0%EF%BC%9F"><span class="toc-number">9.6.2.</span> <span class="toc-text">如何创建线程池？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%A4%84%E7%90%86Runnable%E4%BB%BB%E5%8A%A1"><span class="toc-number">9.6.3.</span> <span class="toc-text">线程池处理Runnable任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0%E5%A4%84%E7%90%86Callable%E4%BB%BB%E5%8A%A1"><span class="toc-number">9.6.4.</span> <span class="toc-text">线程池处理Callable任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Executors%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%AE%9E%E7%8E%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">9.6.5.</span> <span class="toc-text">Executors工具类实现线程池</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E7%BB%86%E8%8A%82%E7%9F%A5%E8%AF%86%EF%BC%9A%E5%B9%B6%E5%8F%91%E3%80%81%E5%B9%B6%E8%A1%8C"><span class="toc-number">9.7.</span> <span class="toc-text">其它细节知识：并发、并行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E7%BB%86%E8%8A%82%E7%9F%A5%E8%AF%86%EF%BC%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">9.8.</span> <span class="toc-text">其它细节知识：线程的生命周期</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%90%8C%E6%97%B6%E8%BF%90%E8%A1%8C%E5%B9%B6%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%9F"><span class="toc-number">9.9.</span> <span class="toc-text">如何同时运行并线程安全？</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="toc-number">10.</span> <span class="toc-text">12-网络编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E4%B8%89%E8%A6%81%E7%B4%A0"><span class="toc-number">10.1.</span> <span class="toc-text">网络通信三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="toc-number">10.1.1.</span> <span class="toc-text">IP地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">10.1.2.</span> <span class="toc-text">端口号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE"><span class="toc-number">10.1.3.</span> <span class="toc-text">协议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E9%80%9A%E4%BF%A1-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">10.2.</span> <span class="toc-text">UDP通信-快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E9%80%9A%E4%BF%A1-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">10.3.</span> <span class="toc-text">TCP通信-快速入门</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1-%E5%A4%9A%E5%8F%91%E5%A4%9A%E6%94%B6"><span class="toc-number">10.4.</span> <span class="toc-text">通信-多发多收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E9%80%9A%E4%BF%A1-%E5%90%8C%E6%97%B6%E6%8E%A5%E6%94%B6%E5%A4%9A%E4%B8%AA%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">10.5.</span> <span class="toc-text">TCP通信-同时接收多个客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E9%80%9A%E4%BF%A1-%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B"><span class="toc-number">10.6.</span> <span class="toc-text">TCP通信-综合案例</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-junit%E3%80%81%E5%8F%8D%E5%B0%84%E3%80%81%E6%B3%A8%E8%A7%A3%E3%80%81%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-number">11.</span> <span class="toc-text">13-junit、反射、注解、动态代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">11.1.</span> <span class="toc-text">单元测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">11.1.1.</span> <span class="toc-text">快速入门</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Junit%E6%A1%86%E6%9E%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E6%B3%A8%E8%A7%A3"><span class="toc-number">11.1.2.</span> <span class="toc-text">Junit框架的常见注解</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84"><span class="toc-number">11.2.</span> <span class="toc-text">反射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A4%E8%AF%86%E5%8F%8D%E5%B0%84"><span class="toc-number">11.2.1.</span> <span class="toc-text">认识反射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB"><span class="toc-number">11.2.2.</span> <span class="toc-text">获取类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">11.2.3.</span> <span class="toc-text">获取类的构造器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-number">11.2.4.</span> <span class="toc-text">获取类的成员变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%B1%BB%E7%9A%84%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-number">11.2.5.</span> <span class="toc-text">获取类的成员方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8%E3%80%81%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">11.2.6.</span> <span class="toc-text">作用、应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3"><span class="toc-number">11.3.</span> <span class="toc-text">注解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%B3%A8%E8%A7%A3"><span class="toc-number">11.3.1.</span> <span class="toc-text">概述、自定义注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E6%B3%A8%E8%A7%A3"><span class="toc-number">11.3.2.</span> <span class="toc-text">元注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3%E7%9A%84%E8%A7%A3%E6%9E%90"><span class="toc-number">11.3.3.</span> <span class="toc-text">注解的解析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">11.3.4.</span> <span class="toc-text">应用场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86"><span class="toc-number">11.4.</span> <span class="toc-text">动态代理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">12.</span> <span class="toc-text">变量</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/08/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-08T07:18:30.297Z" title="发表于 2025-04-08 15:18:30">2025-04-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/23/Java-Algorithm-02/" title="链表">链表</a><time datetime="2024-06-23T07:04:47.000Z" title="发表于 2024-06-23 15:04:47">2024-06-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/20/Java-Algorithm-01/" title="算法-排序">算法-排序</a><time datetime="2024-06-20T06:00:59.000Z" title="发表于 2024-06-20 14:00:59">2024-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-4/" title="尚硅谷Java-day04">尚硅谷Java-day04</a><time datetime="2024-04-02T05:18:51.000Z" title="发表于 2024-04-02 13:18:51">2024-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-3/" title="尚硅谷Java-day03">尚硅谷Java-day03</a><time datetime="2024-04-02T05:18:48.000Z" title="发表于 2024-04-02 13:18:48">2024-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By kyl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

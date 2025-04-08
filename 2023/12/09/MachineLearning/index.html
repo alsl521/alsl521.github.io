@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>机器学习 | kyl的博客</title><meta name="author" content="kyl"><meta name="copyright" content="kyl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="机器学习 简单学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习">
+<meta property="og:url" content="https://alsl521.github.io/2023/12/09/MachineLearning/index.html">
+<meta property="og:site_name" content="kyl的博客">
+<meta property="og:description" content="机器学习 简单学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4">
+<meta property="article:published_time" content="2023-12-09T03:50:01.000Z">
+<meta property="article:modified_time" content="2025-04-08T08:11:24.643Z">
+<meta property="article:author" content="kyl">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "机器学习",
+  "url": "https://alsl521.github.io/2023/12/09/MachineLearning/",
+  "image": "https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4",
+  "datePublished": "2023-12-09T03:50:01.000Z",
+  "dateModified": "2025-04-08T08:11:24.643Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kyl",
+      "url": "https://alsl521.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://alsl521.github.io/2023/12/09/MachineLearning/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '机器学习',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kyl的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">机器学习</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">机器学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-09T03:50:01.000Z" title="发表于 2023-12-09 11:50:01">2023-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-08T08:11:24.643Z" title="更新于 2025-04-08 16:11:24">2025-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Python/">Python</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="2-预备知识"><a href="#2-预备知识" class="headerlink" title="2 预备知识"></a>2 预备知识</h1><h2 id="2-1-数据操作"><a href="#2-1-数据操作" class="headerlink" title="2.1. 数据操作"></a>2.1. 数据操作</h2><p>我们介绍n维数组，也称为张量（tensor）</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718095317947.png" alt="image-20230718095317947"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718095355503.png" alt="image-20230718095355503"></p>
+<p><strong>创建数组</strong></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718095510084.png" alt="image-20230718095510084"></p>
+<p><strong>访问元素</strong></p>
+<p>可以按照自己的需求任意访问</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718095549235.png" alt="image-20230718095549235"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718095602323.png" alt="image-20230718095602323"></p>
+<p>张量表示一个由数值组成的数组，这个数组可能有多个维度。 具有一个轴的张量对应数学上的向量（vector）； 具有两个轴的张量对应数学上的矩阵（matrix）；<br>具有两个轴以上的张量没有特殊的数学名称。</p>
+<p>可以通过张量的<code>shape</code>属性来访问张量（沿每个轴的长度）的<em>形状</em><br>。要想改变一个张量的形状而不改变元素数量和元素值，可以调用reshape函数。虽然张量的形状发生了改变，但其元素值并没有变。<br>注意，通过改变张量的形状，张量的大小不会改变。</p>
+<p>对于任意具有相同形状的张量，常⻅的标准算术运算符（+、-、*、&#x2F;和<code>**</code>（<code>**</code>运算符是求幂运算））都可以被升级为按元素运算。我们可以在同⼀形状的任意两个张量上调⽤按元素操作。</p>
+<p>在某些情况下，即使形状不同，我们仍然可以通过调⽤⼴播机制（broadcasting mechanism）来执⾏按元素操作。这种机制的⼯作⽅式如下：</p>
+<ol>
+<li>通过适当复制元素来扩展⼀个或两个数组，以便在转换之后，两个张量具有相同的形状；</li>
+<li>对⽣成的数组执⾏按元素操作。</li>
+</ol>
+<h2 id="2-2-数据预处理"><a href="#2-2-数据预处理" class="headerlink" title="2.2. 数据预处理"></a>2.2. 数据预处理</h2><p>为了处理缺失的数据，典型的方法包括插值法和删除法， 其中插值法用一个替代值弥补缺失值，而删除法则直接忽略缺失值。</p>
+<p>对于inputs中的类别值或离散值，我们将“NaN”视为一个类别。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inputs = inputs.fillna(inputs.mean()) <span class="comment">#将数值类型用平均值填充</span></span><br><span class="line">inputs = pd.get_dummies(inputs, dummy_na=<span class="literal">True</span>) <span class="comment">#将文本内容按照类别分类</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718113201331.png" alt="image-20230718113201331"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718113222966.png" alt="image-20230718113222966"></p>
+<h2 id="2-3-线性代数"><a href="#2-3-线性代数" class="headerlink" title="2.3. 线性代数"></a>2.3. 线性代数</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114138899.png" alt="image-20230718114138899"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114210230.png" alt="image-20230718114210230"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114331041.png" alt="image-20230718114331041"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114349892.png" alt="image-20230718114349892"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114436926.png" alt="image-20230718114436926"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114447497.png" alt="image-20230718114447497"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114815388.png" alt="image-20230718114815388"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718114929677.png" alt="image-20230718114929677"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718211940190.png" alt="image-20230718211940190"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718212031991.png" alt="image-20230718212031991"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718212057671.png" alt="image-20230718212057671"></p>
+<h2 id="2-4-矩阵计算"><a href="#2-4-矩阵计算" class="headerlink" title="2.4 矩阵计算"></a>2.4 矩阵计算</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215206494.png" alt="image-20230718215206494"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215333557.png" alt="image-20230718215333557"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215344699.png" alt="image-20230718215344699"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215459102.png" alt="image-20230718215459102"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215655743.png" alt="image-20230718215655743"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215723143.png" alt="image-20230718215723143"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215758970.png" alt="image-20230718215758970"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718215841361.png" alt="image-20230718215841361"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230718220052061.png" alt="image-20230718220052061"></p>
+<h2 id="2-5-自动求导"><a href="#2-5-自动求导" class="headerlink" title="2.5 自动求导"></a>2.5 自动求导</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719092732473.png" alt="image-20230719092732473"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719093024611.png" alt="image-20230719093024611"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719093232349.png" alt="image-20230719093232349"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719093445137.png" alt="image-20230719093445137"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719093611759.png" alt="image-20230719093611759"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719093632034.png" alt="image-20230719093632034"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719093650706.png" alt="image-20230718212057671"></p>
+<h1 id="3-线性神经网络"><a href="#3-线性神经网络" class="headerlink" title="3. 线性神经网络"></a>3. 线性神经网络</h1><h2 id="3-1-线性回归"><a href="#3-1-线性回归" class="headerlink" title="3.1 线性回归"></a>3.1 线性回归</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719100441778.png" alt="image-20230719100441778"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719100456525.png" alt="image-20230719100456525"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719100514806.png" alt="image-20230719100514806"></p>
+<h3 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h3><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719100728046.png" alt="image-20230719100728046"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719101108218.png" alt="image-20230719101108218"></p>
+<p>学习率与批量都应当适当，不能太大或太小</p>
+<p>在机器学习的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%B8%8A%E4%B8%8B%E6%96%87/2884376?fromModule=lemma_inlink">上下文</a><br>中，超参数是在开始学习过程之前设置值的参数，而不是通过训练得到的参数数据。通常情况下，需要对超参数进行优化，给学习机选择一组最优超参数，以提高学习的性能和效果。</p>
+<h2 id="3-4-softmax回归"><a href="#3-4-softmax回归" class="headerlink" title="3.4. softmax回归"></a>3.4. softmax回归</h2><p>softmax回归和线性回归一样也是将输入特征与权重做线性叠加，但是softmax回归的输出值个数等于标签中的类别数</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719110230215.png" alt="image-20230719110230215"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719110858768.png" alt="image-20230719110858768"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719110437470.png" alt="image-20230719110437470"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719110451386.png" alt="image-20230719110451386"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719110502882.png" alt="image-20230719110502882"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719110733103.png" alt="image-20230719110733103"></p>
+<h1 id="4-多层感知机"><a href="#4-多层感知机" class="headerlink" title="4. 多层感知机"></a>4. 多层感知机</h1><h2 id="4-1-多层感知机"><a href="#4-1-多层感知机" class="headerlink" title="4.1. 多层感知机"></a>4.1. 多层感知机</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719150417297.png" alt="image-20230719150417297"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719150545912.png" alt="image-20230719150545912"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719150906953.png" alt="image-20230719150906953"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719150919170.png" alt="image-20230719150919170"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719151201077.png" alt="image-20230719151201077"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719151640329.png" alt="image-20230719151640329"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719151757327.png" alt="image-20230719151757327"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719153011110.png" alt="image-20230719153011110"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719153020892.png" alt="image-20230719153020892"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719153033915.png" alt="image-20230719153033915"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719153515440.png" alt="image-20230719153515440"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719153527949.png" alt="image-20230719153527949"></p>
+<h2 id="4-4-模型选择、欠拟合和过拟合"><a href="#4-4-模型选择、欠拟合和过拟合" class="headerlink" title="4.4. 模型选择、欠拟合和过拟合"></a>4.4. 模型选择、欠拟合和过拟合</h2><p>训练误差：模型在训练数据上的误差<br>泛化误差：模型在新数据上的误差</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719160702475.png" alt="image-20230719160702475"><img src="../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719160702475.png" alt="image-20230719160702475" style="zoom:50%;" /></p>
+<p>训练数据集：训练模型参数<br>验证数据集：选择模型超参数<br>非大数据集上通常使用k折交叉验证</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719162021447.png" alt="image-20230719162021447"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719162042137.png" alt="image-20230719162042137"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719162118138.png" alt="image-20230719162118138"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719162143608.png" alt="image-20230719162143608"></p>
+<p>模型容量应当在泛化误差最低点是最好的</p>
+<p>时序序列应保证时间连续性，不能从中间切开</p>
+<h2 id="4-5-权重衰减"><a href="#4-5-权重衰减" class="headerlink" title="4.5. 权重衰减"></a>4.5. 权重衰减</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719191948193.png" alt="image-20230719191948193"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719192516593.png" alt="image-20230719192516593"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719192601536.png" alt="image-20230719192601536"></p>
+<h2 id="4-6-暂退法（Dropout）"><a href="#4-6-暂退法（Dropout）" class="headerlink" title="4.6. 暂退法（Dropout）"></a>4.6. 暂退法（Dropout）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719195247252.png" alt="image-20230719195247252"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719195036807.png" alt="image-20230719195036807"></p>
+<p>Dropout和正则化都是为了防止过拟合。</p>
+<h2 id="4-8-数值稳定性和模型初始化"><a href="#4-8-数值稳定性和模型初始化" class="headerlink" title="4.8. 数值稳定性和模型初始化"></a>4.8. 数值稳定性和模型初始化</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719202458607.png" alt="image-20230719202458607"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719203356742.png" alt="image-20230719203356742"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719203842750.png" alt="image-20230719203842750"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719203852028.png" alt="image-20230719203852028"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719203909237.png" alt="image-20230719203909237"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230719205210732.png" alt="image-20230719205210732"></p>
+<p>**激活函数（Activation Function）**是一种添加到人工神经网络中的函数，旨在帮助网络学习数据中的复杂模式。类似于人类大脑中基于神经元的模型，激活函数最终决定了要发射给下一个神经元的内容，<br>通常是用在隐藏层中。</p>
+<h1 id="6-卷积神经网络"><a href="#6-卷积神经网络" class="headerlink" title="6. 卷积神经网络"></a>6. 卷积神经网络</h1><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720100746613.png" alt="image-20230720100746613"></p>
+<p>i,j是输出的宽高维度，k , l是输入的宽高维度；对下标做一定的变化，k &#x3D; i + a , l &#x3D; j + b ，v是w的重新索引v ， 这里的索引a和b覆盖了正偏移和负偏移，对于隐藏表示中任意给定位置（i,j）处的像素值[H]<em>{i,j} ，通过对x中以（i,j）为中心的像素进行加权求和得到，权重为v</em>{i,j,a,b} ；</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720100826680.png" alt="image-20230720100826680"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720100839811.png" alt="image-20230720100839811"></p>
+<p>原则一：x的变换，会引起v的变化，故解决方案是把（i，j）去掉，只剩a、b纬度</p>
+<p>卷积操作</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/no_padding_no_strides.gif" alt="no_padding_no_strides"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720103226301.png" alt="image-20230720103226301"><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720103232248.png" alt="image-20230720103232248"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720103406407.png" alt="image-20230720103406407"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720103504347.png" alt="image-20230720103504347"></p>
+<h2 id="6-3-填充和步幅"><a href="#6-3-填充和步幅" class="headerlink" title="6.3. 填充和步幅"></a>6.3. 填充和步幅</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/padding_strides.gif" alt="padding_strides"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720110239052.png" alt="image-20230720110239052"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720110313082.png" alt="image-20230720110313082"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720110352045.png" alt="image-20230720110352045"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720110743912.png" alt="image-20230720110743912"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720110637482.png" alt="image-20230720110637482"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720110652824.png" alt="image-20230720110652824"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720111158955.png" alt="image-20230720111158955"></p>
+<h2 id="6-4-多输入多输出通道"><a href="#6-4-多输入多输出通道" class="headerlink" title="6.4. 多输入多输出通道"></a>6.4. 多输入多输出通道</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720141905115.png" alt="image-20230720141905115"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720141950559.png" alt="image-20230720141950559"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720142026430.png" alt="image-20230720142026430"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720142046022.png" alt="image-20230720142046022"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720142548459.png" alt="image-20230720142548459"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720142640495.png" alt="image-20230720142640495"></p>
+<h2 id="6-5-汇聚层（池化层）"><a href="#6-5-汇聚层（池化层）" class="headerlink" title="6.5. 汇聚层（池化层）"></a>6.5. 汇聚层（池化层）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720144834781.png" alt="image-20230720144834781"></p>
+<p>与卷积层类似，汇聚层运算符由一个固定形状的窗口组成，该窗口根据其步幅大小在输入的所有区域上滑动，为固定形状窗口（有时称为<br><em>汇聚窗口</em>）遍历的每个位置计算一个输出。 然而，不同于卷积层中的输入与卷积核之间的互相关计算，汇聚层不包含参数。<br>相反，池运算是确定性的，我们通常计算汇聚窗口中所有元素的最大值或平均值。这些操作分别称为<em>最大汇聚层</em>（maximum pooling）和<br><em>平均汇聚层</em>（average pooling）。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720145419790.png" alt="image-20230720145419790"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720145318773.png" alt="image-20230720145318773"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720145346993.png" alt="image-20230720145346993"></p>
+<h2 id="6-6-卷积神经网络（LeNet）"><a href="#6-6-卷积神经网络（LeNet）" class="headerlink" title="6.6. 卷积神经网络（LeNet）"></a>6.6. 卷积神经网络（LeNet）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720151818638.png" alt="image-20230720151818638"></p>
+<h1 id="7-现代卷积神经网络"><a href="#7-现代卷积神经网络" class="headerlink" title="7. 现代卷积神经网络"></a>7. 现代卷积神经网络</h1><h2 id="7-1-深度卷积神经网络（AlexNet）"><a href="#7-1-深度卷积神经网络（AlexNet）" class="headerlink" title="7.1. 深度卷积神经网络（AlexNet）"></a>7.1. 深度卷积神经网络（AlexNet）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720162053727.png" alt="image-20230720162053727"></p>
+<h2 id="7-2-使用块的网络（VGG）"><a href="#7-2-使用块的网络（VGG）" class="headerlink" title="7.2. 使用块的网络（VGG）"></a>7.2. 使用块的网络（VGG）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720192051469.png" alt="image-20230720192051469"></p>
+<p>更大、更深，将卷积层封装成块</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720193103591.png" alt="image-20230720193103591"></p>
+<h2 id="7-3-网络中的网络（NiN）"><a href="#7-3-网络中的网络（NiN）" class="headerlink" title="7.3. 网络中的网络（NiN）"></a>7.3. 网络中的网络（NiN）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720194349962.png" alt="image-20230720194349962"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720194556345.png" alt="image-20230718212057671"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720194616068.png" alt="image-20230720194616068"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720194801385.png" alt="image-20230718212057671"></p>
+<h2 id="7-4-含并行连结的网络（GoogLeNet）"><a href="#7-4-含并行连结的网络（GoogLeNet）" class="headerlink" title="7.4. 含并行连结的网络（GoogLeNet）"></a>7.4. 含并行连结的网络（GoogLeNet）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720200955774.png" alt="image-20230718212057671"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720201052178.png" alt="image-20230718212057671"></p>
+<p>蓝色用来提取空间信息，白色获取通道信息</p>
+<h2 id="7-5-批量规范化"><a href="#7-5-批量规范化" class="headerlink" title="7.5. 批量规范化"></a>7.5. 批量规范化</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720204219499.png" alt="image-20230720204219499"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720204248017.png" alt="image-20230720204248017"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720204716433.png" alt="image-20230720204716433"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720204809735.png" alt="image-20230720204809735"></p>
+<h2 id="7-6-残差网络（ResNet）"><a href="#7-6-残差网络（ResNet）" class="headerlink" title="7.6. 残差网络（ResNet）"></a>7.6. 残差网络（ResNet）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720211733678.png" alt="image-20230720211733678"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720212001144.png" alt="image-20230720212001144"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230720212027514.png" alt="image-20230720212027514"></p>
+<h1 id="13-计算机视觉"><a href="#13-计算机视觉" class="headerlink" title="13. 计算机视觉"></a>13. 计算机视觉</h1><h2 id="13-1-图像增广"><a href="#13-1-图像增广" class="headerlink" title="13.1. 图像增广"></a>13.1. 图像增广</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721093542172.png" alt="image-20230721093542172"></p>
+<p>左右翻转可以，但上下翻转并不总是可行的。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721093808772.png" alt="image-20230721093808772"></p>
+<h2 id="13-2-微调"><a href="#13-2-微调" class="headerlink" title="13.2. 微调"></a>13.2. 微调</h2><p>将以训练好的模型采用另一个数据集重新训练，这时因为有了先验经验，故只需要将参数微调。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721101519474.png" alt="image-20230721101519474"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721101837711.png" alt="image-20230721101837711"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721101943331.png" alt="image-20230721101943331"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721101954074.png" alt="image-20230721101954074"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721102025360.png" alt="image-20230721102025360"></p>
+<h2 id="13-3-目标检测和边界框"><a href="#13-3-目标检测和边界框" class="headerlink" title="13.3. 目标检测和边界框"></a>13.3. 目标检测和边界框</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721141831313.png" alt="image-20230721141831313"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721144231691.png" alt="image-20230721144231691"></p>
+<p>基于锚框预测真实的范围，而锚框的提出则是被预先提出的，会出现很多。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721144541723.png" alt="image-20230721144541723"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721144605871.png" alt="image-20230721144605871"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721144637378.png" alt="image-20230721144637378"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721145216320.png" alt="image-20230721145216320"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721145225804.png" alt="image-20230721145225804"></p>
+<h2 id="13-8-区域卷积神经网络（R-CNN）系列"><a href="#13-8-区域卷积神经网络（R-CNN）系列" class="headerlink" title="13.8. 区域卷积神经网络（R-CNN）系列"></a>13.8. 区域卷积神经网络（R-CNN）系列</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721153544659.png" alt="image-20230721153544659"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721153600232.png" alt="image-20230721153600232"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721153612991.png" alt="image-20230721153612991"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721153636475.png" alt="image-20230721153636475"></p>
+<p>Faster R-CNN：先进行预检测，随后再精检测</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721155246654.png" alt="image-20230721155246654"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721155305890.png" alt="image-20230721155305890"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721155328725.png" alt="image-20230721155328725"></p>
+<h2 id="13-9-语义分割和数据集"><a href="#13-9-语义分割和数据集" class="headerlink" title="13.9. 语义分割和数据集"></a>13.9. 语义分割和数据集</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721195145079.png" alt="image-20230721195145079"></p>
+<h2 id="13-10-转置卷积"><a href="#13-10-转置卷积" class="headerlink" title="13.10. 转置卷积"></a>13.10. 转置卷积</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721203812220.png" alt="image-20230721203812220"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721203828948.png" alt="image-20230721203828948"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721210115813.png" alt="image-20230721210115813"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721210131493.png" alt="image-20230721210131493"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721210142607.png" alt="image-20230721210142607"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721210157363.png" alt="image-20230721210157363"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721210503933.png" alt="image-20230721210503933"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721210513460.png" alt="image-20230721210513460"></p>
+<h2 id="13-11-全卷积网络"><a href="#13-11-全卷积网络" class="headerlink" title="13.11. 全卷积网络"></a>13.11. 全卷积网络</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230721211044535.png" alt="image-20230721211044535"></p>
+<h1 id="8-循环神经网络"><a href="#8-循环神经网络" class="headerlink" title="8. 循环神经网络"></a>8. 循环神经网络</h1><h2 id="8-1-序列模型"><a href="#8-1-序列模型" class="headerlink" title="8.1. 序列模型"></a>8.1. 序列模型</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722102415161.png" alt="image-20230722102415161"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722102432151.png" alt="image-20230722102432151"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722102952625.png" alt="image-20230722102952625"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722103010092.png" alt="image-20230722103010092"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722103025175.png" alt="image-20230722103025175"></p>
+<h2 id="8-3-语言模型和数据集"><a href="#8-3-语言模型和数据集" class="headerlink" title="8.3. 语言模型和数据集"></a>8.3. 语言模型和数据集</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722115210149.png" alt="image-20230722115210149"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722115220793.png" alt="image-20230722115220793"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722115242851.png" alt="image-20230722115242851"></p>
+<h2 id="8-4-循环神经网络"><a href="#8-4-循环神经网络" class="headerlink" title="8.4. 循环神经网络"></a>8.4. 循环神经网络</h2><p>不建议使用RNN</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722132216055.png" alt="image-20230722132216055"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722132335961.png" alt="image-20230722132335961"></p>
+<p>Whh存储的就是隐变量的权重值，从而预测下一个的值</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722132937557.png" alt="image-20230722132937557"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722133130562.png" alt="image-20230722133130562"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722133215698.png" alt="image-20230722133215698"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722133223334.png" alt="image-20230722133223334"></p>
+<h1 id="9-现代循环神经网络"><a href="#9-现代循环神经网络" class="headerlink" title="9. 现代循环神经网络"></a>9. 现代循环神经网络</h1><h2 id="9-1-门控循环单元（GRU）"><a href="#9-1-门控循环单元（GRU）" class="headerlink" title="9.1. 门控循环单元（GRU）"></a>9.1. 门控循环单元（GRU）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722150037087.png" alt="image-20230722150037087"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722150056740.png" alt="image-20230722150056740"></p>
+<p>使用sigmoid作为隐藏函数进行计算，通过该方法控制是否记忆，记忆多长时间的隐状态</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722150617240.png" alt="image-20230722150617240"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722150617240.png" alt="image-20230718212057671"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722150707340.png" alt="image-20230722150707340"></p>
+<h2 id="9-2-长短期记忆网络（LSTM）"><a href="#9-2-长短期记忆网络（LSTM）" class="headerlink" title="9.2. 长短期记忆网络（LSTM）"></a>9.2. 长短期记忆网络（LSTM）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722153505487.png" alt="image-20230722153505487"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722153519850.png" alt="image-20230722153519850"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722153606307.png" alt="image-20230722153606307"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722153617159.png" alt="image-20230722153617159"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722153631773.png" alt="image-20230722153631773"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722153659551.png" alt="image-20230722153659551"></p>
+<p>LSTM的状态包含两个，分别表示长期记忆和短期记忆，两者互相独立。</p>
+<h2 id="9-3-深度循环神经网络"><a href="#9-3-深度循环神经网络" class="headerlink" title="9.3. 深度循环神经网络"></a>9.3. 深度循环神经网络</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722160602509.png" alt="image-20230722160602509"></p>
+<h2 id="9-4-双向循环神经网络"><a href="#9-4-双向循环神经网络" class="headerlink" title="9.4. 双向循环神经网络"></a>9.4. 双向循环神经网络</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722160723950.png" alt="image-20230722160723950"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722160752683.png" alt="image-20230722160752683"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722160829826.png" alt="image-20230722160829826"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722160856547.png" alt="image-20230722160856547"></p>
+<p>有两个隐藏层，向前向后两个隐藏层，然后计算完合并，两个方向的含义同时出现。</p>
+<p>主要作用是对句子进行操作。例如结合上下文翻译、识别语句等等，但是不能用来预测未来。</p>
+<h2 id="9-6-编码器-解码器架构"><a href="#9-6-编码器-解码器架构" class="headerlink" title="9.6. 编码器-解码器架构"></a>9.6. 编码器-解码器架构</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722175908184.png" alt="image-20230722175908184"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722175921449.png" alt="image-20230722175921449"></p>
+<p>编码：提取特征</p>
+<p>解码：输出结果</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722180017796.png" alt="image-20230722180017796"></p>
+<h2 id="9-7-序列到序列学习（seq2seq）"><a href="#9-7-序列到序列学习（seq2seq）" class="headerlink" title="9.7. 序列到序列学习（seq2seq）"></a>9.7. 序列到序列学习（seq2seq）</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722183409490.png" alt="image-20230722183409490"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722183419684.png" alt="image-20230722183419684"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722183516923.png" alt="image-20230722183516923"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722183525690.png" alt="image-20230722183525690"></p>
+<h2 id="9-8-束搜索"><a href="#9-8-束搜索" class="headerlink" title="9.8. 束搜索"></a>9.8. 束搜索</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722190937781.png" alt="image-20230722190937781"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722191025883.png" alt="image-20230722191025883"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722192753130.png" alt="image-20230722192753130"></p>
+<h1 id="10-注意力机制"><a href="#10-注意力机制" class="headerlink" title="10. 注意力机制"></a>10. 注意力机制</h1><h2 id="10-6-自注意力和位置编码"><a href="#10-6-自注意力和位置编码" class="headerlink" title="10.6. 自注意力和位置编码"></a>10.6. 自注意力和位置编码</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722214511389.png" alt="image-20230722214511389"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722214524122.png" alt="image-20230722214524122"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722214544977.png" alt="image-20230722214544977"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230722214607607.png" alt="image-20230722214607607"></p>
+<h2 id="10-7-Transformer"><a href="#10-7-Transformer" class="headerlink" title="10.7. Transformer"></a>10.7. Transformer</h2><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723101011486.png" alt="image-20230723101011486"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723101401128.png" alt="image-20230723101401128"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103124705.png" alt="image-20230723103124705"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103138772.png" alt="image-20230723103138772"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103214933.png" alt="image-20230723103214933"></p>
+<p>等价于全连接层。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103231254.png" alt="image-20230723103231254"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103245352.png" alt="image-20230723103245352"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103257393.png" alt="image-20230723103257393"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723103307682.png" alt="image-20230723103307682"></p>
+<h1 id="11-优化算法"><a href="#11-优化算法" class="headerlink" title="11. 优化算法"></a>11. 优化算法</h1><p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131401682.png" alt="image-20230723131401682"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131434128.png" alt="image-20230723131434128"></p>
+<p>但最好的还是全局最小。凸优化则是一个特例。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131604945.png" alt="image-20230723131604945"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131621807.png" alt="image-20230723131621807"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131924887.png" alt="image-20230723131924887"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131934348.png" alt="image-20230723131934348"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723131953439.png" alt="image-20230723131953439"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723132011958.png" alt="image-20230723132011958"></p>
+<p>随机梯度是一种近似，可以极大地减少梯度的运算，减小开销。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723132302143.png" alt="image-20230723132302143"></p>
+<p>随机采样子集，用一批子集的平均值作为梯度的平均值，减少运算量。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723132613482.png" alt="image-20230723132613482"></p>
+<p>用冲量代替梯度。</p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723132640710.png" alt="image-20230723132640710"><br><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723133235819.png" alt="image-20230718212057671"></p>
+<p><img src="/../../../../../../HEXO-1/source/_posts/MachineLearning/image-20230723133448102.png" alt="image-20230723133448102"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://alsl521.github.io">kyl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alsl521.github.io/2023/12/09/MachineLearning/">https://alsl521.github.io/2023/12/09/MachineLearning/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://alsl521.github.io" target="_blank">kyl的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Python/">Python</a><a class="post-meta__tags" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></div><div class="post-share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/12/09/java2/" title="Java 基础加强"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Java 基础加强</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2023/12/09/Django/" title="Django学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Django学习</div></div><div class="info-2"><div class="info-item-1">1、安装Django1、全局安装1pip install django  2、创建项目1、基于终端1、打开终端 2、cd到创建目录（项目存放位置） 3、执行命令（已将python放入环境变量） 1django-admin.py startproject 项目名称     2、基于PyCharm打开PyCharm专业版，点击新建项目，随后更改项目存放位置，然后选择Python解释器  3、注意事项PyCharm和终端创建项目时不一样。 PyCharm会自动创建templates文件夹，用于存放页面静态资源，并 且会在settings.py中记录下来  2、项目介绍1234567891011项目名称├─manage.py         [项目管理、启动项目、创建App、数据管理]  无需更改├─PythonDjano       [项目文件夹]  无需更改│  ├─asgi.py        [异步启动]  无需更改│  ├─settings.py    [项目配置关系]│  ├─test.py        [项目测试文件]│  ├─urls.py       ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/12/09/Django-HouDuan01/" title="Django实战-1-引入Psycopg以及GeoServer-rest"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">Django实战-1-引入Psycopg以及GeoServer-rest</div></div><div class="info-2"><div class="info-item-1">安装Python下载Python官网 点击上面的链接后找到python下载地址。这样可以找到python的各类安装包。   直接点击Download则会出现可以查看python版本情况。一般选择版本为安全状态的python版本进行安装。但我选择安装Python 3.11.7，然后点击Download。  下滑到Files中选择对应版本进行安装，然后找到64位的版本进行下载。  安装先选将Python添加到环境变量中。，随后点击自定义安装，更改安装位置。  默认选择即可。  为了省事我选择为所有用户安装，并修改文件安装路径。  随后等待安装完成即可。  打开CMD，输入Python，弹出的版本信息如果和安装的一致则表明安装成功。  初始化项目使用PyCharm初始化项目。 详细信息请看Django学习，按照相关内容进行项目的创建与初始化。 创建空间数据库打开pgAdmin4  右键点击创建数据库，并输入数据库名称   点击查询工具，并添加相关插件  选择相关的插件进行安装 123456789101112//添加空间数据库的相关插件CREATE EXTENSION...</div></div></div></a><a class="pagination-related" href="/2023/12/09/Django/" title="Django学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">Django学习</div></div><div class="info-2"><div class="info-item-1">1、安装Django1、全局安装1pip install django  2、创建项目1、基于终端1、打开终端 2、cd到创建目录（项目存放位置） 3、执行命令（已将python放入环境变量） 1django-admin.py startproject 项目名称     2、基于PyCharm打开PyCharm专业版，点击新建项目，随后更改项目存放位置，然后选择Python解释器  3、注意事项PyCharm和终端创建项目时不一样。 PyCharm会自动创建templates文件夹，用于存放页面静态资源，并 且会在settings.py中记录下来  2、项目介绍1234567891011项目名称├─manage.py         [项目管理、启动项目、创建App、数据管理]  无需更改├─PythonDjano       [项目文件夹]  无需更改│  ├─asgi.py        [异步启动]  无需更改│  ├─settings.py    [项目配置关系]│  ├─test.py        [项目测试文件]│  ├─urls.py       ...</div></div></div></a><a class="pagination-related" href="/2023/12/25/Django-HouDuan02/" title="Django实战-2-实现模型选择与地图服务自动发布"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-25</div><div class="info-item-2">Django实战-2-实现模型选择与地图服务自动发布</div></div><div class="info-2"><div class="info-item-1">项目架构目前的项目主要分为以下几部分：  DatabaseContent：主要负责有关数据库的相关操作。 MapService：主要负责有关GeoServer地图服务的相关操作。 MapService：主要负责有关GeoServer地图服务的相关操作。 PublicServices：Web服务的主要入口文件，负责解析请求信息并进行分发任务。 Utils：将部分常用的功能进行封装，减轻代码编写的工作量。 目前后端只有两个方法，一个是返回已选择模型的菜单selectModels，另一个是处理用户上传的数据upLoadFiles&#96; 返回结果封装由于所有的内容都需要返回值，因此我参照所学内容在该项目中也新建了一个Result文件，用于封装最后的返回值和结果。 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172class Result:   ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kyl</div><div class="author-info-description">用于记录平时学习的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/alsl521" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:852970167@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%A2%84%E5%A4%87%E7%9F%A5%E8%AF%86"><span class="toc-number">1.</span> <span class="toc-text">2 预备知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">2.1. 数据操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">2.2. 数据预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">2.3. 线性代数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97"><span class="toc-number">1.4.</span> <span class="toc-text">2.4 矩阵计算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC"><span class="toc-number">1.5.</span> <span class="toc-text">2.5 自动求导</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%BA%BF%E6%80%A7%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">2.</span> <span class="toc-text">3. 线性神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-number">2.1.</span> <span class="toc-text">3.1 线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.1.</span> <span class="toc-text">优化方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-softmax%E5%9B%9E%E5%BD%92"><span class="toc-number">2.2.</span> <span class="toc-text">3.4. softmax回归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-number">3.</span> <span class="toc-text">4. 多层感知机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%A4%9A%E5%B1%82%E6%84%9F%E7%9F%A5%E6%9C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">4.1. 多层感知机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E3%80%81%E6%AC%A0%E6%8B%9F%E5%90%88%E5%92%8C%E8%BF%87%E6%8B%9F%E5%90%88"><span class="toc-number">3.2.</span> <span class="toc-text">4.4. 模型选择、欠拟合和过拟合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5-%E6%9D%83%E9%87%8D%E8%A1%B0%E5%87%8F"><span class="toc-number">3.3.</span> <span class="toc-text">4.5. 权重衰减</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-6-%E6%9A%82%E9%80%80%E6%B3%95%EF%BC%88Dropout%EF%BC%89"><span class="toc-number">3.4.</span> <span class="toc-text">4.6. 暂退法（Dropout）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-8-%E6%95%B0%E5%80%BC%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%92%8C%E6%A8%A1%E5%9E%8B%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">3.5.</span> <span class="toc-text">4.8. 数值稳定性和模型初始化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">4.</span> <span class="toc-text">6. 卷积神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E5%A1%AB%E5%85%85%E5%92%8C%E6%AD%A5%E5%B9%85"><span class="toc-number">4.1.</span> <span class="toc-text">6.3. 填充和步幅</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E5%A4%9A%E8%BE%93%E5%85%A5%E5%A4%9A%E8%BE%93%E5%87%BA%E9%80%9A%E9%81%93"><span class="toc-number">4.2.</span> <span class="toc-text">6.4. 多输入多输出通道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-5-%E6%B1%87%E8%81%9A%E5%B1%82%EF%BC%88%E6%B1%A0%E5%8C%96%E5%B1%82%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">6.5. 汇聚层（池化层）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-6-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88LeNet%EF%BC%89"><span class="toc-number">4.4.</span> <span class="toc-text">6.6. 卷积神经网络（LeNet）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E7%8E%B0%E4%BB%A3%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">7. 现代卷积神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%B7%B1%E5%BA%A6%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88AlexNet%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">7.1. 深度卷积神经网络（AlexNet）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E4%BD%BF%E7%94%A8%E5%9D%97%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%88VGG%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">7.2. 使用块的网络（VGG）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%88NiN%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">7.3. 网络中的网络（NiN）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E5%90%AB%E5%B9%B6%E8%A1%8C%E8%BF%9E%E7%BB%93%E7%9A%84%E7%BD%91%E7%BB%9C%EF%BC%88GoogLeNet%EF%BC%89"><span class="toc-number">5.4.</span> <span class="toc-text">7.4. 含并行连结的网络（GoogLeNet）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-5-%E6%89%B9%E9%87%8F%E8%A7%84%E8%8C%83%E5%8C%96"><span class="toc-number">5.5.</span> <span class="toc-text">7.5. 批量规范化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-6-%E6%AE%8B%E5%B7%AE%E7%BD%91%E7%BB%9C%EF%BC%88ResNet%EF%BC%89"><span class="toc-number">5.6.</span> <span class="toc-text">7.6. 残差网络（ResNet）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89"><span class="toc-number">6.</span> <span class="toc-text">13. 计算机视觉</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%B9%BF"><span class="toc-number">6.1.</span> <span class="toc-text">13.1. 图像增广</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2-%E5%BE%AE%E8%B0%83"><span class="toc-number">6.2.</span> <span class="toc-text">13.2. 微调</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-3-%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E5%92%8C%E8%BE%B9%E7%95%8C%E6%A1%86"><span class="toc-number">6.3.</span> <span class="toc-text">13.3. 目标检测和边界框</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-8-%E5%8C%BA%E5%9F%9F%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%88R-CNN%EF%BC%89%E7%B3%BB%E5%88%97"><span class="toc-number">6.4.</span> <span class="toc-text">13.8. 区域卷积神经网络（R-CNN）系列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-9-%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E5%92%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">6.5.</span> <span class="toc-text">13.9. 语义分割和数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-10-%E8%BD%AC%E7%BD%AE%E5%8D%B7%E7%A7%AF"><span class="toc-number">6.6.</span> <span class="toc-text">13.10. 转置卷积</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-11-%E5%85%A8%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C"><span class="toc-number">6.7.</span> <span class="toc-text">13.11. 全卷积网络</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">7.</span> <span class="toc-text">8. 循环神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E5%BA%8F%E5%88%97%E6%A8%A1%E5%9E%8B"><span class="toc-number">7.1.</span> <span class="toc-text">8.1. 序列模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%92%8C%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">7.2.</span> <span class="toc-text">8.3. 语言模型和数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-4-%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">7.3.</span> <span class="toc-text">8.4. 循环神经网络</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E7%8E%B0%E4%BB%A3%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">8.</span> <span class="toc-text">9. 现代循环神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-1-%E9%97%A8%E6%8E%A7%E5%BE%AA%E7%8E%AF%E5%8D%95%E5%85%83%EF%BC%88GRU%EF%BC%89"><span class="toc-number">8.1.</span> <span class="toc-text">9.1. 门控循环单元（GRU）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-2-%E9%95%BF%E7%9F%AD%E6%9C%9F%E8%AE%B0%E5%BF%86%E7%BD%91%E7%BB%9C%EF%BC%88LSTM%EF%BC%89"><span class="toc-number">8.2.</span> <span class="toc-text">9.2. 长短期记忆网络（LSTM）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-3-%E6%B7%B1%E5%BA%A6%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">8.3.</span> <span class="toc-text">9.3. 深度循环神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-4-%E5%8F%8C%E5%90%91%E5%BE%AA%E7%8E%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">8.4.</span> <span class="toc-text">9.4. 双向循环神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-6-%E7%BC%96%E7%A0%81%E5%99%A8-%E8%A7%A3%E7%A0%81%E5%99%A8%E6%9E%B6%E6%9E%84"><span class="toc-number">8.5.</span> <span class="toc-text">9.6. 编码器-解码器架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-7-%E5%BA%8F%E5%88%97%E5%88%B0%E5%BA%8F%E5%88%97%E5%AD%A6%E4%B9%A0%EF%BC%88seq2seq%EF%BC%89"><span class="toc-number">8.6.</span> <span class="toc-text">9.7. 序列到序列学习（seq2seq）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-8-%E6%9D%9F%E6%90%9C%E7%B4%A2"><span class="toc-number">8.7.</span> <span class="toc-text">9.8. 束搜索</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%9C%BA%E5%88%B6"><span class="toc-number">9.</span> <span class="toc-text">10. 注意力机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-6-%E8%87%AA%E6%B3%A8%E6%84%8F%E5%8A%9B%E5%92%8C%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81"><span class="toc-number">9.1.</span> <span class="toc-text">10.6. 自注意力和位置编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-7-Transformer"><span class="toc-number">9.2.</span> <span class="toc-text">10.7. Transformer</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="toc-number">10.</span> <span class="toc-text">11. 优化算法</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/08/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-08T07:18:30.297Z" title="发表于 2025-04-08 15:18:30">2025-04-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/23/Java-Algorithm-02/" title="链表">链表</a><time datetime="2024-06-23T07:04:47.000Z" title="发表于 2024-06-23 15:04:47">2024-06-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/20/Java-Algorithm-01/" title="算法-排序">算法-排序</a><time datetime="2024-06-20T06:00:59.000Z" title="发表于 2024-06-20 14:00:59">2024-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-4/" title="尚硅谷Java-day04">尚硅谷Java-day04</a><time datetime="2024-04-02T05:18:51.000Z" title="发表于 2024-04-02 13:18:51">2024-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-3/" title="尚硅谷Java-day03">尚硅谷Java-day03</a><time datetime="2024-04-02T05:18:48.000Z" title="发表于 2024-04-02 13:18:48">2024-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By kyl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

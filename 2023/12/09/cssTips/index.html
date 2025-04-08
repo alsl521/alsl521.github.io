@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CSS--内容居中 | kyl的博客</title><meta name="author" content="kyl"><meta name="copyright" content="kyl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CSS小知识总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS--内容居中">
+<meta property="og:url" content="https://alsl521.github.io/2023/12/09/cssTips/index.html">
+<meta property="og:site_name" content="kyl的博客">
+<meta property="og:description" content="CSS小知识总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4">
+<meta property="article:published_time" content="2023-12-09T02:56:44.000Z">
+<meta property="article:modified_time" content="2025-04-08T07:56:24.535Z">
+<meta property="article:author" content="kyl">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CSS--内容居中",
+  "url": "https://alsl521.github.io/2023/12/09/cssTips/",
+  "image": "https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4",
+  "datePublished": "2023-12-09T02:56:44.000Z",
+  "dateModified": "2025-04-08T07:56:24.535Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kyl",
+      "url": "https://alsl521.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://alsl521.github.io/2023/12/09/cssTips/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSS--内容居中',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kyl的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">CSS--内容居中</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">CSS--内容居中</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-09T02:56:44.000Z" title="发表于 2023-12-09 10:56:44">2023-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-08T07:56:24.535Z" title="更新于 2025-04-08 15:56:24">2025-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF/CSS/">CSS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="1-1文本水平对齐"><a href="#1-1文本水平对齐" class="headerlink" title="1.1文本水平对齐"></a>1.1文本水平对齐</h2><p><strong style="color:#ff0000;font-size: 22px;">text-align: center;</strong></p>
+<h2 id="1-2文本居中对齐"><a href="#1-2文本居中对齐" class="headerlink" title="1.2文本居中对齐"></a>1.2文本居中对齐</h2><p><strong style="color:#ff0000;font-size: 22px;">对于单行文字：让height 等于line-height ，可以实现文字垂直居中。</strong></p>
+<p><strong style="color:#ff0000;font-size: 22px;">vertical-align 作用：用于指定同一行元素之间，或 表格单元格 内文字的<br>垂直对齐方式。</strong></p>
+<p><strong style="color:#ff0000;font-size: 22px;">如何让子元素，在父亲中 水平居中：</strong></p>
+<ul>
+<li>若子元素为块元素，给父元素加上： margin:0 auto; 。</li>
+<li>若子元素为块元素，display: inline-block;转换为行内元素，再给父元素加上： text-align:center</li>
+<li>若子元素为行内元素、行内块元素，给父元素加上： text-align:center 。</li>
+</ul>
+<p><strong style="color:#ff0000;font-size: 22px;">如何让子元素，在父亲中 垂直居中：</strong></p>
+<ul>
+<li><p>若子元素为块元素，给子元素加上： margin-top ，值为：(父元素content －子元素盒子总高) &#x2F; 2。</p>
+</li>
+<li><p>若子元素为行内元素、行内块元素：</p>
+<p>让父元素的height &#x3D; line-height ，每个子元素都加上： vertical-align:middle; 。</p>
+</li>
+<li><p>补充：若想绝对垂直居中，父元素font-size 设置为0 。</p>
+</li>
+</ul>
+<p><strong style="color:#ff0000;font-size: 22px;">让定位元素的宽充满包含块：</strong></p>
+<ol>
+<li>块宽想与包含块一致，可以给定位元素同时设置 left 和 right 为0 。</li>
+<li>高度想与包含块一致， top 和 bottom 设置为 0 。</li>
+</ol>
+<p><strong style="color:#ff0000;font-size: 22px;">让定位元素在包含块中居中：</strong></p>
+<ul>
+<li><p>方案一：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">left</span>:<span class="number">0</span>;</span><br><span class="line"><span class="attribute">right</span>:<span class="number">0</span>;</span><br><span class="line"><span class="attribute">top</span>:<span class="number">0</span>;</span><br><span class="line"><span class="attribute">bottom</span>:<span class="number">0</span>;</span><br><span class="line"><span class="attribute">margin</span>:auto;</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>方案二：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line"><span class="attribute">margin-left</span>: 负的宽度一半;</span><br><span class="line"><span class="attribute">margin-top</span>: 负的高度一半;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<blockquote>
+<p>注意：该定位的元素必须设置宽高！！！</p>
+</blockquote>
+<p><strong style="color:#ff0000;font-size: 22px;">位移配合定位，可实现元素水平垂直居中</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong style="color:#ff0000;font-size: 22px;">flex 实现水平垂直居中</strong></p>
+<p>方法一：父容器开启flex 布局，随后使用justify-content 和align-items 实现水平垂直居中</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#888</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    <span class="attribute">justify-content</span>: center;</span><br><span class="line">    <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>方法二：父容器开启flex 布局，随后子元素margin: auto</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.outer</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">400px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#888</span>;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.inner</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: orange;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://alsl521.github.io">kyl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alsl521.github.io/2023/12/09/cssTips/">https://alsl521.github.io/2023/12/09/cssTips/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://alsl521.github.io" target="_blank">kyl的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><div class="post-share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/12/09/CSS3/" title="HTML+CSS--CSS3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">HTML+CSS--CSS3</div></div><div class="info-2"><div class="info-item-1">一、CSS3 简介1.CSS3 概述 CSS3 是CSS2 的升级版本，它在CSS2 的基础上，新增了很多强大的新功能，从而解决一些实际 面临的问题。 CSS3 在未来会按照模块化的方式去发展： https://www.w3.org/Style/CSS/current-work.html CSS3 的新特性如下： 新增了更加实用的选择器，例如：动态伪类选择器、目标伪类选择器、伪元素选择器等等。 新增了更好的视觉效果，例如：圆角、阴影、渐变等。 新增了丰富的背景效果，例如：支持多个背景图片，同时新增了若干个背景相关的属性。 新增了全新的布局方案 —— 弹性盒子。 新增了Web 字体，可以显示用户电脑上没有安装的字体。 增强了颜色，例如： HSL 、HSLA 、RGBA 几种新的颜色模式，新增 opacity 属性来控制透明度。 增加了2D 和3D 变换，例如：旋转、扭曲、缩放、位移等。 增加动画与过渡效果，让效果的变换更具流线性、平滑性。 ……    2.CSS3私有前缀2.1 什么是私有前缀如下代码中的-webkit- 就是私有前缀 12345div &#123;   ...</div></div></div></a><a class="pagination-related" href="/2023/12/09/java1/" title="Java 基础入门"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Java 基础入门</div></div><div class="info-2"><div class="info-item-1">01、Java基础入门    常用命令 作用    盘符： 切换到某个盘下：D：， C:   dir 查看当前路径下的文件信息   cd 进入单级目录: cd itheima  进入多级目录: cd   D:\itheima\JavaSE\第一天  回退到上一级目录：cd ..   回退到盘符根目录：*cd *   cls 清屏   Java 程序开发的三个步骤 开发 Java...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/12/09/CSS2/" title="HTML+CSS--CSS2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">HTML+CSS--CSS2</div></div><div class="info-2"><div class="info-item-1">一、CSS基础1.CSS简介  CSS 的全称为：层叠样式表 ( Cascading Style Sheets ) 。 CSS 也是一种标记语言，用于给 HTML 结构设置样式，例如：文字大小、颜色、元素宽高等等。   简单理解： CSS 可以美化 HTML , 让 HTML 更漂亮。 核心思想： HTML 搭建结构， CSS 添加样式，实现了：结构与样式的分离。  2.CSS的编写位置2.1行内样式 写在标签的 style 属性中，（又称：内联样式）。  语法：   1&lt;h1 style=&quot;color:red;font-size:60px;&quot;&gt;欢迎来到尚硅谷学习&lt;/h1&gt;   注意点：    style 属性的值不能随便写，写要符合 CSS 语法规范，是 名:值; 的形式。 行内样式表，只能控制当前标签的样式，对其他标签无效。    存在的问题：   书写繁琐、样式不能复用、并且没有体现出：结构与样式分离 的思想，不推荐大量使用，只有对当前元素添加简单样式时，才偶尔使用。  1234567891011&lt;!DOCTYPE...</div></div></div></a><a class="pagination-related" href="/2023/12/09/CSS3/" title="HTML+CSS--CSS3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">HTML+CSS--CSS3</div></div><div class="info-2"><div class="info-item-1">一、CSS3 简介1.CSS3 概述 CSS3 是CSS2 的升级版本，它在CSS2 的基础上，新增了很多强大的新功能，从而解决一些实际 面临的问题。 CSS3 在未来会按照模块化的方式去发展： https://www.w3.org/Style/CSS/current-work.html CSS3 的新特性如下： 新增了更加实用的选择器，例如：动态伪类选择器、目标伪类选择器、伪元素选择器等等。 新增了更好的视觉效果，例如：圆角、阴影、渐变等。 新增了丰富的背景效果，例如：支持多个背景图片，同时新增了若干个背景相关的属性。 新增了全新的布局方案 —— 弹性盒子。 新增了Web 字体，可以显示用户电脑上没有安装的字体。 增强了颜色，例如： HSL 、HSLA 、RGBA 几种新的颜色模式，新增 opacity 属性来控制透明度。 增加了2D 和3D 变换，例如：旋转、扭曲、缩放、位移等。 增加动画与过渡效果，让效果的变换更具流线性、平滑性。 ……    2.CSS3私有前缀2.1 什么是私有前缀如下代码中的-webkit- 就是私有前缀 12345div &#123;   ...</div></div></div></a><a class="pagination-related" href="/2023/12/09/QianDuan-YongHu-2/" title="vue实战-2-引入VTK以及ECharts"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">vue实战-2-引入VTK以及ECharts</div></div><div class="info-2"><div class="info-item-1">VTKvtk.js官网 Using vtk.js with vue.js官网  安装VTK.js在项目的命令行中安装vtk.js 1npm install @kitware/vtk.js  在项目中引用在vue.config.ts中添加下列信息： 1234567// https://vitejs.dev/config/export default defineConfig(&#123;   //····      //仅引用VTK    transpileDependencies: [&quot;@kitware/vtk.js&quot;],&#125;)  在项目中使用在&lt;template&gt;中添加以下内容 1234567891011121314151617181920212223242526272829303132333435&lt;template&gt;  &lt;div class=&quot;vtk-container&quot;&gt;    &lt;table class=&quot;controls&quot;&gt;     ...</div></div></div></a><a class="pagination-related" href="/2023/12/09/html5/" title="HTML+CSS--HTML5"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">HTML+CSS--HTML5</div></div><div class="info-2"><div class="info-item-1">一、HTML5简介1.什么是HTML5 HTML5 是新一代的 HTML 标准，2014年10月由万维网联盟（ W3C ）完成标准制定。 官网地址： W3C 提供： https://www.w3.org/TR/html/index.html WHATWG 提供： https://whatwg-cn.github.io/html/multipage   HTML5 在狭义上是指新一代的 HTML 标准，在广义上是指：整个前端。  2.HTML5 优势 针对JavaScript ，新增了很多可操作的接口。 新增了一些语义化标签、全局属性。 新增了多媒体标签，可以很好的替代flash 。 更加侧重语义化，对于SEO 更友好。 可移植性好，可以大量应用在移动设备上。  3.HTML5兼容性 支持： Chrome 、Safari 、Opera 、Firefox 等主流浏览器。   IE 浏览器必须是9 及以上版本才支持HTML5 ，且IE9 仅支持部分HTML5...</div></div></div></a><a class="pagination-related" href="/2023/12/25/QianDuan-YongHu-3/" title="vue实战-3-构建动态菜单和上传文件"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-25</div><div class="info-item-2">vue实战-3-构建动态菜单和上传文件</div></div><div class="info-2"><div class="info-item-1">框架构建 API：在API中统一管理相关的接口，进行前后端交流。 assets：页面所使用的图片等资料。 components：拥有构建组件，我将非大型页面都存放此处。 router：用于进行路由跳转等内容 stores：用于pinia仓库的定义与创建 style：用于定义全局样式 utils：用于存放全局使用的工具。 views：用于构建不同页面 utils目前utils中只包含了request.ts文件，用于文件请求 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364//进行axios二次封装:使用请求与响应拦截器import axios from &#x27;axios&#x27;import &#123;ElMessage&#125; from...</div></div></div></a><a class="pagination-related" href="/2023/12/09/html4/" title="HTML+CSS--HTML4"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">HTML+CSS--HTML4</div></div><div class="info-2"><div class="info-item-1">一、前序知识1.认识两位先驱 2.计算机基础知识 计算机俗称电脑，是现代一种用于高速计算的电子计算机器，可以进行数值计算、逻辑计算，还具有存储记忆功能。 计算机由 硬件 + 软件组成：   硬件：看得见摸得着的物理部件。 软件：可以指挥硬件工作的指令。   软件的分类： 系统软件：Windows、Linux、Android、Harmony 等。 应用软件：微信、QQ、王者荣耀、PhotoShop 等。   整体图示：   3.C&#x2F;S架构与B&#x2F;S架构 上面提到的应用软件，又分为两大类： C&#x2F;S架构，特点：需要安装、偶尔更新、不跨平台、开发更具针对性。 B&#x2F;S架构，特点：无需安装、无需更新、可跨平台、开发更具通用性。   名词解释：C &#x3D;&gt; client（客户端）、B &#x3D;&gt; browser（浏览器）、S &#x3D;&gt; server（服务器）。 服务器 ：为软件提供数据的设备（在背后默默的付出）。   前端工程师，主要负责编写...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kyl</div><div class="author-info-description">用于记录平时学习的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/alsl521" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:852970167@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1%E6%96%87%E6%9C%AC%E6%B0%B4%E5%B9%B3%E5%AF%B9%E9%BD%90"><span class="toc-number">1.</span> <span class="toc-text">1.1文本水平对齐</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2%E6%96%87%E6%9C%AC%E5%B1%85%E4%B8%AD%E5%AF%B9%E9%BD%90"><span class="toc-number">2.</span> <span class="toc-text">1.2文本居中对齐</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/08/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-08T07:18:30.297Z" title="发表于 2025-04-08 15:18:30">2025-04-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/23/Java-Algorithm-02/" title="链表">链表</a><time datetime="2024-06-23T07:04:47.000Z" title="发表于 2024-06-23 15:04:47">2024-06-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/20/Java-Algorithm-01/" title="算法-排序">算法-排序</a><time datetime="2024-06-20T06:00:59.000Z" title="发表于 2024-06-20 14:00:59">2024-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-4/" title="尚硅谷Java-day04">尚硅谷Java-day04</a><time datetime="2024-04-02T05:18:51.000Z" title="发表于 2024-04-02 13:18:51">2024-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-3/" title="尚硅谷Java-day03">尚硅谷Java-day03</a><time datetime="2024-04-02T05:18:48.000Z" title="发表于 2024-04-02 13:18:48">2024-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By kyl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

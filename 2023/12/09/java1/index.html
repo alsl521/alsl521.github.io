@@ -1,0 +1,689 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Java 基础入门 | kyl的博客</title><meta name="author" content="kyl"><meta name="copyright" content="kyl"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Java 基础入门 简单学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基础入门">
+<meta property="og:url" content="https://alsl521.github.io/2023/12/09/java1/index.html">
+<meta property="og:site_name" content="kyl的博客">
+<meta property="og:description" content="Java 基础入门 简单学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4">
+<meta property="article:published_time" content="2023-12-09T03:24:28.000Z">
+<meta property="article:modified_time" content="2025-04-08T08:03:47.623Z">
+<meta property="article:author" content="kyl">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Java 基础入门",
+  "url": "https://alsl521.github.io/2023/12/09/java1/",
+  "image": "https://avatars.githubusercontent.com/u/61216968?s=400&u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&v=4",
+  "datePublished": "2023-12-09T03:24:28.000Z",
+  "dateModified": "2025-04-08T08:03:47.623Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "kyl",
+      "url": "https://alsl521.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://alsl521.github.io/2023/12/09/java1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java 基础入门',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">kyl的博客</span></a><a class="nav-page-title" href="/"><span class="site-name">Java 基础入门</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Java 基础入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-09T03:24:28.000Z" title="发表于 2023-12-09 11:24:28">2023-12-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-04-08T08:03:47.623Z" title="更新于 2025-04-08 16:03:47">2025-04-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java/">Java</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="01、Java基础入门"><a href="#01、Java基础入门" class="headerlink" title="01、Java基础入门"></a>01、Java基础入门</h1><p><img src="/java1/image-20230911194908177.png" alt="image-20230911194908177"><br><img src="/java1/image-20230911195015369.png" alt="image-20230911195015369"></p>
+<table>
+<thead>
+<tr>
+<th>常用命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>盘符：</strong></td>
+<td>切换到某个盘下：D：， C:</td>
+</tr>
+<tr>
+<td><strong>dir</strong></td>
+<td>查看当前路径下的文件信息</td>
+</tr>
+<tr>
+<td><strong>cd</strong></td>
+<td>进入单级目录: <strong>cd itheima</strong>  进入多级目录: <strong>cd   D:\itheima\JavaSE\第一天</strong>  回退到上一级目录：<strong>cd ..</strong>   回退到盘符根目录：*<em>cd *</em></td>
+</tr>
+<tr>
+<td><strong>cls</strong></td>
+<td>清屏</td>
+</tr>
+</tbody></table>
+<h2 id="Java-程序开发的三个步骤"><a href="#Java-程序开发的三个步骤" class="headerlink" title="Java 程序开发的三个步骤"></a><strong>Java</strong> <strong>程序开发的三个步骤</strong></h2><p><img src="/java1/image-20230911195340811.png" alt="image-20230911195340811"></p>
+<p>开发 Java 程序，需要三个步骤：<strong>编写代码，编译代码，运行代码</strong></p>
+<p><strong>注意：编写代码时文件名称必须与代码中的类名称一致。</strong></p>
+<p><img src="/java1/image-20230911195900844.png" alt="image-20230911195900844"></p>
+<p><img src="/java1/image-20230911200025642.png" alt="image-20230911200025642"></p>
+<p><img src="/java1/image-20230911201251010.png" alt="image-20230911201251010"></p>
+<p>为各种平台提供了jvm</p>
+<p><img src="/java1/image-20230911201301227.png" alt="image-20230911201301227"></p>
+<p><img src="/java1/image-20230911201507001.png" alt="image-20230911201507001"></p>
+<p><img src="/java1/image-20230911202417410.png" alt="image-20230911202417410"><br><img src="/java1/image-20230911202623905.png" alt="image-20230911202623905"></p>
+<p><img src="/java1/image-20230911203823625.png" alt="image-20230911203823625"></p>
+<p><strong>导入模块</strong></p>
+<p>一、点击模块中的.iml进行关联导入</p>
+<p>二、复制模块后点击模块中的.iml进行导入</p>
+<p>三、新建模块，然后将src下的代码复制粘贴</p>
+<p><img src="/java1/image-20230912185835244.png" alt="image-20230912185835244"></p>
+<p><img src="/java1/image-20230912190213193.png" alt="image-20230912190213193"></p>
+<p><img src="/java1/image-20230912191031940.png" alt="image-20230912191031940"><br><img src="/java1/image-20230912191109003.png" alt="image-20230912191109003"></p>
+<p>Java语言自己用到的一些词，有特殊作用的，我们称之为关键字，我们就不能用来为做为：类名、变量名</p>
+<table>
+<thead>
+<tr>
+<th><strong>abstract</strong></th>
+<th><strong>assert</strong></th>
+<th><strong>boolean</strong></th>
+<th><strong>break</strong></th>
+<th><strong>byte</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>case</strong></td>
+<td><strong>catch</strong></td>
+<td><strong>char</strong></td>
+<td><strong>class</strong></td>
+<td><strong>const</strong></td>
+</tr>
+<tr>
+<td><strong>continue</strong></td>
+<td><strong>default</strong></td>
+<td><strong>do</strong></td>
+<td><strong>double</strong></td>
+<td><strong>else</strong></td>
+</tr>
+<tr>
+<td><strong>enum</strong></td>
+<td><strong>extends</strong></td>
+<td><strong>final</strong></td>
+<td><strong>finally</strong></td>
+<td><strong>float</strong></td>
+</tr>
+<tr>
+<td><strong>for</strong></td>
+<td><strong>goto</strong></td>
+<td><strong>if</strong></td>
+<td><strong>implements</strong></td>
+<td><strong>import</strong></td>
+</tr>
+<tr>
+<td><strong>instanceof</strong></td>
+<td><strong>int</strong></td>
+<td><strong>interface</strong></td>
+<td><strong>long</strong></td>
+<td><strong>native</strong></td>
+</tr>
+<tr>
+<td><strong>new</strong></td>
+<td><strong>package</strong></td>
+<td><strong>private</strong></td>
+<td><strong>protected</strong></td>
+<td><strong>public</strong></td>
+</tr>
+<tr>
+<td><strong>return</strong></td>
+<td><strong>strictfp</strong></td>
+<td><strong>short</strong></td>
+<td><strong>static</strong></td>
+<td><strong>super</strong></td>
+</tr>
+<tr>
+<td><strong>switch</strong></td>
+<td><strong>synchronized</strong></td>
+<td><strong>this</strong></td>
+<td><strong>throw</strong></td>
+<td><strong>throws</strong></td>
+</tr>
+<tr>
+<td><strong>transient</strong></td>
+<td><strong>try</strong></td>
+<td><strong>void</strong></td>
+<td><strong>volatile</strong></td>
+<td><strong>while</strong></td>
+</tr>
+</tbody></table>
+<h1 id="02-二进制、运算符、数据类型、Scanner"><a href="#02-二进制、运算符、数据类型、Scanner" class="headerlink" title="02-二进制、运算符、数据类型、Scanner"></a>02-二进制、运算符、数据类型、Scanner</h1><p>l计算机中数据最小的组成单元：使用8个二进制位为一组，称之为一个字节（byte,简称B）</p>
+<p><img src="/java1/image-20230912200037732.png" alt="image-20230912200037732"></p>
+<p><img src="/java1/image-20230912200503915.png" alt="image-20230912200503915"></p>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a><strong>类型转换</strong></h2><p><strong>类型范围小</strong>的变量，可以<strong>直接赋值</strong>给<strong>类型范围大</strong>的变量。</p>
+<p><img src="/java1/image-20230912201737983.png" alt="image-20230912201737983"></p>
+<p><img src="/java1/image-20230912202004576.png" alt="image-20230912202004576"></p>
+<p><img src="/java1/image-20230912202022334.png" alt="image-20230912202022334"></p>
+<p>强制类型转换<strong>可能</strong>造成数据(丢失)溢出；</p>
+<p>浮点型强转成整型，直接丢掉小数部分，保留整数部分返回</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a><strong>运算符</strong></h2><table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+</td>
+<td>加</td>
+<td>参考小学一年级</td>
+</tr>
+<tr>
+<td>-</td>
+<td>减</td>
+<td>参考小学一年级</td>
+</tr>
+<tr>
+<td>*</td>
+<td>乘</td>
+<td>参考小学二年级，与“×”相同</td>
+</tr>
+<tr>
+<td>&#x2F;</td>
+<td>除</td>
+<td>与“÷”相同，注意：在Java中两个整数相除结果还是整数。</td>
+</tr>
+<tr>
+<td>%</td>
+<td>取余</td>
+<td>获取的是两个数据做除法的余数</td>
+</tr>
+</tbody></table>
+<p>“+”符号与字符串运算的时候是用作连接符的，其结果依然是一个字符串</p>
+<p><strong>识别技巧：能算则算，不能算就在一起。</strong></p>
+<p>++ 、– 只能操作变量，不能操作字面量的。</p>
+<p><img src="/java1/image-20230912204738759.png" alt="image-20230912204738759"></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>用法</th>
+<th>作用</th>
+<th>底层代码形式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>+&#x3D;</td>
+<td>a+&#x3D;b</td>
+<td>加后赋值</td>
+<td>a &#x3D; (a的类型)(a + b);</td>
+</tr>
+<tr>
+<td>-&#x3D;</td>
+<td>a-&#x3D;b</td>
+<td>减后赋值</td>
+<td>a &#x3D; (a的类型)(a - b);</td>
+</tr>
+<tr>
+<td>*&#x3D;</td>
+<td>a*&#x3D;b</td>
+<td>乘后赋值</td>
+<td>a &#x3D; (a的类型)(a * b);</td>
+</tr>
+<tr>
+<td>&#x2F;&#x3D;</td>
+<td>a&#x2F;&#x3D;b</td>
+<td>除后赋值</td>
+<td>a &#x3D; (a的类型)(a &#x2F; b);</td>
+</tr>
+<tr>
+<td>%&#x3D;</td>
+<td>a%&#x3D;b</td>
+<td>取余后赋值</td>
+<td>a &#x3D; (a的类型)(a % b);</td>
+</tr>
+</tbody></table>
+<p><strong>注意：扩展的赋值运算符隐含了强制类型转换。</strong></p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>例子</th>
+<th>作用</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&gt;</td>
+<td>a&gt;b</td>
+<td>判断a是否大于b</td>
+<td>成立返回true、不成立返回false</td>
+</tr>
+<tr>
+<td>&gt;&#x3D;</td>
+<td>a&gt;&#x3D;b</td>
+<td>判断a是否大于或者等于b</td>
+<td>成立返回true、不成立返回false</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>a&lt;b</td>
+<td>判断a是否小于b</td>
+<td>成立返回true、不成立返回false</td>
+</tr>
+<tr>
+<td>&lt;&#x3D;</td>
+<td>a&lt;&#x3D;b</td>
+<td>判断a是否小于或者等于b</td>
+<td>成立返回true、不成立返回false</td>
+</tr>
+<tr>
+<td>&#x3D;&#x3D;</td>
+<td>a&#x3D;&#x3D;b</td>
+<td>判断a是否等于b</td>
+<td>成立返回true、不成立返回false</td>
+</tr>
+<tr>
+<td>!&#x3D;</td>
+<td>a !&#x3D;  b</td>
+<td>判断a是否不等于b</td>
+<td>成立返回true、不成立返回false</td>
+</tr>
+</tbody></table>
+<p>判断数据是否满足条件，最终会返回一个判断的结果，这个结果是布尔类型的值：true或者false。</p>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>叫法</th>
+<th>例子</th>
+<th>运算逻辑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>&amp;</strong></td>
+<td>逻辑与</td>
+<td>2  &gt; 1 &amp; 3 &gt; 2</td>
+<td>多个条件必须都是true,  结果才是true； 有一个是false，结果就是false</td>
+</tr>
+<tr>
+<td><strong>|</strong></td>
+<td>逻辑或</td>
+<td>2  &gt; 1 | 3 &lt; 5</td>
+<td>多个条件中只要有一个是true,  结果就是true;</td>
+</tr>
+<tr>
+<td><strong>!</strong></td>
+<td>逻辑非</td>
+<td>!  (2 &gt; 1)</td>
+<td>就是取反：你真我假，你假我真。!true &#x3D;&#x3D; false、!false &#x3D;&#x3D; true</td>
+</tr>
+<tr>
+<td><strong>^</strong></td>
+<td>逻辑异或</td>
+<td>2  &gt; 1 ^ 3 &gt; 1</td>
+<td>前后条件的结果相同，就直接返回false，前后条件的结果不同，才返回true</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>叫法</th>
+<th>例子</th>
+<th>运算逻辑</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>&amp;&amp;</strong></td>
+<td>短路与</td>
+<td>2  &gt; 10 &amp;&amp; 3 &gt; 2</td>
+<td>判断结果与“&amp;”一样，过程不同：<strong>左边为</strong>  <strong>false</strong><strong>，右边则不执行。</strong></td>
+</tr>
+<tr>
+<td><strong>||</strong></td>
+<td>短路或</td>
+<td>2  &gt; 1 | | 3 &lt; 5</td>
+<td>判断结果与“|”一样，过程不同：<strong>左边为</strong>  <strong>true</strong><strong>， 右边则不执行。</strong></td>
+</tr>
+</tbody></table>
+<p>注意：在java中， “&amp;” 、 “|”:  无论左边是 false还是 true，右边都要执行。</p>
+<p><strong>三元运算符介绍</strong></p>
+<p>条件表达式 <strong>?</strong> 值1 <strong>:</strong> 值2 ;</p>
+<p>执行流程：首先计算<strong>关系表达式的值，<strong>如果值为</strong>true</strong>，返回<strong>值1</strong>，如果为<strong>false</strong>，返回<strong>值2</strong>。</p>
+<p><img src="/java1/image-20230912211815170.png" alt="image-20230912211815170"></p>
+<h1 id="03-循环控制"><a href="#03-循环控制" class="headerlink" title="03-循环控制"></a>03-循环控制</h1><p><img src="/java1/image-20230912214514817.png" alt="image-20230912214514817"></p>
+<h2 id="分支结构"><a href="#分支结构" class="headerlink" title="分支结构"></a><strong>分支结构</strong></h2><p>根据条件（真或假）来决定执行某段代码。</p>
+<p>可以根据条件，选择执行某段程序。</p>
+<p><img src="/java1/image-20230913183557031.png" alt="image-20230913183557031"></p>
+<p>if(条件){}，()后不能跟“;”否则{}中的代码将不受if的控制了。</p>
+<p>如果if语句的{}中只有一行代码的情况，{}可以省略不写（但是不推荐省略）。</p>
+<p><img src="/java1/image-20230913184030223.png" alt="image-20230913184030223"></p>
+<p>if在功能上远远强大于switch。</p>
+<p>当前条件是区间的时候，应该使用if分支结构。</p>
+<p>当条件是与一个一个的值比较的时候，switch分支更合适：格式良好，性能较好，代码优雅。</p>
+<p>①表达式类型只能是byte、short、int、char，JDK5开始支持枚举，JDK7开始支持String、不支持double、float、long。</p>
+<p>②case给出的值不允许重复，且只能是字面量，不能是变量。</p>
+<p>③正常使用switch的时候，不要忘记写break，否则会出现穿透现象。</p>
+<p>当存在多个case分支的代码相同时，可以把相同的代码放到一个case块中，其他的case块都通过穿透性穿透到该case块执行代码即可，这样可以简化代码。</p>
+<h2 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a><strong>循环结构</strong></h2><p>控制一段代码反复执行很多次。</p>
+<p>批量产生数据</p>
+<p><img src="/java1/image-20230913191735714.png" alt="image-20230913191735714"></p>
+<p><img src="/java1/image-20230913192844088.png" alt="image-20230913192844088"></p>
+<p><strong>循环嵌套的特点</strong></p>
+<p>外部循环每循环一次，内部循环会全部执行完一轮。</p>
+<p>break  : 跳出并结束当前所在循环的执行。</p>
+<p>continue: 用于跳出当前循环的当次执行，直接进入循环的下一次执行。</p>
+<h1 id="04、数组"><a href="#04、数组" class="headerlink" title="04、数组"></a>04、数组</h1><h2 id="数组的定义和访问"><a href="#数组的定义和访问" class="headerlink" title="数组的定义和访问"></a><strong>数组的定义和访问</strong></h2><p><strong>数组的静态初始化</strong></p>
+<p>定义数组的时候直接给数组赋值。</p>
+<p>数据类型[] 数组名 &#x3D; new 数据类型[]{元素1，元素2 ，元素3… };</p>
+<p>数据类型[] 数组名 &#x3D; { 元素1，元素2 ，元素3，… };</p>
+<p>“数据类型[] 数组名”也可写成 “数据类型 数组名[] ”。</p>
+<p>什么类型的数组只能存放什么类型的数据。</p>
+<p><strong>数组的动态初始化</strong></p>
+<p>定义数组时先不存入具体的元素值，只确定数组存储的数据类型和数组的长度</p>
+<p>静态初始化和动态初始化数组的写法是独立的，不可以混用。</p>
+<p><img src="/java1/image-20230913201504929.png" alt="image-20230913201504929"></p>
+<h2 id="数组在计算机中的执行原理"><a href="#数组在计算机中的执行原理" class="headerlink" title="数组在计算机中的执行原理"></a><strong>数组在计算机中的执行原理</strong></h2><p><img src="/java1/image-20230913202018673.png" alt="image-20230913202018673"><br><img src="/java1/image-20230913202029076.png" alt="image-20230913202029076"></p>
+<p><img src="/java1/image-20230913202138178.png" alt="image-20230913202138178"></p>
+<p><img src="/java1/image-20230913202613793.png" alt="image-20230913202613793"></p>
+<p><img src="/java1/image-20230913202746300.png" alt="image-20230913202746300"></p>
+<h1 id="05、方法"><a href="#05、方法" class="headerlink" title="05、方法"></a>05、方法</h1><h2 id="方法的其他形式"><a href="#方法的其他形式" class="headerlink" title="方法的其他形式"></a><strong>方法的其他形式</strong></h2><p>方法是一种语法结构，它可以把一段代码封装成一个功能，以便重复调用。</p>
+<p>方法的修饰符：暂时都使用public static 修饰。</p>
+<p>方法申明了具体的返回值类型，内部必须使用return返回对应类型的数据。</p>
+<p>形参列表可以有多个，甚至可以没有； 如果有多个形参，多个形参必须用“，”隔开，且不能给初始化值。</p>
+<p><strong>提高代码的复用性，提高开发效率，使程序逻辑更清晰。</strong></p>
+<p>方法定义时：需要按照方法解决的实际业务需求，来设计合理的方法形式解决问题。</p>
+<p>如果方法不需要返回数据，返回值类型必须申明成void（无返回值申明）, 此时方法内部不可以使用return返回数据。</p>
+<p>方法如果不需要接收数据，则不需要定义形参，且调用方法时也不可以传数据给方法了。</p>
+<p>没有参数，且没有返回值类型（void）申明的方法，称为无参数、无返回值的方法，依次类推。</p>
+<h2 id="方法使用时的常见问题"><a href="#方法使用时的常见问题" class="headerlink" title="方法使用时的常见问题"></a><strong>方法使用时的常见问题</strong></h2><p>方法在类中的位置放前放后无所谓，但一个方法不能定义在另一个方法里面。</p>
+<p>方法的返回值类型写void（无返回申明）时，方法内不能使用return返回数据，如果方法的返回值类型写了具体类型，方法内部则必须使用return返回对应类型的数据。</p>
+<p>return语句的下面，不能编写代码，属于无效的代码，执行不到这儿。</p>
+<p>方法不调用就不会执行, 调用方法时，传给方法的数据，必须严格匹配方法的参数情况。</p>
+<p>调用有返回值的方法，有3种方式：1、可以定义变量接收结果 2、或者直接输出调用，3、甚至直接调用；</p>
+<p>调用无返回值的方法，只有1种方式：1、只能直接调用。</p>
+<h2 id="方法在计算机中的执行原理"><a href="#方法在计算机中的执行原理" class="headerlink" title="方法在计算机中的执行原理"></a><strong>方法在计算机中的执行原理</strong></h2><p>方法被调用的时候，是进入到栈内存中运行。</p>
+<p><img src="/java1/image-20230913211251583.png" alt="image-20230913211251583"></p>
+<p><strong>先进后出。</strong></p>
+<p><strong>保证一个方法调用完另一个方法后，可以回来。</strong></p>
+<h2 id="Java的参数传递机制"><a href="#Java的参数传递机制" class="headerlink" title="Java的参数传递机制"></a><strong>Java的参数传递机制</strong></h2><p><strong>Java</strong>的参数传递机制都是：值传递</p>
+<p>所谓值传递：指的是在传输实参给方法的形参的时候，传输的是实参变量中存储的值的副本。</p>
+<p>实参：在方法内部定义的变量。</p>
+<p>形参：定义方法时“(…)”中所声明的参数。</p>
+<p><strong>基本类型的参数传输存储的数据值。</strong></p>
+<p><strong>引用类型的参数传输存储的地址值。</strong></p>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a><strong>方法重载</strong></h2><p>一个类中，出现多个方法的名称相同，但是它们的形参列表是不同的，那么这些方法就称为方法重载了。</p>
+<p>一个类中，只要一些方法的名称相同、形参列表不同，那么它们就是方法重载了，其它的都不管（如：修饰符，返回值类型是否一样都无所谓）。</p>
+<p>形参列表不同指的是：形参的个数、类型、顺序不同，不关心形参的名称。</p>
+<p>1、什么是方法重载？</p>
+<p>一个类中，多个方法的名称相同，但它们形参列表不同。</p>
+<p>2、方法重载需要注意什么？</p>
+<p>一个类中，只要一些方法的名称相同、形参列表不同，那么它们就是方法重载了，其它的都不管（如：修饰符，返回值类型是否一样都无所谓）。</p>
+<p>形参列表不同指的是：形参的个数、类型、顺序不同，不关心形参的名称。</p>
+<p>3、方法重载有啥应用场景？</p>
+<p>开发中我们经常需要为处理一类业务，提供多种解决方案，此时用方法重载来设计是很专业的。</p>
+<h2 id="补充知识：方法中单独使用return关键字"><a href="#补充知识：方法中单独使用return关键字" class="headerlink" title="补充知识：方法中单独使用return关键字"></a>补充知识：方法中单独使用return关键字</h2><p>return; 可以用在无返回值的方法中，作用是：立即跳出并结束当前方法的执行。</p>
+<p>1.在无返回值的方法中，如果要直接跳出并结束当前方法的执行，怎么解决？</p>
+<p><strong>return;</strong> <strong>跳出并立即结束所在方法的执行。</strong></p>
+<p><strong>break;</strong> <strong>跳出并结束当前所在循环的执行。</strong></p>
+<p><strong>continue;</strong> <strong>结束当前所在循环的当次继续，进入下一次执行。</strong></p>
+<h1 id="07-面向对象基础"><a href="#07-面向对象基础" class="headerlink" title="07-面向对象基础"></a>07-面向对象基础</h1><h2 id="深刻认识面向对象"><a href="#深刻认识面向对象" class="headerlink" title="深刻认识面向对象"></a><strong>深刻认识面向对象</strong></h2><p>对象本质上是一种特殊的数据结构。</p>
+<p>class也就是类，也称为对象的设计图（或者对象的模板）。</p>
+<h2 id="对象在计算机中的执行原理"><a href="#对象在计算机中的执行原理" class="headerlink" title="对象在计算机中的执行原理"></a><strong>对象在计算机中的执行原理</strong></h2><p><img src="/java1/image-20230914201027317.png" alt="image-20230914201027317"></p>
+<p><img src="/java1/image-20230914201644983.png" alt="image-20230914201644983"></p>
+<h2 id="this"><a href="#this" class="headerlink" title="this"></a><strong>this</strong></h2><p>this就是一个变量，可以用在方法中，来拿到当前对象。</p>
+<p><img src="/java1/image-20230914202726041.png" alt="image-20230914202726041"></p>
+<p>this主要用来解决：变量名称冲突问题的。</p>
+<p>this就是一个变量， 可以用在方法中 ，用来拿到当前对象；哪个对象调用方法，this就指向哪个对象，也就是拿到哪个对象。</p>
+<p>方法里的this到底是如何拿到调用它的对象:将地址传给this，带有this的方法会自动填一个形参：</p>
+<p>类名 this</p>
+<p><img src="/java1/image-20230914203658051.png" alt="image-20230914203658051"></p>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a><strong>构造器</strong></h2><p><img src="/java1/image-20230914203734757.png" alt="image-20230914203734757"></p>
+<p>类在设计时，如果不写构造器，Java是会为类自动生成一个无参构造器的。</p>
+<p>一旦定义了有参数构造器，Java就不会帮我们的类自动生成无参构造器了，此时就建议自己手写一个无参数构造器出来了。</p>
+<p>可以有多个构造器，形参不同即可。</p>
+<p>方便创建对象的时候，可以将对象的属性进行初始化赋值。</p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a><strong>封装</strong></h2><p>就是用类设计对象处理某一个事物的数据时，应该把要处理的数据，以及处理这些数据的方法，设计到一个对象中去。</p>
+<p><img src="/java1/image-20230914204941141.png" alt="image-20230914204941141"></p>
+<p><img src="/java1/image-20230914205018029.png" alt="image-20230914205018029"></p>
+<h2 id="实体JavaBean"><a href="#实体JavaBean" class="headerlink" title="实体JavaBean"></a>实体JavaBean</h2><p><img src="/java1/image-20230914211554145.png" alt="image-20230914211554145"></p>
+<p>1.什么是实体类？ 有啥特点？</p>
+<p>成员变量必须私有，且要为他们提供get、set方法；必须有无参数构造器 。</p>
+<p>仅仅只是一个用来保存数据的java类，可以用它创建对象，保存某个事物的数据。</p>
+<p>2.实体类有啥应用场景？</p>
+<p><strong>实体类对应的是软件开发里现在比较流行的开发方式，数据和数据的业务处理相分离</strong></p>
+<h2 id="成员变量、局部变量的区别小结"><a href="#成员变量、局部变量的区别小结" class="headerlink" title="成员变量、局部变量的区别小结"></a><strong>成员变量、局部变量的区别小结</strong></h2><table>
+<thead>
+<tr>
+<th>区别</th>
+<th>成员变量</th>
+<th>局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类中位置不同</td>
+<td>类中，方法外</td>
+<td>常见于方法中</td>
+</tr>
+<tr>
+<td>初始化值不同</td>
+<td>有默认值, 不需要初始化赋值</td>
+<td>没有默认值，使用之前必须完成赋值</td>
+</tr>
+<tr>
+<td>内存位置不同</td>
+<td>堆内存</td>
+<td>栈内存</td>
+</tr>
+<tr>
+<td>作用域不同</td>
+<td>整个对象</td>
+<td>在所归属的大括号中</td>
+</tr>
+<tr>
+<td>生命周期不同</td>
+<td>与对象共存亡</td>
+<td>随着方法的调用而生，随着方法的运行结束而亡</td>
+</tr>
+</tbody></table>
+<h1 id="08-面-向对象基础应用：常用API"><a href="#08-面-向对象基础应用：常用API" class="headerlink" title="08-面 向对象基础应用：常用API"></a>08-面 向对象基础应用：常用API</h1><h2 id="包"><a href="#包" class="headerlink" title="包"></a><strong>包</strong></h2><p><img src="/java1/image-20230914215723246.png" alt="image-20230914215723246"></p>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a><strong>String</strong></h2><p><img src="/java1/image-20230915094928145.png" alt="image-20230915094928145"></p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public int length()</td>
+<td>获取字符串的长度返回（就是字符个数）</td>
+</tr>
+<tr>
+<td>public char charAt(int index)</td>
+<td>获取某个索引位置处的字符返回</td>
+</tr>
+<tr>
+<td>public char[] toCharArray()：</td>
+<td>将当前字符串转换成字符数组返回</td>
+</tr>
+<tr>
+<td>public boolean equals(Object anObject)</td>
+<td>判断当前字符串与另一个字符串的内容一样，一样返回true</td>
+</tr>
+<tr>
+<td>public boolean equalsIgnoreCase(String anotherString)</td>
+<td>判断当前字符串与另一个字符串的内容是否一样(忽略大小写)</td>
+</tr>
+<tr>
+<td>public String substring(int beginIndex, int endIndex)</td>
+<td>根据开始和结束索引进行截取，得到新的字符串（包前不包后）</td>
+</tr>
+<tr>
+<td>public String substring(int beginIndex)</td>
+<td>从传入的索引处截取，截取到末尾，得到新的字符串返回</td>
+</tr>
+<tr>
+<td>public String replace(CharSequence target, CharSequence replacement)</td>
+<td>使用新值，将字符串中的旧值替换，得到新的字符串</td>
+</tr>
+<tr>
+<td>public boolean contains(CharSequence s)</td>
+<td>判断字符串中是否包含了某个字符串</td>
+</tr>
+<tr>
+<td>public boolean startsWith(String prefix)</td>
+<td>判断字符串是否以某个字符串内容开头，开头返回true，反之</td>
+</tr>
+<tr>
+<td>public String[] split(String regex)</td>
+<td>把字符串按照某个字符串内容分割，并返回字符串数组回来</td>
+</tr>
+</tbody></table>
+<p>1、String有哪几点注意事项？</p>
+<p>**String是不可变字符串对象，每次试图改变字符串对象实际上是新产生了新的字符串对象了，变量每次都是指向了新的字符串对象，之前字符串对象的内容确实是没有改变的，因此说String的对象是不可变的。</p>
+<p>**</p>
+<p><img src="/java1/image-20230915100957864.png" alt="image-20230915100957864"></p>
+<p><strong>只要是以“…”方式写出的字符串对象，会存储到字符串常量池，且相同内容的字符串只存储一份，通过构造器实现的则不会</strong></p>
+<p><img src="/java1/image-20230915100920716.png" alt="image-20230915100920716"></p>
+<p><img src="/java1/image-20230915100929553.png" alt="image-20230915100929553"></p>
+<p><strong>但通过new方式创建字符串对象，每new一次都会产生一个新的对象放在堆内存中。</strong></p>
+<p><img src="/java1/image-20230915101138607.png" alt="image-20230915101138607"></p>
+<p><img src="/java1/image-20230915101231258.png" alt="image-20230915101231258"></p>
+<p>运算放在堆内存，赋值放在常量池，所以不相等。</p>
+<h2 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a><strong>ArrayList</strong></h2><p>集合是一种容器，用来装数据的，类似于数组。集合大小可变，开发中用的更多。</p>
+<p><img src="/java1/image-20230915111013308.png" alt="image-20230915111013308"></p>
+<p>1、集合是什么，有什么特点？</p>
+<p><strong>一种容器，用来存储数据的</strong></p>
+<p><strong>集合的大小可变。</strong></p>
+<p>2、ArrayList是什么? 怎么使用？</p>
+<p>是集合中最常用的一种，ArrayList是泛型类，可以约束存储的数据类型。</p>
+<p><strong>创建对象，调用无参数构造器初始化对象：public ArrayList();</strong></p>
+<p><strong>调用相应的增删改查数据的方法</strong></p>
+<p>1、 从集合中遍历元素，并筛选出元素删除它，应该如何操作才能不出bug？</p>
+<p><strong>方式一：每次删除一个数据后，索引-1。</strong></p>
+<p><strong>方式二：从集合后面遍历然后删除，可以避免漏掉元素。</strong></p>
+<p>3、ArrayList提供了哪些常用方法？</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://alsl521.github.io">kyl</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://alsl521.github.io/2023/12/09/java1/">https://alsl521.github.io/2023/12/09/java1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://alsl521.github.io" target="_blank">kyl的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post-share"><div class="social-share" data-image="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2023/12/09/cssTips/" title="CSS--内容居中"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">CSS--内容居中</div></div><div class="info-2"><div class="info-item-1">1.1文本水平对齐text-align: center; 1.2文本居中对齐对于单行文字：让height 等于line-height ，可以实现文字垂直居中。 vertical-align 作用：用于指定同一行元素之间，或 表格单元格 内文字的垂直对齐方式。 如何让子元素，在父亲中 水平居中：  若子元素为块元素，给父元素加上： margin:0 auto; 。 若子元素为块元素，display: inline-block;转换为行内元素，再给父元素加上： text-align:center 若子元素为行内元素、行内块元素，给父元素加上： text-align:center 。  如何让子元素，在父亲中 垂直居中：  若子元素为块元素，给子元素加上： margin-top ，值为：(父元素content －子元素盒子总高) &#x2F; 2。  若子元素为行内元素、行内块元素： 让父元素的height &#x3D; line-height ，每个子元素都加上： vertical-align:middle; 。  补充：若想绝对垂直居中，父元素font-size 设置为0...</div></div></div></a><a class="pagination-related" href="/2023/12/09/java2/" title="Java 基础加强"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Java 基础加强</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/12/09/java2/" title="Java 基础加强"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-09</div><div class="info-item-2">Java 基础加强</div></div><div class="info-2"><div class="info-item-1">...</div></div></div></a><a class="pagination-related" href="/2023/12/08/SpringBoot/" title="SpringBoot小知识"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-08</div><div class="info-item-2">SpringBoot小知识</div></div><div class="info-2"><div class="info-item-1">使用Lombok导致传值失败spring中，为什么前端明明传了值，后端却接收不到_springboot接口无法获取参数-CSDN博客 结论到这里，我们就可以得出结论了  因为 Lombok 生成 get、set 方法的语义规范与和Jackson 处理 get、set 方法之间的不一致，导致属性名无法匹配上，最终也就导致了前端明明传了参数，后端却接收不到的问题。   看到这里，我就来总结一下能解决这个问题的三种方案吧 1.加@JsonProperty注解强行指定属性名 123456789101112@Datapublic class UserVO &#123;    /**     * 用户名称     */    @JsonProperty(value = &quot;uName&quot;)    private String uName;    /**     * 登录类型     */    private String...</div></div></div></a><a class="pagination-related" href="/2024/01/06/Little-knowledge-of-Java-2/" title="Java学习（二）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-06</div><div class="info-item-2">Java学习（二）</div></div><div class="info-2"><div class="info-item-1">对象与类面向对象程序设计概述面向对象程序设计(Object Oriented Programming)作为一种新方法，其本质是以建立模型体现出来的抽象思维过程和面向对象的方法。模型是用来反映现实世界中事物特征的。任何一个模型都不可能反映客观事物的一切具体特征，只能对事物特征和变化规律的一种抽象，且在它所涉及的范围内更普遍、更集中、更深刻地描述客体的特征。通过建立模型而达到的抽象是人们对客体认识的深化。 类类(class)是构造对象的模板或蓝图。我们可以将类想象成制作小甜饼的模具，将对象想象为小甜饼。由类构造(construct)对象的过程称为创建类的实例(instance)。 封装(encapsulation),有时称为数据隐藏)是处理对象的一个重要概念。从形式上看，封装就是将数据和行为组合在一个包中，并对对象的使用者隐藏具体的实现方式。对象中的数据称为实例字段(instance...</div></div></div></a><a class="pagination-related" href="/2024/02/01/SSM-2/" title="Java学习-SSM-2"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-01</div><div class="info-item-2">Java学习-SSM-2</div></div><div class="info-2"><div class="info-item-1">核心容器前面已经完成bean与依赖注入的相关知识学习，接下来我们主要学习的是IOC容器中的核心容器。 这里所说的核心容器，大家可以把它简单的理解为ApplicationContext，前面虽然已经用到过，但是并没有系统的学习，接下来咱们从以下几个问题入手来学习下容器的相关知识:  如何创建容器? 创建好容器后，如何从容器中获取bean对象? 容器类的层次结构是什么? BeanFactory是什么?  环境准备在学习和解决上述问题之前，先来准备下案例环境:  创建一个Maven项目  pom.xml添加Spring的依赖 1234567&lt;dependencies&gt;    &lt;dependency&gt;        &lt;groupId&gt;org.springframework&lt;/groupId&gt;        &lt;artifactId&gt;spring-context&lt;/artifactId&gt;        &lt;version&gt;5.2.10.RELEASE&lt;/version&gt;   ...</div></div></div></a><a class="pagination-related" href="/2024/01/03/Little-knowledge-of-Java-1/" title="Java学习（一）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-03</div><div class="info-item-2">Java学习（一）</div></div><div class="info-2"><div class="info-item-1">Java三大平台JavaSE、JavaME、JavaE...</div></div></div></a><a class="pagination-related" href="/2024/02/02/SSM-3/" title="Java学习-SSM-3"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-02</div><div class="info-item-2">Java学习-SSM-3</div></div><div class="info-2"><div class="info-item-1">AOP简介前面我们在介绍Spring的时候说过，Spring有两个核心的概念，一个是IOC/DI，一个是AOP。 前面已经对IOC/DI进行了系统的学习，接下来要学习它的另一个核心内容，就是AOP。 对于AOP,我们前面提过一句话是:AOP是在不改原有代码的前提下对其进行增强。 对于下面的内容，我们主要就是围绕着这一句话进行展开学习，主要学习两方面内容AOP核心概念,AOP作用: 什么是AOP? AOP(Aspect Oriented Programming)面向切面编程，一种编程范式，指导开发者如何组织程序结构。 OOP(Object Oriented...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://avatars.githubusercontent.com/u/61216968?s=400&amp;u=d5b61cbc7946e6309e4318dabc2d459a18e0fe55&amp;v=4" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">kyl</div><div class="author-info-description">用于记录平时学习的博客</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">53</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/alsl521" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:852970167@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01%E3%80%81Java%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">01、Java基础入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%89%E4%B8%AA%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.1.</span> <span class="toc-text">Java 程序开发的三个步骤</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#02-%E4%BA%8C%E8%BF%9B%E5%88%B6%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E3%80%81Scanner"><span class="toc-number">2.</span> <span class="toc-text">02-二进制、运算符、数据类型、Scanner</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.1.</span> <span class="toc-text">类型转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.2.</span> <span class="toc-text">运算符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">03-循环控制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">分支结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="toc-number">3.2.</span> <span class="toc-text">循环结构</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04%E3%80%81%E6%95%B0%E7%BB%84"><span class="toc-number">4.</span> <span class="toc-text">04、数组</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%AE%BF%E9%97%AE"><span class="toc-number">4.1.</span> <span class="toc-text">数组的定义和访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">数组在计算机中的执行原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05%E3%80%81%E6%96%B9%E6%B3%95"><span class="toc-number">5.</span> <span class="toc-text">05、方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E7%9A%84%E5%85%B6%E4%BB%96%E5%BD%A2%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">方法的其他形式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BD%BF%E7%94%A8%E6%97%B6%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">5.2.</span> <span class="toc-text">方法使用时的常见问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="toc-number">5.3.</span> <span class="toc-text">方法在计算机中的执行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%9C%BA%E5%88%B6"><span class="toc-number">5.4.</span> <span class="toc-text">Java的参数传递机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="toc-number">5.5.</span> <span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A5%E5%85%85%E7%9F%A5%E8%AF%86%EF%BC%9A%E6%96%B9%E6%B3%95%E4%B8%AD%E5%8D%95%E7%8B%AC%E4%BD%BF%E7%94%A8return%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">5.6.</span> <span class="toc-text">补充知识：方法中单独使用return关键字</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#07-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80"><span class="toc-number">6.</span> <span class="toc-text">07-面向对象基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%88%BB%E8%AE%A4%E8%AF%86%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">6.1.</span> <span class="toc-text">深刻认识面向对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E5%9C%A8%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%AD%E7%9A%84%E6%89%A7%E8%A1%8C%E5%8E%9F%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">对象在计算机中的执行原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this"><span class="toc-number">6.3.</span> <span class="toc-text">this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8"><span class="toc-number">6.4.</span> <span class="toc-text">构造器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">6.5.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93JavaBean"><span class="toc-number">6.6.</span> <span class="toc-text">实体JavaBean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E3%80%81%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB%E5%B0%8F%E7%BB%93"><span class="toc-number">6.7.</span> <span class="toc-text">成员变量、局部变量的区别小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#08-%E9%9D%A2-%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80%E5%BA%94%E7%94%A8%EF%BC%9A%E5%B8%B8%E7%94%A8API"><span class="toc-number">7.</span> <span class="toc-text">08-面 向对象基础应用：常用API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85"><span class="toc-number">7.1.</span> <span class="toc-text">包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String"><span class="toc-number">7.2.</span> <span class="toc-text">String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList"><span class="toc-number">7.3.</span> <span class="toc-text">ArrayList</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/08/hello-world/" title="Hello World">Hello World</a><time datetime="2025-04-08T07:18:30.297Z" title="发表于 2025-04-08 15:18:30">2025-04-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/23/Java-Algorithm-02/" title="链表">链表</a><time datetime="2024-06-23T07:04:47.000Z" title="发表于 2024-06-23 15:04:47">2024-06-23</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/20/Java-Algorithm-01/" title="算法-排序">算法-排序</a><time datetime="2024-06-20T06:00:59.000Z" title="发表于 2024-06-20 14:00:59">2024-06-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-4/" title="尚硅谷Java-day04">尚硅谷Java-day04</a><time datetime="2024-04-02T05:18:51.000Z" title="发表于 2024-04-02 13:18:51">2024-04-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/04/02/ShangGuiGu-Java-3/" title="尚硅谷Java-day03">尚硅谷Java-day03</a><time datetime="2024-04-02T05:18:48.000Z" title="发表于 2024-04-02 13:18:48">2024-04-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2025 By kyl</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
